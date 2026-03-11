@@ -1,1 +1,3 @@
-mobi.help
+Type: CNAME
+Host: www
+Value: nicbuilds.github.io
