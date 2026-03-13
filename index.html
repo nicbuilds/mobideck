@@ -30,19 +30,37 @@
         body { scroll-behavior: smooth; }
         .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
         .cta-gradient { background: linear-gradient(135deg, #CC7696 0%, #EB7F8F 100%); }
-        .glass-nav { background: rgba(86, 95, 128, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .glass-nav { background: rgba(86, 95, 128, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
-        /* Hero background logo styling */
         .hero-logo-bg {
             position: absolute;
-            right: -5%;
-            top: 50%;
+            right: -10%;
+            top: 40%;
             transform: translateY(-50%);
-            width: 60%;
-            opacity: 0.15;
+            width: 80%; /* Larger on mobile for visibility */
+            opacity: 0.12;
             z-index: 1;
             pointer-events: none;
             filter: brightness(0) invert(1);
+        }
+
+        @media (min-width: 768px) {
+            .hero-logo-bg {
+                width: 60%;
+                right: -5%;
+                top: 50%;
+            }
+        }
+
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        #mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
@@ -50,49 +68,60 @@
 
     <header class="fixed w-full z-50 glass-nav">
         <nav class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center text-white">
-            <div class="flex items-center gap-4">
-                <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-16 w-auto">
-                <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
+            <div class="flex items-center gap-3 md:gap-4">
+                <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-12 md:h-16 w-auto">
+                <h1 class="text-lg md:text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
             </div>
+
             <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest">
                 <a href="#services" class="hover:text-mobi-5 transition">Services</a>
                 <a href="#about" class="hover:text-mobi-5 transition">Our Story</a>
                 <a href="#contact" class="px-5 py-2 rounded-full border border-mobi-5 text-mobi-5 hover:bg-mobi-5 hover:text-white transition">Get Quote</a>
             </div>
+
+            <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </nav>
+
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-mobi-1 text-white p-8 md:hidden flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl">
+            <a href="#services" class="mobile-link">Services</a>
+            <a href="#about" class="mobile-link">Our Story</a>
+            <a href="#contact" class="mobile-link text-mobi-5 border border-mobi-5 py-3 rounded-full">Get Quote</a>
+        </div>
     </header>
 
-    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 hero-gradient text-white overflow-hidden">
-        <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg hidden md:block">
+    <section class="relative pt-40 pb-24 md:pt-48 md:pb-32 hero-gradient text-white overflow-hidden">
+        <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
         
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="max-w-3xl">
-                <h2 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                <h2 class="text-4xl md:text-7xl font-extrabold mb-6 leading-tight">
                     Decks Worth <br><span class="text-mobi-5">The Voyage.</span>
                 </h2>
-                <p class="text-lg md:text-xl opacity-90 mb-10 leading-relaxed max-w-xl">
+                <p class="text-base md:text-xl opacity-90 mb-10 leading-relaxed max-w-xl">
                     Mobi Deck builds premium wooden structures that bridge the gap between your home and the great outdoors. Strong, soulful, and built to last.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#contact" class="px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">Start Your Project</a>
-                    <a href="#services" class="px-10 py-4 rounded-full bg-mobi-1/30 border border-white/20 font-bold hover:bg-white/10 transition">View Services</a>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="px-10 py-4 rounded-full bg-white text-mobi-1 text-center font-bold hover:shadow-2xl transition transform hover:-translate-y-1">Start Your Project</a>
+                    <a href="#services" class="px-10 py-4 rounded-full bg-mobi-1/30 border border-white/20 text-center font-bold hover:bg-white/10 transition">View Services</a>
                 </div>
             </div>
         </div>
-        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-mobi-5 rounded-full blur-[120px] opacity-30"></div>
+        <div class="absolute -bottom-24 -right-24 w-64 md:w-96 h-64 md:h-96 bg-mobi-5 rounded-full blur-[100px] md:blur-[120px] opacity-30"></div>
     </section>
 
-    <section id="services" class="py-24 px-6">
+    <section id="services" class="py-16 md:py-24 px-6">
         <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-4">
                 <div>
                     <span class="text-mobi-4 font-bold uppercase tracking-widest text-sm">Expertise</span>
-                    <h3 class="text-4xl font-extrabold text-mobi-2 mt-2">Crafted for the Elements</h3>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-mobi-2 mt-2">Crafted for the Elements</h3>
                 </div>
                 <p class="text-mobi-1/70 max-w-sm">We specialize in high-durability timber and precision engineering for outdoor living.</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
                 <div class="p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group bg-stone-50">
                     <div class="w-12 h-12 rounded-2xl bg-mobi-2 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">📐</div>
                     <h4 class="text-xl font-bold mb-3 text-mobi-2">Custom Design</h4>
@@ -112,39 +141,39 @@
         </div>
     </section>
 
-    <section id="about" class="py-24 bg-mobi-1 text-white relative">
+    <section id="about" class="py-20 md:py-24 bg-mobi-1 text-white relative">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h3 class="text-3xl md:text-5xl font-bold mb-8">Built Strong Like the Sea</h3>
-            <p class="text-lg opacity-80 leading-relaxed mb-12">
-                Inspired by the legendary spirit of the ocean, Mobi Deck creates wooden decks that combine durability, craftsmanship, and modern design. We believe an outdoor space is the hull of your home's social life.
+            <h3 class="text-2xl md:text-5xl font-bold mb-8">Built Strong Like the Sea</h3>
+            <p class="text-base md:text-lg opacity-80 leading-relaxed mb-12">
+                Inspired by the legendary spirit of the ocean, Mobi Deck creates wooden decks that combine durability, craftsmanship, and modern design.
             </p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div>
-                    <div class="text-3xl font-extrabold text-mobi-5">15+</div>
-                    <div class="text-xs uppercase tracking-widest opacity-60 mt-2">Years Exp.</div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-mobi-5">15+</div>
+                    <div class="text-[10px] md:text-xs uppercase tracking-widest opacity-60 mt-2">Years Exp.</div>
                 </div>
                 <div>
-                    <div class="text-3xl font-extrabold text-mobi-5">400+</div>
-                    <div class="text-xs uppercase tracking-widest opacity-60 mt-2">Decks Built</div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-mobi-5">400+</div>
+                    <div class="text-[10px] md:text-xs uppercase tracking-widest opacity-60 mt-2">Decks Built</div>
                 </div>
                 <div>
-                    <div class="text-3xl font-extrabold text-mobi-5">100%</div>
-                    <div class="text-xs uppercase tracking-widest opacity-60 mt-2">Hardwood</div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-mobi-5">100%</div>
+                    <div class="text-[10px] md:text-xs uppercase tracking-widest opacity-60 mt-2">Hardwood</div>
                 </div>
                 <div>
-                    <div class="text-3xl font-extrabold text-mobi-5">10yr</div>
-                    <div class="text-xs uppercase tracking-widest opacity-60 mt-2">Warranty</div>
+                    <div class="text-2xl md:text-3xl font-extrabold text-mobi-5">10yr</div>
+                    <div class="text-[10px] md:text-xs uppercase tracking-widest opacity-60 mt-2">Warranty</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto cta-gradient rounded-[3rem] p-12 md:p-24 text-center text-white shadow-2xl relative overflow-hidden">
+    <section id="contact" class="py-16 md:py-24 px-6">
+        <div class="max-w-5xl mx-auto cta-gradient rounded-[2rem] md:rounded-[3rem] p-10 md:p-24 text-center text-white shadow-2xl relative overflow-hidden">
             <div class="relative z-10">
-                <h3 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Start Your Voyage</h3>
-                <p class="text-xl mb-12 opacity-90">Ready to transform your backyard? Let's build something legendary.</p>
-                <a href="#" class="inline-block px-12 py-5 bg-white text-mobi-4 rounded-full font-extrabold text-lg hover:bg-mobi-1 hover:text-white transition-all shadow-xl">Contact Us Now</a>
+                <h3 class="text-3xl md:text-6xl font-extrabold mb-6 tracking-tight">Start Your Voyage</h3>
+                <p class="text-lg mb-10 opacity-90">Ready to transform your backyard? Let's build something legendary.</p>
+                <a href="#" class="inline-block px-10 py-4 bg-white text-mobi-4 rounded-full font-extrabold text-base md:text-lg hover:bg-mobi-1 hover:text-white transition-all shadow-xl">Contact Us Now</a>
             </div>
             <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                 <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -159,8 +188,25 @@
             <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck" class="h-10 w-auto mx-auto grayscale opacity-50">
         </div>
         <p class="text-mobi-1 font-bold tracking-tighter">MOBI DECK</p>
-        <p class="text-stone-400 text-sm mt-2">© 2026 Mobi Deck • Craftsmanship built to last • mobi.help</p>
+        <p class="text-stone-400 text-sm mt-2 px-6">© 2026 Mobi Deck • Craftsmanship built to last • mobi.help</p>
     </footer>
 
+    <script>
+        // Toggle mobile menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
