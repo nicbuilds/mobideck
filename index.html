@@ -48,26 +48,47 @@
             .hero-logo-bg { width: 60%; right: -5%; top: 50%; }
         }
 
+        /* Mobile Menu Fixes */
         #mobile-menu {
-            transition: all 0.3s ease-in-out;
-            transform: translateY(-100%);
+            display: none;
             opacity: 0;
+            transition: opacity 0.3s ease;
         }
         #mobile-menu.active {
-            transform: translateY(0);
+            display: flex;
             opacity: 1;
         }
 
         /* Carousel Styles */
         .carousel-container { overflow: hidden; position: relative; border-radius: 2rem; }
-        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-track { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         .carousel-slide { min-width: 100%; aspect-ratio: 16/9; }
         .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Card Image Backgrounds */
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+        .service-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.92), rgba(255,255,255,0.98));
+            z-index: -1;
+            transition: background 0.3s ease;
+        }
+        .service-card:hover::before {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.9));
+        }
     </style>
 </head>
 <body class="bg-white text-mobi-1">
 
-    <header class="fixed w-full z-50 glass-nav">
+    <header class="fixed w-full z-[100] glass-nav">
         <nav class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center text-white">
             <div class="flex items-center gap-3 md:gap-4">
                 <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-12 md:h-16 w-auto">
@@ -80,14 +101,16 @@
                 <a href="#contact" class="px-5 py-2 rounded-full border border-mobi-5 text-mobi-5 hover:bg-mobi-5 hover:text-white transition">Get Quote</a>
             </div>
 
-            <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            <button id="menu-toggle" class="md:hidden text-white focus:outline-none p-2">
+                <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
             </button>
         </nav>
 
-        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-mobi-1 text-white p-8 md:hidden flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl">
-            <a href="#services" class="mobile-link">Services</a>
-            <a href="#gallery" class="mobile-link">Gallery</a>
+        <div id="mobile-menu" class="fixed inset-x-0 top-[72px] md:top-[88px] bg-mobi-1 text-white p-8 flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl z-50">
+            <a href="#services" class="mobile-link py-2">Services</a>
+            <a href="#gallery" class="mobile-link py-2">Gallery</a>
             <a href="#contact" class="mobile-link text-mobi-5 border border-mobi-5 py-3 rounded-full">Get Quote</a>
         </div>
     </header>
@@ -111,6 +134,28 @@
         <div class="absolute -bottom-24 -right-24 w-64 md:w-96 h-64 md:h-96 bg-mobi-5 rounded-full blur-[100px] md:blur-[120px] opacity-30"></div>
     </section>
 
+    <section id="services" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="service-card p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group shadow-sm" style="background-image: url('https://images.unsplash.com/photo-1590059345003-902f23166699?auto=format&fit=crop&w=600&q=80');">
+                    <div class="w-12 h-12 rounded-2xl bg-mobi-2 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">📐</div>
+                    <h4 class="text-xl font-bold mb-3 text-mobi-2">Custom Design</h4>
+                    <p class="text-mobi-1/80 text-sm leading-relaxed">Tailored blueprints that maximize your yard's potential through modern 3D modeling and architectural precision.</p>
+                </div>
+                <div class="service-card p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group shadow-sm" style="background-image: url('https://images.unsplash.com/photo-1623013961977-1d19d991d862?auto=format&fit=crop&w=600&q=80');">
+                    <div class="w-12 h-12 rounded-2xl bg-mobi-3 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">🪵</div>
+                    <h4 class="text-xl font-bold mb-3 text-mobi-2">Premium Materials</h4>
+                    <p class="text-mobi-1/80 text-sm leading-relaxed">Hand-selected hardwoods, tropical timbers, and high-performance sustainable composites that age with grace.</p>
+                </div>
+                <div class="service-card p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group shadow-sm" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80');">
+                    <div class="w-12 h-12 rounded-2xl bg-mobi-4 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">⚒️</div>
+                    <h4 class="text-xl font-bold mb-3 text-mobi-2">Master Build</h4>
+                    <p class="text-mobi-1/80 text-sm leading-relaxed">Our marine-grade construction ensures your deck remains structurally sound through every season and tide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="gallery" class="py-24 px-6 bg-stone-50">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
@@ -120,34 +165,12 @@
             
             <div class="carousel-container shadow-2xl">
                 <div class="carousel-track" id="carouselTrack">
-                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1590059345003-902f23166699?auto=format&fit=crop&w=1200&q=80" alt="Deck Project 1"></div>
-                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1591825381767-c7137b8f0fe9?auto=format&fit=crop&w=1200&q=80" alt="Deck Project 2"></div>
-                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Deck Project 3"></div>
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1591825729269-caeb344f6df2?auto=format&fit=crop&w=1200&q=80" alt="Modern Deck"></div>
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1588694065600-478647e30560?auto=format&fit=crop&w=1200&q=80" alt="Wooden Terrace"></div>
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1200&q=80" alt="Outdoor Patio"></div>
                 </div>
-                <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white p-4 rounded-full transition">←</button>
-                <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white p-4 rounded-full transition">→</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-24 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group bg-stone-50">
-                    <div class="w-12 h-12 rounded-2xl bg-mobi-2 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">📐</div>
-                    <h4 class="text-xl font-bold mb-3 text-mobi-2">Custom Design</h4>
-                    <p class="text-mobi-1/80 text-sm leading-relaxed">Tailored blueprints that maximize your yard's potential.</p>
-                </div>
-                <div class="p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group bg-stone-50">
-                    <div class="w-12 h-12 rounded-2xl bg-mobi-3 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">🪵</div>
-                    <h4 class="text-xl font-bold mb-3 text-mobi-2">Premium Materials</h4>
-                    <p class="text-mobi-1/80 text-sm leading-relaxed">Hand-selected hardwoods and sustainable composites.</p>
-                </div>
-                <div class="p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group bg-stone-50">
-                    <div class="w-12 h-12 rounded-2xl bg-mobi-4 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">⚒️</div>
-                    <h4 class="text-xl font-bold mb-3 text-mobi-2">Master Build</h4>
-                    <p class="text-mobi-1/80 text-sm leading-relaxed">Marine-grade construction techniques for durability.</p>
-                </div>
+                <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white p-4 rounded-full transition z-20">←</button>
+                <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white p-4 rounded-full transition z-20">→</button>
             </div>
         </div>
     </section>
@@ -188,13 +211,30 @@
     </footer>
 
     <script>
-        // Menu Logic
+        // MOBILE MENU LOGIC - FIXED
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('active'));
-        document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('active')));
 
-        // Carousel Logic
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking links
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // CAROUSEL LOGIC
         let currentSlide = 0;
         const track = document.getElementById('carouselTrack');
         const slides = document.querySelectorAll('.carousel-slide');
@@ -211,7 +251,6 @@
             updateCarousel();
         }
         
-        // Auto-play
         setInterval(nextSlide, 5000);
     </script>
 </body>
