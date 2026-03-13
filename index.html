@@ -37,7 +37,7 @@
             right: -10%;
             top: 40%;
             transform: translateY(-50%);
-            width: 80%; /* Larger on mobile for visibility */
+            width: 80%;
             opacity: 0.12;
             z-index: 1;
             pointer-events: none;
@@ -45,14 +45,9 @@
         }
 
         @media (min-width: 768px) {
-            .hero-logo-bg {
-                width: 60%;
-                right: -5%;
-                top: 50%;
-            }
+            .hero-logo-bg { width: 60%; right: -5%; top: 50%; }
         }
 
-        /* Mobile Menu Animation */
         #mobile-menu {
             transition: all 0.3s ease-in-out;
             transform: translateY(-100%);
@@ -62,6 +57,12 @@
             transform: translateY(0);
             opacity: 1;
         }
+
+        /* Carousel Styles */
+        .carousel-container { overflow: hidden; position: relative; border-radius: 2rem; }
+        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-slide { min-width: 100%; aspect-ratio: 16/9; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
     </style>
 </head>
 <body class="bg-white text-mobi-1">
@@ -75,7 +76,7 @@
 
             <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest">
                 <a href="#services" class="hover:text-mobi-5 transition">Services</a>
-                <a href="#about" class="hover:text-mobi-5 transition">Our Story</a>
+                <a href="#gallery" class="hover:text-mobi-5 transition">Gallery</a>
                 <a href="#contact" class="px-5 py-2 rounded-full border border-mobi-5 text-mobi-5 hover:bg-mobi-5 hover:text-white transition">Get Quote</a>
             </div>
 
@@ -86,100 +87,95 @@
 
         <div id="mobile-menu" class="absolute top-full left-0 w-full bg-mobi-1 text-white p-8 md:hidden flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl">
             <a href="#services" class="mobile-link">Services</a>
-            <a href="#about" class="mobile-link">Our Story</a>
+            <a href="#gallery" class="mobile-link">Gallery</a>
             <a href="#contact" class="mobile-link text-mobi-5 border border-mobi-5 py-3 rounded-full">Get Quote</a>
         </div>
     </header>
 
     <section class="relative pt-40 pb-24 md:pt-48 md:pb-32 hero-gradient text-white overflow-hidden">
         <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
-        
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="max-w-3xl">
                 <h2 class="text-4xl md:text-7xl font-extrabold mb-6 leading-tight">
                     Decks Worth <br><span class="text-mobi-5">The Voyage.</span>
                 </h2>
                 <p class="text-base md:text-xl opacity-90 mb-10 leading-relaxed max-w-xl">
-                    Mobi Deck builds premium wooden structures that bridge the gap between your home and the great outdoors. Strong, soulful, and built to last.
+                    Mobi Deck builds premium wooden structures that bridge the gap between your home and the great outdoors.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#contact" class="px-10 py-4 rounded-full bg-white text-mobi-1 text-center font-bold hover:shadow-2xl transition transform hover:-translate-y-1">Start Your Project</a>
-                    <a href="#services" class="px-10 py-4 rounded-full bg-mobi-1/30 border border-white/20 text-center font-bold hover:bg-white/10 transition">View Services</a>
+                    <a href="#gallery" class="px-10 py-4 rounded-full bg-mobi-1/30 border border-white/20 text-center font-bold hover:bg-white/10 transition">View Our Work</a>
                 </div>
             </div>
         </div>
         <div class="absolute -bottom-24 -right-24 w-64 md:w-96 h-64 md:h-96 bg-mobi-5 rounded-full blur-[100px] md:blur-[120px] opacity-30"></div>
     </section>
 
-    <section id="services" class="py-16 md:py-24 px-6">
+    <section id="gallery" class="py-24 px-6 bg-stone-50">
         <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-4">
-                <div>
-                    <span class="text-mobi-4 font-bold uppercase tracking-widest text-sm">Expertise</span>
-                    <h3 class="text-3xl md:text-4xl font-extrabold text-mobi-2 mt-2">Crafted for the Elements</h3>
-                </div>
-                <p class="text-mobi-1/70 max-w-sm">We specialize in high-durability timber and precision engineering for outdoor living.</p>
+            <div class="text-center mb-16">
+                <span class="text-mobi-4 font-bold uppercase tracking-widest text-sm">Portfolio</span>
+                <h3 class="text-4xl font-extrabold text-mobi-2 mt-2">Recent Voyages</h3>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+            <div class="carousel-container shadow-2xl">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1590059345003-902f23166699?auto=format&fit=crop&w=1200&q=80" alt="Deck Project 1"></div>
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1591825381767-c7137b8f0fe9?auto=format&fit=crop&w=1200&q=80" alt="Deck Project 2"></div>
+                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Deck Project 3"></div>
+                </div>
+                <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white p-4 rounded-full transition">←</button>
+                <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white p-4 rounded-full transition">→</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
                 <div class="p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group bg-stone-50">
                     <div class="w-12 h-12 rounded-2xl bg-mobi-2 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">📐</div>
                     <h4 class="text-xl font-bold mb-3 text-mobi-2">Custom Design</h4>
-                    <p class="text-mobi-1/80 text-sm leading-relaxed">Tailored blueprints that maximize your yard's potential while respecting the local architecture.</p>
+                    <p class="text-mobi-1/80 text-sm leading-relaxed">Tailored blueprints that maximize your yard's potential.</p>
                 </div>
                 <div class="p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group bg-stone-50">
                     <div class="w-12 h-12 rounded-2xl bg-mobi-3 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">🪵</div>
                     <h4 class="text-xl font-bold mb-3 text-mobi-2">Premium Materials</h4>
-                    <p class="text-mobi-1/80 text-sm leading-relaxed">Hand-selected hardwoods and sustainable composites that age beautifully through every season.</p>
+                    <p class="text-mobi-1/80 text-sm leading-relaxed">Hand-selected hardwoods and sustainable composites.</p>
                 </div>
                 <div class="p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group bg-stone-50">
                     <div class="w-12 h-12 rounded-2xl bg-mobi-4 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">⚒️</div>
                     <h4 class="text-xl font-bold mb-3 text-mobi-2">Master Build</h4>
-                    <p class="text-mobi-1/80 text-sm leading-relaxed">Marine-grade construction techniques ensuring structural integrity for decades to come.</p>
+                    <p class="text-mobi-1/80 text-sm leading-relaxed">Marine-grade construction techniques for durability.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-20 md:py-24 bg-mobi-1 text-white relative">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h3 class="text-2xl md:text-5xl font-bold mb-8">Built Strong Like the Sea</h3>
-            <p class="text-base md:text-lg opacity-80 leading-relaxed mb-12">
-                Inspired by the legendary spirit of the ocean, Mobi Deck creates wooden decks that combine durability, craftsmanship, and modern design.
-            </p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="text-2xl md:text-3xl font-extrabold text-mobi-5">15+</div>
-                    <div class="text-[10px] md:text-xs uppercase tracking-widest opacity-60 mt-2">Years Exp.</div>
-                </div>
-                <div>
-                    <div class="text-2xl md:text-3xl font-extrabold text-mobi-5">400+</div>
-                    <div class="text-[10px] md:text-xs uppercase tracking-widest opacity-60 mt-2">Decks Built</div>
-                </div>
-                <div>
-                    <div class="text-2xl md:text-3xl font-extrabold text-mobi-5">100%</div>
-                    <div class="text-[10px] md:text-xs uppercase tracking-widest opacity-60 mt-2">Hardwood</div>
-                </div>
-                <div>
-                    <div class="text-2xl md:text-3xl font-extrabold text-mobi-5">10yr</div>
-                    <div class="text-[10px] md:text-xs uppercase tracking-widest opacity-60 mt-2">Warranty</div>
-                </div>
+    <section id="contact" class="py-24 px-6 bg-mobi-1 text-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl md:text-6xl font-extrabold mb-6">Start Your Voyage</h3>
+                <p class="text-xl opacity-80">Ready to transform your backyard? Drop us a line.</p>
             </div>
-        </div>
-    </section>
 
-    <section id="contact" class="py-16 md:py-24 px-6">
-        <div class="max-w-5xl mx-auto cta-gradient rounded-[2rem] md:rounded-[3rem] p-10 md:p-24 text-center text-white shadow-2xl relative overflow-hidden">
-            <div class="relative z-10">
-                <h3 class="text-3xl md:text-6xl font-extrabold mb-6 tracking-tight">Start Your Voyage</h3>
-                <p class="text-lg mb-10 opacity-90">Ready to transform your backyard? Let's build something legendary.</p>
-                <a href="#" class="inline-block px-10 py-4 bg-white text-mobi-4 rounded-full font-extrabold text-base md:text-lg hover:bg-mobi-1 hover:text-white transition-all shadow-xl">Contact Us Now</a>
-            </div>
-            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path d="M0 100 Q 50 0 100 100" stroke="white" fill="transparent" stroke-width="0.5"/>
-                </svg>
-            </div>
+            <form action="https://formspree.io/f/mreykjlr" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/5 p-8 md:p-12 rounded-[2rem] backdrop-blur-sm border border-white/10 shadow-2xl">
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs font-bold uppercase tracking-widest opacity-60">Full Name</label>
+                    <input type="text" name="name" required class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-mobi-5 transition text-white">
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs font-bold uppercase tracking-widest opacity-60">Email Address</label>
+                    <input type="email" name="email" required class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-mobi-5 transition text-white">
+                </div>
+                <div class="flex flex-col gap-2 md:col-span-2">
+                    <label class="text-xs font-bold uppercase tracking-widest opacity-60">Project Details</label>
+                    <textarea name="message" rows="4" required class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-mobi-5 transition text-white" placeholder="Tell us about your dream deck..."></textarea>
+                </div>
+                <div class="md:col-span-2 mt-4">
+                    <button type="submit" class="w-full py-5 cta-gradient rounded-full font-extrabold text-lg hover:shadow-2xl transition transform hover:-translate-y-1">Send Message</button>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -192,21 +188,31 @@
     </footer>
 
     <script>
-        // Toggle mobile menu
+        // Menu Logic
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('active'));
+        document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('active')));
 
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Close menu when a link is clicked
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-        });
+        // Carousel Logic
+        let currentSlide = 0;
+        const track = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
+        
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+        
+        // Auto-play
+        setInterval(nextSlide, 5000);
     </script>
 </body>
 </html>
