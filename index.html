@@ -31,13 +31,28 @@
         .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
         .cta-gradient { background: linear-gradient(135deg, #CC7696 0%, #EB7F8F 100%); }
         .glass-nav { background: rgba(86, 95, 128, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        /* Ensures the logo sits behind the text but stays within the hero section */
+        .hero-logo-bg {
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60%;
+            opacity: 0.15;
+            z-index: 1;
+            pointer-events: none;
+            filter: brightness(0) invert(1); /* Makes the logo white to blend with hero */
+        }
     </style>
 </head>
 <body class="bg-white text-mobi-1">
 
     <header class="fixed w-full z-50 glass-nav">
         <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center text-white">
-            <h1 class="text-xl font-extrabold tracking-tighter">🐋 MOBI DECK</h1>
+            <div class="flex items-center gap-2">
+                <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-8 w-auto">
+                <h1 class="text-xl font-extrabold tracking-tighter">MOBI DECK</h1>
+            </div>
             <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest">
                 <a href="#services" class="hover:text-mobi-5 transition">Services</a>
                 <a href="#about" class="hover:text-mobi-5 transition">Our Story</a>
@@ -47,6 +62,8 @@
     </header>
 
     <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 hero-gradient text-white overflow-hidden">
+        <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg hidden md:block">
+        
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="max-w-3xl">
                 <h2 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
@@ -137,7 +154,9 @@
     </section>
 
     <footer class="py-12 text-center border-t border-stone-100">
-        <div class="text-2xl mb-4">🐋</div>
+        <div class="mb-4">
+            <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck" class="h-10 w-auto mx-auto grayscale opacity-50">
+        </div>
         <p class="text-mobi-1 font-bold tracking-tighter">MOBI DECK</p>
         <p class="text-stone-400 text-sm mt-2">© 2026 Mobi Deck • Craftsmanship built to last • mobi.help</p>
     </footer>
