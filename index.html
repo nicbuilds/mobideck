@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mobi deck | Wooden Deck Builders</title>
+    <title>Mobi Deck | Wooden Deck Builders</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <script>
@@ -28,16 +28,28 @@
     </script>
     <style>
         body { scroll-behavior: smooth; }
-        .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
-        .cta-gradient { background: linear-gradient(135deg, #CC7696 0%, #EB7F8F 100%); }
-        .glass-nav { background: rgba(86, 95, 128, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        /* Using the exact hex codes for the branding voyage */
+        .hero-gradient { 
+            background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); 
+        }
+        .cta-gradient { 
+            background: linear-gradient(135deg, #CC7696 0%, #EB7F8F 100%); 
+        }
+        .glass-nav { 
+            background: rgba(86, 95, 128, 0.85); 
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+        }
     </style>
 </head>
 <body class="bg-white text-mobi-1">
 
     <header class="fixed w-full z-50 glass-nav">
-        <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center text-white">
-            <h1 class="text-xl font-extrabold tracking-tighter">🐋 mobi deck</h1>
+        <nav class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center text-white">
+            <div class="flex items-center gap-2">
+                <img src="https://mobi.help/logo_F.png" alt="Mobi Deck Logo" class="h-8 w-auto">
+                <h1 class="text-lg font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
+            </div>
             <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest">
                 <a href="#services" class="hover:text-mobi-5 transition">Services</a>
                 <a href="#about" class="hover:text-mobi-5 transition">Our Story</a>
@@ -47,21 +59,27 @@
     </header>
 
     <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 hero-gradient text-white overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+            
+            <div class="mb-10 animate-fade-in">
+                <img src="https://mobi.help/logo_F.png" alt="Mobi Deck" class="h-32 md:h-40 w-auto drop-shadow-2xl">
+            </div>
+
             <div class="max-w-3xl">
                 <h2 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
                     Decks Worth <br><span class="text-mobi-5">The Voyage.</span>
                 </h2>
-                <p class="text-lg md:text-xl opacity-90 mb-10 leading-relaxed max-w-xl">
-                    Mobi Deck builds premium wooden structures that bridge the gap between your home and the great outdoors. Strong, soulful, and built to last.
+                <p class="text-lg md:text-xl opacity-90 mb-10 leading-relaxed max-w-xl mx-auto">
+                    Transforming outdoor spaces with high-end wood craftsmanship and marine-grade durability. 
                 </p>
-                <div class="flex flex-wrap gap-4">
+                <div class="flex flex-wrap gap-4 justify-center">
                     <a href="#contact" class="px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">Start Your Project</a>
                     <a href="#services" class="px-10 py-4 rounded-full bg-mobi-1/30 border border-white/20 font-bold hover:bg-white/10 transition">View Services</a>
                 </div>
             </div>
         </div>
         <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-mobi-5 rounded-full blur-[120px] opacity-30"></div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-mobi-4 rounded-full blur-[120px] opacity-20"></div>
     </section>
 
     <section id="services" class="py-24 px-6">
@@ -71,22 +89,22 @@
                     <span class="text-mobi-4 font-bold uppercase tracking-widest text-sm">Expertise</span>
                     <h3 class="text-4xl font-extrabold text-mobi-2 mt-2">Crafted for the Elements</h3>
                 </div>
-                <p class="text-mobi-1/70 max-w-sm">We specialize in high-durability timber and precision engineering for outdoor living.</p>
+                <p class="text-mobi-1/70 max-w-sm">Precision engineering meets premium timber for your outdoor living space.</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group bg-stone-50">
-                    <div class="w-12 h-12 rounded-2xl bg-mobi-2 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">📐</div>
+                    <div class="w-12 h-12 rounded-2xl bg-mobi-2 flex items-center justify-center text-white mb-6 group-hover:rotate-12 transition">📐</div>
                     <h4 class="text-xl font-bold mb-3 text-mobi-2">Custom Design</h4>
                     <p class="text-mobi-1/80 text-sm leading-relaxed">Tailored blueprints that maximize your yard's potential while respecting the local architecture.</p>
                 </div>
                 <div class="p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group bg-stone-50">
-                    <div class="w-12 h-12 rounded-2xl bg-mobi-3 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">🪵</div>
+                    <div class="w-12 h-12 rounded-2xl bg-mobi-3 flex items-center justify-center text-white mb-6 group-hover:rotate-12 transition">🪵</div>
                     <h4 class="text-xl font-bold mb-3 text-mobi-2">Premium Materials</h4>
                     <p class="text-mobi-1/80 text-sm leading-relaxed">Hand-selected hardwoods and sustainable composites that age beautifully through every season.</p>
                 </div>
                 <div class="p-8 rounded-3xl border border-mobi-1/10 hover:border-mobi-4 transition-all group bg-stone-50">
-                    <div class="w-12 h-12 rounded-2xl bg-mobi-4 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">⚒️</div>
+                    <div class="w-12 h-12 rounded-2xl bg-mobi-4 flex items-center justify-center text-white mb-6 group-hover:rotate-12 transition">⚒️</div>
                     <h4 class="text-xl font-bold mb-3 text-mobi-2">Master Build</h4>
                     <p class="text-mobi-1/80 text-sm leading-relaxed">Marine-grade construction techniques ensuring structural integrity for decades to come.</p>
                 </div>
@@ -98,7 +116,7 @@
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h3 class="text-3xl md:text-5xl font-bold mb-8">Built Strong Like the Sea</h3>
             <p class="text-lg opacity-80 leading-relaxed mb-12">
-                Inspired by the legendary spirit of the ocean, Mobi Deck creates wooden decks that combine durability, craftsmanship, and modern design. We believe an outdoor space is the hull of your home's social life.
+                Inspired by the legendary spirit of the ocean, Mobi Deck creates wooden decks that combine durability, craftsmanship, and modern design.
             </p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div>
@@ -111,7 +129,7 @@
                 </div>
                 <div>
                     <div class="text-3xl font-extrabold text-mobi-5">100%</div>
-                    <div class="text-xs uppercase tracking-widest opacity-60 mt-2">Hardwood</div>
+                    <div class="text-xs uppercase tracking-widest opacity-60 mt-2">Quality Wood</div>
                 </div>
                 <div>
                     <div class="text-3xl font-extrabold text-mobi-5">10yr</div>
@@ -124,22 +142,19 @@
     <section id="contact" class="py-24 px-6">
         <div class="max-w-5xl mx-auto cta-gradient rounded-[3rem] p-12 md:p-24 text-center text-white shadow-2xl relative overflow-hidden">
             <div class="relative z-10">
-                <h3 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Start Your Voyage</h3>
+                <h3 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight leading-none">Start Your Voyage</h3>
                 <p class="text-xl mb-12 opacity-90">Ready to transform your backyard? Let's build something legendary.</p>
-                <a href="#" class="inline-block px-12 py-5 bg-white text-mobi-4 rounded-full font-extrabold text-lg hover:bg-mobi-1 hover:text-white transition-all shadow-xl">Contact Us Now</a>
-            </div>
-            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path d="M0 100 Q 50 0 100 100" stroke="white" fill="transparent" stroke-width="0.5"/>
-                </svg>
+                <a href="mailto:hello@mobi.help" class="inline-block px-12 py-5 bg-white text-mobi-4 rounded-full font-extrabold text-lg hover:bg-mobi-1 hover:text-white transition-all shadow-xl">Contact Us Now</a>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 text-center border-t border-stone-100">
-        <div class="text-2xl mb-4">🐋</div>
-        <p class="text-mobi-1 font-bold tracking-tighter">MOBI DECK</p>
-        <p class="text-stone-400 text-sm mt-2">© 2026 Mobi Deck • Craftsmanship built to last • mobi.help</p>
+    <footer class="py-12 text-center border-t border-stone-100 bg-stone-50">
+        <div class="flex justify-center mb-6">
+            <img src="https://mobi.help/logo_F.png" alt="Mobi Deck" class="h-10 opacity-50 grayscale hover:grayscale-0 transition">
+        </div>
+        <p class="text-mobi-1 font-bold tracking-tighter uppercase">Mobi Deck</p>
+        <p class="text-stone-400 text-sm mt-2">© 2026 Mobi Deck • Crafted for the Journey • mobi.help</p>
     </footer>
 
 </body>
