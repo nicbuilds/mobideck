@@ -64,21 +64,21 @@
             overflow: hidden; 
             position: relative; 
             border-radius: 1.5rem; 
-            max-width: 900px; /* Made smaller */
+            max-width: 900px; 
             margin: 0 auto;
         }
         .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-        .carousel-slide { min-width: 100%; aspect-ratio: 3/2; } /* Adjusted ratio for smaller footprint */
+        .carousel-slide { min-width: 100%; aspect-ratio: 3/2; } 
         .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Service Card Backgrounds with improved visibility */
+        /* Service Card Backgrounds */
         .service-card {
             position: relative;
             overflow: hidden;
             background-size: cover;
             background-position: center;
             z-index: 1;
-            min-height: 300px;
+            min-height: 320px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -87,13 +87,9 @@
             content: "";
             position: absolute;
             inset: 0;
-            /* Darker gradient at bottom to help white text pop */
-            background: linear-gradient(to top, rgba(255,255,255,1) 30%, rgba(255,255,255,0.7) 100%);
+            background: linear-gradient(to top, rgba(255,255,255,1) 20%, rgba(255,255,255,0.6) 100%);
             z-index: -1;
             transition: all 0.3s ease;
-        }
-        .service-card:hover::before {
-            background: linear-gradient(to top, rgba(255,255,255,0.95) 40%, rgba(255,255,255,0.6) 100%);
         }
     </style>
 </head>
@@ -129,14 +125,14 @@
     <section class="relative pt-40 pb-24 md:pt-48 md:pb-32 hero-gradient text-white overflow-hidden">
         <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
         <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="max-w-3xl text-left">
-                <h2 class="text-4xl md:text-7xl font-extrabold mb-6 leading-tight relative z-20">
+            <div class="max-w-3xl">
+                <h2 class="text-4xl md:text-7xl font-extrabold mb-6 leading-tight">
                     Decks Worth <br><span class="text-mobi-5">The Voyage.</span>
                 </h2>
-                <p class="text-base md:text-xl opacity-90 mb-10 leading-relaxed max-w-xl relative z-20">
+                <p class="text-base md:text-xl opacity-90 mb-10 leading-relaxed max-w-xl">
                     Mobi Deck builds premium wooden structures that bridge the gap between your home and the great outdoors.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 relative z-20">
+                <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#contact" class="px-10 py-4 rounded-full bg-white text-mobi-1 text-center font-bold hover:shadow-2xl transition transform hover:-translate-y-1">Start Your Project</a>
                     <a href="#gallery" class="px-10 py-4 rounded-full bg-mobi-1/30 border border-white/20 text-center font-bold hover:bg-white/10 transition">View Our Work</a>
                 </div>
@@ -148,25 +144,25 @@
     <section id="services" class="py-24 px-6">
         <div class="max-w-6xl mx-auto">
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="service-card p-8 rounded-3xl border border-mobi-1/10 hover:shadow-xl transition-all group" style="background-image: url('https://images.unsplash.com/photo-1590059345003-902f23166699?auto=format&fit=crop&w=800&q=80');">
+                <div class="service-card p-8 rounded-3xl border border-mobi-1/10 hover:shadow-xl transition-all group" style="background-image: url('https://mobi.help/tamanna-rumee-FtJEat_S7Q4-unsplash.jpg');">
                     <div class="relative z-10">
                         <div class="w-12 h-12 rounded-2xl bg-mobi-2 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">📐</div>
                         <h4 class="text-xl font-bold mb-3 text-mobi-2">Custom Design</h4>
-                        <p class="text-mobi-1/80 text-sm leading-relaxed">Tailored blueprints and 3D modeling to visualize your dream outdoor space before we cut the first plank.</p>
+                        <p class="text-mobi-1/80 text-sm leading-relaxed font-semibold">Bespoke layouts tailored to your lifestyle and architectural landscape.</p>
                     </div>
                 </div>
-                <div class="service-card p-8 rounded-3xl border border-mobi-1/10 hover:shadow-xl transition-all group" style="background-image: url('https://images.unsplash.com/photo-1591825729269-caeb344f6df2?auto=format&fit=crop&w=800&q=80');">
+                <div class="service-card p-8 rounded-3xl border border-mobi-1/10 hover:shadow-xl transition-all group" style="background-image: url('https://mobi.help/alexandre-jaquetoni-6yelWDI3RE8-unsplash.jpg');">
                     <div class="relative z-10">
                         <div class="w-12 h-12 rounded-2xl bg-mobi-3 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">🪵</div>
                         <h4 class="text-xl font-bold mb-3 text-mobi-2">Premium Materials</h4>
-                        <p class="text-mobi-1/80 text-sm leading-relaxed">From sustained Teak to high-end Ipe and Redwood, we source only the most durable, weather-resistant timbers.</p>
+                        <p class="text-mobi-1/80 text-sm leading-relaxed font-semibold">Hand-picked sustainable timbers designed to withstand the test of time.</p>
                     </div>
                 </div>
-                <div class="service-card p-8 rounded-3xl border border-mobi-1/10 hover:shadow-xl transition-all group" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80');">
+                <div class="service-card p-8 rounded-3xl border border-mobi-1/10 hover:shadow-xl transition-all group" style="background-image: url('https://mobi.help/andrew-iWknbITI2rg-unsplash.jpg');">
                     <div class="relative z-10">
                         <div class="w-12 h-12 rounded-2xl bg-mobi-4 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">⚒️</div>
                         <h4 class="text-xl font-bold mb-3 text-mobi-2">Master Build</h4>
-                        <p class="text-mobi-1/80 text-sm leading-relaxed">Artisan-level craftsmanship with marine-grade hardware to ensure your structure stands strong for decades.</p>
+                        <p class="text-mobi-1/80 text-sm leading-relaxed font-semibold">Expert craftsmanship utilizing marine-grade structural engineering.</p>
                     </div>
                 </div>
             </div>
@@ -182,9 +178,10 @@
             
             <div class="carousel-container shadow-xl">
                 <div class="carousel-track" id="carouselTrack">
-                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1200&q=80" alt="Beautiful Modern Deck"></div>
-                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=1200&q=80" alt="Large Outdoor Terrace"></div>
-                    <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1560185007-5f0bb61e28a3?auto=format&fit=crop&w=1200&q=80" alt="Timber Decking Project"></div>
+                    <div class="carousel-slide"><img src="https://mobi.help/se-tsuchiya-DKpkc0QQPzs-unsplash.jpg" alt="Deck 1"></div>
+                    <div class="carousel-slide"><img src="https://mobi.help/elion-jashari-5CGw1IahrfI-unsplash.jpg" alt="Deck 2"></div>
+                    <div class="carousel-slide"><img src="https://mobi.help/andrew-iWknbITI2rg-unsplash.jpg" alt="Deck 3"></div>
+                    <div class="carousel-slide"><img src="https://mobi.help/alexandre-jaquetoni-6yelWDI3RE8-unsplash.jpg" alt="Deck 4"></div>
                 </div>
                 <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/60 backdrop-blur-md text-mobi-1 p-3 rounded-full transition z-20">←</button>
                 <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/60 backdrop-blur-md text-mobi-1 p-3 rounded-full transition z-20">→</button>
@@ -224,11 +221,10 @@
             <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck" class="h-10 w-auto mx-auto grayscale opacity-50">
         </div>
         <p class="text-mobi-1 font-bold tracking-tighter">MOBI DECK</p>
-        <p class="text-stone-400 text-sm mt-2 px-6">© 2026 Mobi Deck • Craftsmanship built to last • mobi.help</p>
+        <p class="text-stone-400 text-sm mt-2 px-6">© 2026 Mobi Deck • mobi.help</p>
     </footer>
 
     <script>
-        // MOBILE MENU LOGIC
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -238,9 +234,7 @@
         });
 
         document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
         });
 
         document.addEventListener('click', (e) => {
@@ -249,7 +243,6 @@
             }
         });
 
-        // CAROUSEL LOGIC
         let currentSlide = 0;
         const track = document.getElementById('carouselTrack');
         const slides = document.querySelectorAll('.carousel-slide');
@@ -265,8 +258,7 @@
             currentSlide = (currentSlide - 1 + slides.length) % slides.length;
             updateCarousel();
         }
-        
-        setInterval(nextSlide, 6000);
+        setInterval(nextSlide, 5000);
     </script>
 </body>
 </html>
