@@ -21,22 +21,13 @@
               },
               fontFamily: {
                 sans: ['Plus Jakarta Sans', 'sans-serif'],
-              },
-              animation: {
-                'float': 'float 6s ease-in-out infinite',
-              },
-              keyframes: {
-                float: {
-                  '0%, 100%': { transform: 'translateY(0)' },
-                  '50%': { transform: 'translateY(-20px)' },
-                }
               }
             }
           }
         }
     </script>
     <style>
-        body { scroll-behavior: smooth; }
+        body { scroll-behavior: smooth; overflow-x: hidden; }
         .hero-gradient { 
             background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); 
         }
@@ -47,6 +38,25 @@
             background: rgba(86, 95, 128, 0.9); 
             backdrop-filter: blur(12px); 
             border-bottom: 1px solid rgba(255,255,255,0.1); 
+        }
+        /* The "1000% Bigger" Logo Styling */
+        .massive-logo {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140vw; /* Covers more than the screen width */
+            max-width: none;
+            opacity: 0.15; /* Subtly sits behind the text */
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10; /* Ensures text is on top of the logo */
+        }
+        .text-shadow {
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
     </style>
 </head>
@@ -66,29 +76,24 @@
         </nav>
     </header>
 
-    <section class="relative min-h-screen flex items-center pt-20 hero-gradient text-white overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 relative z-10 w-full flex flex-col items-center text-center">
-            
-            <div class="max-w-4xl">
-                <h2 class="text-6xl md:text-8xl font-extrabold mb-6 leading-[0.9] tracking-tight">
-                    Decks Worth <br><span class="text-mobi-5">The Voyage.</span>
-                </h2>
-                <p class="text-xl md:text-2xl opacity-90 mb-12 leading-relaxed max-w-2xl mx-auto font-medium">
-                    Premier wood craftsmanship for legendary outdoor living.
-                </p>
+    <section class="relative min-h-screen flex items-center justify-center hero-gradient text-white overflow-hidden">
+        
+        <img src="https://mobi.help/logo_F.png" alt="" class="massive-logo">
 
-                <div class="mb-16 animate-float flex justify-center">
-                    <img src="https://mobi.help/logo_F.png" alt="Mobi Deck Large Logo" class="h-48 md:h-72 w-auto drop-shadow-[0_35px_35px_rgba(0,0,0,0.4)]">
-                </div>
+        <div class="hero-content max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-7xl md:text-[10rem] font-extrabold mb-4 leading-[0.85] tracking-tighter text-shadow">
+                Decks Worth <br><span class="text-mobi-5">The Voyage.</span>
+            </h2>
+            <p class="text-xl md:text-3xl opacity-90 mb-12 leading-relaxed max-w-3xl mx-auto font-medium text-shadow">
+                Premier wood craftsmanship for legendary outdoor living.
+            </p>
 
-                <div class="flex flex-wrap gap-6 justify-center">
-                    <a href="#contact" class="px-12 py-5 rounded-full bg-white text-mobi-1 font-extrabold text-lg hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition transform hover:-translate-y-1">Start Your Project</a>
-                    <a href="#services" class="px-12 py-5 rounded-full bg-mobi-1/40 border-2 border-white/20 font-extrabold text-lg hover:bg-white/10 transition">View Our Work</a>
-                </div>
+            <div class="flex flex-wrap gap-6 justify-center">
+                <a href="#contact" class="px-14 py-6 rounded-full bg-white text-mobi-1 font-extrabold text-xl hover:shadow-2xl transition transform hover:-translate-y-1">Start Your Project</a>
+                <a href="#services" class="px-14 py-6 rounded-full bg-mobi-1/40 border-2 border-white/20 font-extrabold text-xl hover:bg-white/10 transition">View Our Work</a>
             </div>
         </div>
         
-        <div class="absolute -bottom-48 -left-24 w-full h-96 bg-mobi-5 rounded-full blur-[150px] opacity-20"></div>
     </section>
 
     <section id="services" class="py-32 px-6">
@@ -98,24 +103,23 @@
                     <span class="text-mobi-4 font-bold uppercase tracking-[0.3em] text-sm">Our Expertise</span>
                     <h3 class="text-5xl font-extrabold text-mobi-2 mt-4">Crafted for the Elements</h3>
                 </div>
-                <div class="h-0.5 w-full md:w-1/3 bg-stone-100 hidden md:block mb-4"></div>
             </div>
             
             <div class="grid md:grid-cols-3 gap-10">
-                <div class="p-10 rounded-[2.5rem] border border-stone-100 hover:border-mobi-4 transition-all duration-500 group bg-stone-50/50">
-                    <div class="text-4xl mb-8 group-hover:scale-110 transition-transform">📐</div>
+                <div class="p-10 rounded-[2.5rem] border border-stone-100 hover:border-mobi-4 transition-all duration-500 bg-stone-50/50">
+                    <div class="text-4xl mb-8">📐</div>
                     <h4 class="text-2xl font-bold mb-4 text-mobi-2">Custom Design</h4>
-                    <p class="text-mobi-1/80 leading-relaxed">Tailored blueprints that maximize your yard's potential while respecting your home's unique architecture.</p>
+                    <p class="text-mobi-1/80 leading-relaxed">Tailored blueprints that maximize your yard's potential while respecting your architecture.</p>
                 </div>
-                <div class="p-10 rounded-[2.5rem] border border-stone-100 hover:border-mobi-4 transition-all duration-500 group bg-stone-50/50">
-                    <div class="text-4xl mb-8 group-hover:scale-110 transition-transform">🪵</div>
+                <div class="p-10 rounded-[2.5rem] border border-stone-100 hover:border-mobi-4 transition-all duration-500 bg-stone-50/50">
+                    <div class="text-4xl mb-8">🪵</div>
                     <h4 class="text-2xl font-bold mb-4 text-mobi-2">Premium Materials</h4>
-                    <p class="text-mobi-1/80 leading-relaxed">Sustainably sourced hardwoods and composite solutions that age with grace through every season.</p>
+                    <p class="text-mobi-1/80 leading-relaxed">Sustainably sourced hardwoods and composites that age with grace through every season.</p>
                 </div>
-                <div class="p-10 rounded-[2.5rem] border border-stone-100 hover:border-mobi-4 transition-all duration-500 group bg-stone-50/50">
-                    <div class="text-4xl mb-8 group-hover:scale-110 transition-transform">⚒️</div>
+                <div class="p-10 rounded-[2.5rem] border border-stone-100 hover:border-mobi-4 transition-all duration-500 bg-stone-50/50">
+                    <div class="text-4xl mb-8">⚒️</div>
                     <h4 class="text-2xl font-bold mb-4 text-mobi-2">Master Build</h4>
-                    <p class="text-mobi-1/80 leading-relaxed">Precision-focused construction using marine-grade techniques for structural integrity that lasts decades.</p>
+                    <p class="text-mobi-1/80 leading-relaxed">Precision-focused construction using marine-grade techniques for structural integrity.</p>
                 </div>
             </div>
         </div>
@@ -127,24 +131,6 @@
             <p class="text-xl opacity-80 leading-relaxed mb-16 font-light">
                 Inspired by the legendary resilience of maritime engineering, Mobi Deck creates outdoor structures that combine absolute durability with modern design.
             </p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 border-t border-white/10 pt-16">
-                <div>
-                    <div class="text-4xl font-extrabold text-mobi-5">15+</div>
-                    <div class="text-[10px] uppercase tracking-widest opacity-60 mt-3">Years Experience</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-extrabold text-mobi-5">400+</div>
-                    <div class="text-[10px] uppercase tracking-widest opacity-60 mt-3">Projects Done</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-extrabold text-mobi-5">100%</div>
-                    <div class="text-[10px] uppercase tracking-widest opacity-60 mt-3">Real Timber</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-extrabold text-mobi-5">10yr</div>
-                    <div class="text-[10px] uppercase tracking-widest opacity-60 mt-3">Warranty</div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -160,10 +146,10 @@
 
     <footer class="py-16 text-center bg-stone-50">
         <div class="flex justify-center mb-8">
-            <img src="https://mobi.help/logo_F.png" alt="Mobi Deck" class="h-16 opacity-30 grayscale hover:grayscale-0 transition duration-500">
+            <img src="https://mobi.help/logo_F.png" alt="Mobi Deck" class="h-16 opacity-30 grayscale transition duration-500">
         </div>
         <p class="text-mobi-1 font-black tracking-[0.2em] uppercase text-lg">Mobi Deck</p>
-        <p class="text-stone-400 text-sm mt-3">© 2026 Mobi Deck • Craftsmanship built for the long haul • mobi.help</p>
+        <p class="text-stone-400 text-sm mt-3">© 2026 Mobi Deck • Crafted for the Journey • mobi.help</p>
     </footer>
 
 </body>
