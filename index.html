@@ -59,18 +59,6 @@
             opacity: 1;
         }
 
-        /* Compact Carousel Styles */
-        .carousel-container { 
-            overflow: hidden; 
-            position: relative; 
-            border-radius: 1.5rem; 
-            max-width: 900px; 
-            margin: 0 auto;
-        }
-        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-        .carousel-slide { min-width: 100%; aspect-ratio: 3/2; } 
-        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
-
         /* Service Card Backgrounds */
         .service-card {
             position: relative;
@@ -169,22 +157,50 @@
         </div>
     </section>
 
-    <section id="gallery" class="py-16 px-6 bg-stone-50">
+    <section id="gallery" class="py-24 px-6 bg-stone-50">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-10">
+            <div class="text-center mb-16">
                 <span class="text-mobi-4 font-bold uppercase tracking-widest text-sm">Portfolio</span>
-                <h3 class="text-3xl font-extrabold text-mobi-2 mt-2">Recent Voyages</h3>
+                <h3 class="text-4xl font-extrabold text-mobi-2 mt-2">Recent Voyages</h3>
+                <p class="text-mobi-1/60 mt-4">Witness the transformation of outdoor living spaces.</p>
             </div>
             
-            <div class="carousel-container shadow-xl">
-                <div class="carousel-track" id="carouselTrack">
-                    <div class="carousel-slide"><img src="https://mobi.help/se-tsuchiya-DKpkc0QQPzs-unsplash.jpg" alt="Deck 1"></div>
-                    <div class="carousel-slide"><img src="https://mobi.help/elion-jashari-5CGw1IahrfI-unsplash.jpg" alt="Deck 2"></div>
-                    <div class="carousel-slide"><img src="https://mobi.help/andrew-iWknbITI2rg-unsplash.jpg" alt="Deck 3"></div>
-                    <div class="carousel-slide"><img src="https://mobi.help/alexandre-jaquetoni-6yelWDI3RE8-unsplash.jpg" alt="Deck 4"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group relative overflow-hidden rounded-3xl shadow-lg bg-black aspect-[3/4] lg:row-span-2">
+                    <video class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-500" autoplay muted loop playsinline>
+                        <source src="https://mobi.help/social_xanax_httpss.mj.runMgiKdomujyc_create_a_terrace_with_a_wooden_64dd94b1-5412-40ba-8f7d-f0e3c331af7f_1.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute bottom-6 left-6">
+                        <span class="bg-mobi-5/90 backdrop-blur-md text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">In Motion</span>
+                    </div>
                 </div>
-                <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/60 backdrop-blur-md text-mobi-1 p-3 rounded-full transition z-20">←</button>
-                <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/60 backdrop-blur-md text-mobi-1 p-3 rounded-full transition z-20">→</button>
+
+                <div class="group relative overflow-hidden rounded-3xl shadow-lg aspect-square">
+                    <img src="https://mobi.help/se-tsuchiya-DKpkc0QQPzs-unsplash.jpg" alt="Deck Project" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mobi-1/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <p class="text-white font-bold">Harborside Deck</p>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-3xl shadow-lg bg-black aspect-square">
+                    <video class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-500" autoplay muted loop playsinline>
+                        <source src="https://mobi.help/social_xanax_httpss.mj.runMgiKdomujyc_create_a_terrace_with_a_wooden_64dd94b1-5412-40ba-8f7d-f0e3c331af7f_3.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute bottom-6 left-6">
+                        <span class="bg-mobi-3/90 backdrop-blur-md text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Design Detail</span>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-3xl shadow-lg aspect-video md:col-span-2">
+                    <img src="https://mobi.help/elion-jashari-5CGw1IahrfI-unsplash.jpg" alt="Terrace Build" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mobi-1/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <p class="text-white font-bold">Modern Living Terrace</p>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-3xl shadow-lg aspect-square">
+                    <img src="https://mobi.help/andrew-iWknbITI2rg-unsplash.jpg" alt="Craftsmanship" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                </div>
             </div>
         </div>
     </section>
@@ -242,23 +258,6 @@
                 mobileMenu.classList.remove('active');
             }
         });
-
-        let currentSlide = 0;
-        const track = document.getElementById('carouselTrack');
-        const slides = document.querySelectorAll('.carousel-slide');
-        
-        function updateCarousel() {
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            updateCarousel();
-        }
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            updateCarousel();
-        }
-        setInterval(nextSlide, 5000);
     </script>
 </body>
 </html>
