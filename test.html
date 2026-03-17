@@ -27,16 +27,16 @@
         }
     </script>
     <style>
-        body { scroll-behavior: smooth; margin: 0; }
+        body { scroll-behavior: smooth; margin: 0; background-color: #fff; }
         .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
         .glass-nav { background: rgba(86, 95, 128, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
-        /* THE PARALLAX FIX: Fixed Background Layers */
+        /* THE PARALLAX ARCHITECTURE */
         .parallax-container {
             position: relative;
-            height: 90vh; /* Height of the scroll area */
+            height: 100vh; 
             overflow: hidden;
-            clip-path: inset(0 0 0 0); /* Essential for containing the fixed child */
+            clip-path: inset(0 0 0 0);
         }
 
         .fixed-bg {
@@ -48,7 +48,7 @@
             background-size: cover;
             background-position: center;
             z-index: -1;
-            transform: translateZ(0); /* Hardware acceleration */
+            transform: translateZ(0);
         }
 
         .content-overlay {
@@ -60,10 +60,32 @@
             z-index: 10;
         }
 
+        /* WAVE STYLING */
+        .wave-top {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 100%;
+            line-height: 0;
+            z-index: 20;
+            fill: #ffffff; /* Matches the content background */
+        }
+
+        .wave-bottom {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            line-height: 0;
+            z-index: 20;
+            fill: #ffffff;
+            transform: rotate(180deg);
+        }
+
         .step-card {
             background: rgba(255, 255, 255, 0.98);
             border-left: 6px solid #EB7F8F;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
         }
 
         .hero-logo-bg {
@@ -82,7 +104,7 @@
         #mobile-menu.active { display: flex; opacity: 1; }
     </style>
 </head>
-<body class="bg-stone-50 text-mobi-1">
+<body class="text-mobi-1">
 
     <header class="fixed w-full z-[100] glass-nav">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-white">
@@ -110,7 +132,7 @@
         </div>
     </header>
 
-    <section class="relative min-h-[80vh] flex items-center hero-gradient text-white overflow-hidden">
+    <section class="relative min-h-[90vh] flex items-center hero-gradient text-white overflow-hidden">
         <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
         <div class="max-w-7xl mx-auto px-6 relative z-10 py-32 w-full">
             <div class="max-w-3xl text-left">
@@ -119,14 +141,17 @@
                     Decks Worth <br><span class="text-mobi-5">The Voyage.</span>
                 </h2>
                 <p class="text-lg md:text-xl opacity-80 mb-10 max-w-xl font-medium">
-                    A premium experience from start to finish. Follow our structured guide to hiring Mobi Deck for your next architectural project.
+                    Master-built wooden structures. Follow our roadmap to hiring Mobi Deck for your next architectural project.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#step1" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
-                        Begin the Process
-                    </a>
-                </div>
+                <a href="#step1" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
+                    Begin the Process
+                </a>
             </div>
+        </div>
+        <div class="wave-bottom">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="h-12 md:h-24 w-full">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
         </div>
     </section>
 
@@ -134,6 +159,7 @@
         <div class="fixed-bg" style="background-image: url('https://mobi.help/deck1.jpg');">
             <div class="absolute inset-0 bg-mobi-1/40"></div>
         </div>
+        
         <div class="content-overlay">
             <div class="max-w-7xl mx-auto px-6 w-full">
                 <div class="step-card max-w-xl p-8 md:p-16 rounded-tr-[4rem] rounded-bl-[4rem]">
@@ -149,12 +175,25 @@
                 </div>
             </div>
         </div>
+
+        <div class="wave-bottom">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="h-12 md:h-24 w-full">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
     </section>
 
     <section id="step2" class="parallax-container">
+        <div class="wave-top">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="h-12 md:h-24 w-full">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
+        
         <div class="fixed-bg" style="background-image: url('https://mobi.help/deck2.jpg');">
             <div class="absolute inset-0 bg-black/50"></div>
         </div>
+
         <div class="content-overlay justify-end">
             <div class="max-w-7xl mx-auto px-6 w-full flex justify-end">
                 <div class="step-card max-w-xl p-8 md:p-16 rounded-tl-[4rem] rounded-br-[4rem] border-l-0 border-r-4 border-mobi-4 text-right">
@@ -163,25 +202,38 @@
                     <p class="text-mobi-1/70 leading-relaxed mb-8">
                         Milestone payments to secure craftsmanship and materials:
                     </p>
-                    <div class="space-y-4">
+                    <div class="space-y-4 text-left">
                         <div class="flex justify-between items-center p-4 bg-stone-50 rounded-xl">
                             <span class="font-bold text-mobi-1 uppercase text-[10px] tracking-widest">Initial Deposit</span>
                             <span class="text-2xl font-black text-mobi-4">20%</span>
                         </div>
                         <div class="flex justify-between items-center p-4 bg-stone-50 rounded-xl">
                             <span class="font-bold text-mobi-1 uppercase text-[10px] tracking-widest">Installation Day</span>
-                            <span class="text-2xl font-black text-mobi-4">80%</span>
+                            <span class="text-2xl font-black text-mobi-4">40%</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="wave-bottom">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="h-12 md:h-24 w-full">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
     </section>
 
     <section id="step3" class="parallax-container">
+        <div class="wave-top">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="h-12 md:h-24 w-full">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
+
         <div class="fixed-bg" style="background-image: url('https://mobi.help/deck3.jpg');">
             <div class="absolute inset-0 bg-mobi-1/50"></div>
         </div>
+
         <div class="content-overlay">
             <div class="max-w-7xl mx-auto px-6 w-full">
                 <div class="step-card max-w-xl p-8 md:p-16 rounded-tr-[4rem] rounded-bl-[4rem] border-mobi-2">
@@ -195,6 +247,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="wave-bottom">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="h-12 md:h-24 w-full">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
         </div>
     </section>
 
