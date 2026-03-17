@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobi Deck | Wooden Deck Builders</title>
+    <title>Hire Mobi Deck | Professional Process</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <script>
@@ -27,221 +27,225 @@
         }
     </script>
     <style>
-        body { scroll-behavior: smooth; }
+        body { scroll-behavior: smooth; margin: 0; }
         .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
-        .cta-gradient { background: linear-gradient(135deg, #CC7696 0%, #EB7F8F 100%); }
         .glass-nav { background: rgba(86, 95, 128, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
+        /* THE PARALLAX FIX: Fixed Background Layers */
+        .parallax-container {
+            position: relative;
+            height: 90vh; /* Height of the scroll area */
+            overflow: hidden;
+            clip-path: inset(0 0 0 0); /* Essential for containing the fixed child */
+        }
+
+        .fixed-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            transform: translateZ(0); /* Hardware acceleration */
+        }
+
+        .content-overlay {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-left: 6px solid #EB7F8F;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
         .hero-logo-bg {
             position: absolute;
-            right: -10%;
-            top: 40%;
+            right: -5%;
+            top: 50%;
             transform: translateY(-50%);
-            width: 80%;
-            opacity: 0.12;
+            width: 60%;
+            opacity: 0.1;
             z-index: 1;
             pointer-events: none;
             filter: brightness(0) invert(1);
         }
 
-        @media (min-width: 768px) {
-            .hero-logo-bg { width: 60%; right: -5%; top: 50%; }
-        }
-
-        #mobile-menu {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        #mobile-menu.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .service-card {
-            position: relative;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-            z-index: 1;
-            min-height: 320px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-        .service-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(255,255,255,1) 20%, rgba(255,255,255,0.6) 100%);
-            z-index: -1;
-            transition: all 0.3s ease;
-        }
+        #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
+        #mobile-menu.active { display: flex; opacity: 1; }
     </style>
 </head>
-<body class="bg-white text-mobi-1">
+<body class="bg-stone-50 text-mobi-1">
 
     <header class="fixed w-full z-[100] glass-nav">
-        <nav class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center text-white">
-            <div class="flex items-center gap-3 md:gap-4">
-                <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-12 md:h-16 w-auto">
-                <h1 class="text-lg md:text-xl font-extrabold tracking-tighter uppercase">mobi deck</h1>
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-white">
+            <div class="flex items-center gap-4">
+                <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-12 w-auto">
+                <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
             </div>
 
-            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest">
-                <a href="#services" class="hover:text-mobi-5 transition">Services</a>
-                <a href="#gallery" class="hover:text-mobi-5 transition">Gallery</a>
-                <a href="#contact" class="px-5 py-2 rounded-full border border-mobi-5 text-mobi-5 hover:bg-mobi-5 hover:text-white transition">Get Quote</a>
+            <div class="hidden md:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
+                <a href="#step1" class="hover:text-mobi-5 transition">01. Quotation</a>
+                <a href="#step2" class="hover:text-mobi-5 transition">02. Payment</a>
+                <a href="#step3" class="hover:text-mobi-5 transition">03. Installation</a>
+                <a href="#contact" class="px-6 py-2.5 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-300">Contact Us</a>
             </div>
 
-            <button id="menu-toggle" class="md:hidden text-white focus:outline-none p-2">
-                <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
+            <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
-
-        <div id="mobile-menu" class="fixed inset-x-0 top-[72px] md:top-[88px] bg-mobi-1 text-white p-8 flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl z-50">
-            <a href="#services" class="mobile-link py-2">Services</a>
-            <a href="#gallery" class="mobile-link py-2">Gallery</a>
-            <a href="#contact" class="mobile-link text-mobi-5 border border-mobi-5 py-3 rounded-full">Get Quote</a>
+        <div id="mobile-menu" class="fixed inset-x-0 top-[72px] bg-mobi-1 text-white p-8 flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl z-[90]">
+            <a href="#step1" class="mobile-link">01. Quotation</a>
+            <a href="#step2" class="mobile-link">02. Payment</a>
+            <a href="#step3" class="mobile-link">03. Installation</a>
+            <a href="#contact" class="mobile-link text-mobi-5">Contact Us</a>
         </div>
     </header>
 
-    <section class="relative pt-40 pb-24 md:pt-48 md:pb-32 hero-gradient text-white overflow-hidden">
+    <section class="relative min-h-[80vh] flex items-center hero-gradient text-white overflow-hidden">
         <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="max-w-3xl">
-                <h2 class="text-4xl md:text-7xl font-extrabold mb-6 leading-tight">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 py-32 w-full">
+            <div class="max-w-3xl text-left">
+                <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5">Service Guide</span>
+                <h2 class="text-5xl md:text-8xl font-extrabold mb-8 leading-[1.1]">
                     Decks Worth <br><span class="text-mobi-5">The Voyage.</span>
                 </h2>
-                <p class="text-base md:text-xl opacity-90 mb-10 leading-relaxed max-w-xl">
-                    Mobi Deck builds premium wooden structures that bridge the gap between your home and the great outdoors.
+                <p class="text-lg md:text-xl opacity-80 mb-10 max-w-xl font-medium">
+                    A premium experience from start to finish. Follow our structured guide to hiring Mobi Deck for your next architectural project.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#contact" class="px-10 py-4 rounded-full bg-white text-mobi-1 text-center font-bold hover:shadow-2xl transition transform hover:-translate-y-1">Start Your Project</a>
-                    <a href="#gallery" class="px-10 py-4 rounded-full bg-mobi-1/30 border border-white/20 text-center font-bold hover:bg-white/10 transition">View Our Work</a>
+                    <a href="#step1" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
+                        Begin the Process
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="absolute -bottom-24 -right-24 w-64 md:w-96 h-64 md:h-96 bg-mobi-5 rounded-full blur-[100px] md:blur-[120px] opacity-30"></div>
     </section>
 
-    <section id="services" class="py-24 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="service-card p-8 rounded-3xl border border-mobi-1/10 hover:shadow-xl transition-all group" style="background-image: url('https://mobi.help/tamanna-rumee-FtJEat_S7Q4-unsplash.jpg');">
-                    <div class="relative z-10">
-                        <div class="w-12 h-12 rounded-2xl bg-mobi-2 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">📐</div>
-                        <h4 class="text-xl font-bold mb-3 text-mobi-2">Custom Design</h4>
-                        <p class="text-mobi-1/80 text-sm leading-relaxed font-semibold">Bespoke layouts tailored to your lifestyle and architectural landscape.</p>
-                    </div>
-                </div>
-                <div class="service-card p-8 rounded-3xl border border-mobi-1/10 hover:shadow-xl transition-all group" style="background-image: url('https://mobi.help/alexandre-jaquetoni-6yelWDI3RE8-unsplash.jpg');">
-                    <div class="relative z-10">
-                        <div class="w-12 h-12 rounded-2xl bg-mobi-3 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">🪵</div>
-                        <h4 class="text-xl font-bold mb-3 text-mobi-2">Premium Materials</h4>
-                        <p class="text-mobi-1/80 text-sm leading-relaxed font-semibold">Hand-picked sustainable timbers designed to withstand the test of time.</p>
-                    </div>
-                </div>
-                <div class="service-card p-8 rounded-3xl border border-mobi-1/10 hover:shadow-xl transition-all group" style="background-image: url('https://mobi.help/andrew-iWknbITI2rg-unsplash.jpg');">
-                    <div class="relative z-10">
-                        <div class="w-12 h-12 rounded-2xl bg-mobi-4 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition">⚒️</div>
-                        <h4 class="text-xl font-bold mb-3 text-mobi-2">Master Build</h4>
-                        <p class="text-mobi-1/80 text-sm leading-relaxed font-semibold">Expert craftsmanship utilizing marine-grade structural engineering.</p>
+    <section id="step1" class="parallax-container">
+        <div class="fixed-bg" style="background-image: url('https://mobi.help/deck1.jpg');">
+            <div class="absolute inset-0 bg-mobi-1/40"></div>
+        </div>
+        <div class="content-overlay">
+            <div class="max-w-7xl mx-auto px-6 w-full">
+                <div class="step-card max-w-xl p-8 md:p-16 rounded-tr-[4rem] rounded-bl-[4rem]">
+                    <span class="text-4xl font-black text-mobi-5/30 italic block mb-2">01</span>
+                    <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-6">Project Quotation</h3>
+                    <p class="text-mobi-1/70 leading-relaxed mb-6">
+                        Provide your <strong>architectural blueprints</strong> or engage us to <strong>design from scratch</strong>. We ensure every quote is structurally sound and tailored to your site.
+                    </p>
+                    <div class="flex flex-wrap gap-4 text-[10px] font-bold uppercase tracking-widest text-mobi-2">
+                        <span class="bg-stone-100 px-3 py-1 rounded-md">Blueprint Assessment</span>
+                        <span class="bg-stone-100 px-3 py-1 rounded-md">Custom Design</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="py-24 px-6 bg-stone-50">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-mobi-4 font-bold uppercase tracking-widest text-sm">Motion Portfolio</span>
-                <h3 class="text-4xl font-extrabold text-mobi-2 mt-2">The Build Experience</h3>
-                <p class="text-mobi-1/60 mt-4">Witness the precision of our craftsmanship in motion.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group relative overflow-hidden rounded-[2.5rem] shadow-2xl bg-black aspect-[3/4]">
-                    <video class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-700" autoplay muted loop playsinline>
-                        <source src="https://mobi.help/social_xanax_httpss.mj.runMgiKdomujyc_create_a_terrace_with_a_wooden_64dd94b1-5412-40ba-8f7d-f0e3c331af7f_1.mp4" type="video/mp4">
-                    </video>
-                    <div class="absolute bottom-8 left-8">
-                        <span class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest">Structural Phase</span>
-                    </div>
-                </div>
-
-                <div class="group relative overflow-hidden rounded-[2.5rem] shadow-2xl bg-black aspect-[3/4]">
-                    <video class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-700" autoplay muted loop playsinline>
-                        <source src="https://mobi.help/social_xanax_httpss.mj.runMgiKdomujyc_create_an_outdoor_terrace_with_2ea58013-4f1b-4d38-9f14-3c69359ef82f_2.mp4" type="video/mp4">
-                    </video>
-                    <div class="absolute bottom-8 left-8">
-                        <span class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest">Outdoor Living</span>
-                    </div>
-                </div>
-
-                <div class="group relative overflow-hidden rounded-[2.5rem] shadow-2xl bg-black aspect-[3/4]">
-                    <video class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-700" autoplay muted loop playsinline>
-                        <source src="https://mobi.help/social_xanax_httpss.mj.runMgiKdomujyc_create_a_terrace_with_a_wooden_64dd94b1-5412-40ba-8f7d-f0e3c331af7f_3.mp4" type="video/mp4">
-                    </video>
-                    <div class="absolute bottom-8 left-8">
-                        <span class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest">Detail Finish</span>
+    <section id="step2" class="parallax-container">
+        <div class="fixed-bg" style="background-image: url('https://mobi.help/deck2.jpg');">
+            <div class="absolute inset-0 bg-black/50"></div>
+        </div>
+        <div class="content-overlay justify-end">
+            <div class="max-w-7xl mx-auto px-6 w-full flex justify-end">
+                <div class="step-card max-w-xl p-8 md:p-16 rounded-tl-[4rem] rounded-br-[4rem] border-l-0 border-r-4 border-mobi-4 text-right">
+                    <span class="text-4xl font-black text-mobi-4/30 italic block mb-2">02</span>
+                    <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-6">Financial Schedule</h3>
+                    <p class="text-mobi-1/70 leading-relaxed mb-8">
+                        Milestone payments to secure craftsmanship and materials:
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-stone-50 rounded-xl">
+                            <span class="font-bold text-mobi-1 uppercase text-[10px] tracking-widest">Initial Deposit</span>
+                            <span class="text-2xl font-black text-mobi-4">20%</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-stone-50 rounded-xl">
+                            <span class="font-bold text-mobi-1 uppercase text-[10px] tracking-widest">Installation Day</span>
+                            <span class="text-2xl font-black text-mobi-4">80%</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 px-6 bg-mobi-1 text-white">
+    <section id="step3" class="parallax-container">
+        <div class="fixed-bg" style="background-image: url('https://mobi.help/deck3.jpg');">
+            <div class="absolute inset-0 bg-mobi-1/50"></div>
+        </div>
+        <div class="content-overlay">
+            <div class="max-w-7xl mx-auto px-6 w-full">
+                <div class="step-card max-w-xl p-8 md:p-16 rounded-tr-[4rem] rounded-bl-[4rem] border-mobi-2">
+                    <span class="text-4xl font-black text-mobi-2/30 italic block mb-2">03</span>
+                    <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-6">Build & Install</h3>
+                    <p class="text-mobi-1/70 leading-relaxed mb-6">
+                        Final measurements followed by masterful installation. We handle all logistics, timber preparation, and on-site assembly to deliver your dream deck.
+                    </p>
+                    <div class="flex items-center gap-2 text-mobi-5 font-bold text-xs uppercase tracking-tighter">
+                        <span>Measure</span> <span class="opacity-30">|</span> <span>Logistics</span> <span class="opacity-30">|</span> <span>Master Build</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 bg-white relative z-20">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
-                <h3 class="text-4xl md:text-6xl font-extrabold mb-6">Start Your Voyage</h3>
-                <p class="text-xl opacity-80">Ready to transform your backyard? Drop us a line.</p>
+                <h3 class="text-4xl font-extrabold text-mobi-1 mb-4">Start Your Project</h3>
+                <p class="text-mobi-1/60 font-medium">Submit your inquiry to begin Step 1.</p>
             </div>
-
-            <form action="https://formspree.io/f/mreykjlr" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/5 p-8 md:p-12 rounded-[2rem] backdrop-blur-sm border border-white/10 shadow-2xl">
-                <div class="flex flex-col gap-2">
-                    <label class="text-xs font-bold uppercase tracking-widest opacity-60">Full Name</label>
-                    <input type="text" name="name" required class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-mobi-5 transition text-white">
+            <form action="https://formspree.io/f/mreykjlr" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12 rounded-[2rem] border border-stone-200 bg-stone-50/50">
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Full Name</label>
+                    <input type="text" name="name" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
                 </div>
-                <div class="flex flex-col gap-2">
-                    <label class="text-xs font-bold uppercase tracking-widest opacity-60">Email Address</label>
-                    <input type="email" name="email" required class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-mobi-5 transition text-white">
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Email Address</label>
+                    <input type="email" name="email" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
                 </div>
-                <div class="flex flex-col gap-2 md:col-span-2">
-                    <label class="text-xs font-bold uppercase tracking-widest opacity-60">Project Details</label>
-                    <textarea name="message" rows="4" required class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-mobi-5 transition text-white" placeholder="Tell us about your dream deck..."></textarea>
+                <div class="md:col-span-2 space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Blueprints Status</label>
+                    <select name="blueprints" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
+                        <option value="ready">I have blueprints ready</option>
+                        <option value="none">I need blueprints developed</option>
+                    </select>
                 </div>
-                <div class="md:col-span-2 mt-4">
-                    <button type="submit" class="w-full py-5 cta-gradient rounded-full font-extrabold text-lg hover:shadow-2xl transition transform hover:-translate-y-1">Send Message</button>
+                <div class="md:col-span-2 space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Message</label>
+                    <textarea name="message" rows="4" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition" placeholder="Tell us about your space..."></textarea>
                 </div>
+                <button type="submit" class="md:col-span-2 py-5 bg-mobi-1 text-white rounded-full font-extrabold text-lg hover:bg-mobi-5 transition-all shadow-xl">
+                    Send Inquiry
+                </button>
             </form>
         </div>
     </section>
 
-    <footer class="py-12 text-center border-t border-stone-100">
-        <div class="mb-4">
-            <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck" class="h-10 w-auto mx-auto grayscale opacity-50">
-        </div>
-        <p class="text-mobi-1 font-bold tracking-tighter">MOBI DECK</p>
-        <p class="text-stone-400 text-sm mt-2 px-6">© 2026 Mobi Deck • mobi.help</p>
+    <footer class="py-12 bg-stone-50 text-center border-t border-stone-200 relative z-20">
+        <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck" class="h-10 mx-auto grayscale opacity-50 mb-4">
+        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-mobi-1/40">© 2026 Mobi Deck • mobi.help</p>
     </footer>
 
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-
         menuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             mobileMenu.classList.toggle('active');
         });
-
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => mobileMenu.classList.remove('active'));
         });
-
         document.addEventListener('click', (e) => {
             if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
                 mobileMenu.classList.remove('active');
