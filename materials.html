@@ -37,28 +37,40 @@
             border-bottom: 1px solid rgba(255,255,255,0.1); 
         }
 
-        /* The "Slight Expansion" Logic */
+        /* Smooth Expansion Logic */
         .wood-card {
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
             transform-origin: center;
             z-index: 1;
-            height: 100%; /* Ensures all cards in the grid row match height */
+            height: 850px; /* Uniform height for all cards to accommodate larger text */
             display: flex;
             flex-direction: column;
+            backface-visibility: hidden;
         }
 
         .wood-card:hover {
-            transform: scale(1.2); /* Expanded to 1.2x for a balanced look; change to 1.5 for larger */
+            transform: scale(1.15); /* Controlled expansion */
             z-index: 50;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Keeping the image transition smooth */
         .wood-img {
-            transition: transform 0.8s ease;
+            transition: transform 1.2s ease;
         }
         .wood-card:hover .wood-img {
-            transform: scale(1.05);
+            transform: scale(1.1);
+        }
+
+        /* Utility for comparisons */
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
         }
     </style>
 </head>
@@ -83,27 +95,30 @@
             <span class="text-mobi-5 font-bold uppercase tracking-[0.4em] text-sm mb-4 block">The Fleet</span>
             <h2 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">Premium <span class="italic text-mobi-5">Species</span></h2>
             <p class="text-lg md:text-xl opacity-80 max-w-2xl mx-auto leading-relaxed">
-                Scientifically proven durability. Artistically selected grains.
+                A comparative guide to the world's most durable and aesthetically superior timbers.
             </p>
         </div>
     </section>
 
     <section id="woods" class="py-24 px-6 relative -mt-10 z-20">
         <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
                 
                 <div class="wood-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://mobi.help/1cedar.png" alt="Cedro Wood" class="wood-img w-full h-full object-cover">
                     </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-2xl font-extrabold text-mobi-2 mb-3">Cedro (Cedar)</h3>
-                            <p class="text-mobi-1/70 mb-6 text-sm leading-relaxed">Highly valued for its natural **thujaplicins**—chemical compounds that serve as natural fungicides.</p>
-                        </div>
-                        <div class="pt-4 border-t border-stone-100 text-[10px] font-bold uppercase tracking-wider flex justify-between">
-                            <span class="text-mobi-3">Janka: 900 lbf</span>
-                            <span class="text-stone-400">Stable</span>
+                    <div class="p-10 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Cedro (Cedar)</h3>
+                        <p class="text-mobi-1/70 mb-8 text-sm leading-relaxed">
+                            Spanish Cedar is a marvel of biological engineering. Renowned for its aromatic scent, it contains high concentrations of natural thujaplicins. These chemical compounds act as a built-in defense mechanism, making the wood naturally toxic to decay-causing fungi and wood-boring insects.
+                        </p>
+                        <div class="mt-auto space-y-1">
+                            <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>900 lbf (Janka)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Stability</span><span>High (Low Warping)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Color Range</span><span>Light Pink to Red-Brown</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Durability</span><span>Excellent (Fungicide Content)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Best Use</span><span>Railings & Pergolas</span></div>
                         </div>
                     </div>
                 </div>
@@ -112,14 +127,17 @@
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://mobi.help/1maculi.png" alt="Maculí Wood" class="wood-img w-full h-full object-cover">
                     </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-2xl font-extrabold text-mobi-2 mb-3">Maculí</h3>
-                            <p class="text-mobi-1/70 mb-6 text-sm leading-relaxed">Remarkably resistant to fungal decay and termites. Ideal for luxury exterior surfaces.</p>
-                        </div>
-                        <div class="pt-4 border-t border-stone-100 text-[10px] font-bold uppercase tracking-wider flex justify-between">
-                            <span class="text-mobi-3">Origin: Tropical Am.</span>
-                            <span class="text-stone-400">Lustrous</span>
+                    <div class="p-10 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Maculí</h3>
+                        <p class="text-mobi-1/70 mb-8 text-sm leading-relaxed">
+                            Scientifically labeled *Tabebuia rosea*, Maculí is a high-performance hardwood with a stunning visual profile. It is prized for its straight-to-irregular grain pattern that provides a high-luster finish. Beyond its beauty, it is technically sound, offering a robust resistance to tropical decay.
+                        </p>
+                        <div class="mt-auto space-y-1">
+                            <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>1,100 lbf (Estimated)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Texture</span><span>Fine to Medium</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Color Range</span><span>Pale Brown to Golden</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Resilience</span><span>High (Termite Proof)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Origin</span><span>Tropical America</span></div>
                         </div>
                     </div>
                 </div>
@@ -128,14 +146,17 @@
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://mobi.help/1tzalam.png" alt="Tzalam Wood" class="wood-img w-full h-full object-cover">
                     </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-2xl font-extrabold text-mobi-2 mb-3">Tzalam</h3>
-                            <p class="text-mobi-1/70 mb-6 text-sm leading-relaxed">The "Mayan Walnut" is highly resistant to rot and moisture, superior for heavy-traffic decks.</p>
-                        </div>
-                        <div class="pt-4 border-t border-stone-100 text-[10px] font-bold uppercase tracking-wider flex justify-between">
-                            <span class="text-mobi-3">Janka: 1,400 lbf</span>
-                            <span class="text-stone-400">Heavy Duty</span>
+                    <div class="p-10 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Tzalam</h3>
+                        <p class="text-mobi-1/70 mb-8 text-sm leading-relaxed">
+                            Commonly known as "Mayan Walnut," Tzalam is the gold standard for high-density outdoor decking. Its heartwood features a dramatic, deep chocolate hue with occasional plum streaks. Its density makes it incredibly tough against physical wear and heavy foot traffic.
+                        </p>
+                        <div class="mt-auto space-y-1">
+                            <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>1,400 lbf (Janka)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Density</span><span>Very High</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Color Range</span><span>Deep Chocolate/Plum</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Maintenance</span><span>Low (Natural Luster)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Best Use</span><span>Premium Decking</span></div>
                         </div>
                     </div>
                 </div>
@@ -144,14 +165,17 @@
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://mobi.help/1teca.png" alt="Teca Wood" class="wood-img w-full h-full object-cover">
                     </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-2xl font-extrabold text-mobi-2 mb-3">Teca (Teak)</h3>
-                            <p class="text-mobi-1/70 mb-6 text-sm leading-relaxed">High percentage of natural oils and silica content make it virtually waterproof and self-protecting.</p>
-                        </div>
-                        <div class="pt-4 border-t border-stone-100 text-[10px] font-bold uppercase tracking-wider flex justify-between">
-                            <span class="text-mobi-3">Grade: Maritime</span>
-                            <span class="text-stone-400">Elite</span>
+                    <div class="p-10 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Teca (Teak)</h3>
+                        <p class="text-mobi-1/70 mb-8 text-sm leading-relaxed">
+                            Teak is the undisputed king of maritime timber. It produces a natural oily resin that acts as a permanent waterproofing agent. Even in harsh saltwater environments, Teak maintains its structural integrity without the need for constant chemical treatment or sealing.
+                        </p>
+                        <div class="mt-auto space-y-1">
+                            <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>1,070 lbf (Janka)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Silica</span><span>Self-Protecting Content</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Color Range</span><span>Golden to Dark Honey</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Grade</span><span>Elite Maritime</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Weathering</span><span>Excellent (Zero Rot)</span></div>
                         </div>
                     </div>
                 </div>
@@ -160,14 +184,17 @@
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://mobi.help/1parota.png" alt="Parota Wood" class="wood-img w-full h-full object-cover">
                     </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-2xl font-extrabold text-mobi-2 mb-3">Parota</h3>
-                            <p class="text-mobi-1/70 mb-6 text-sm leading-relaxed">Extreme weight-to-strength ratio. Lighter than other hardwoods with striking golden-brown edges.</p>
-                        </div>
-                        <div class="pt-4 border-t border-stone-100 text-[10px] font-bold uppercase tracking-wider flex justify-between">
-                            <span class="text-mobi-3">Eco: Sustainable</span>
-                            <span class="text-stone-400">Wide Plank</span>
+                    <div class="p-10 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Parota</h3>
+                        <p class="text-mobi-1/70 mb-8 text-sm leading-relaxed">
+                            Parota (*Enterolobium cyclocarpum*) is favored for its massive scale and sustainability. It offers a unique weight-to-strength ratio, being significantly lighter than other hardwoods while providing immense structural stability. It is famous for its wide, live-edge slabs.
+                        </p>
+                        <div class="mt-auto space-y-1">
+                            <div class="spec-row"><span class="text-mobi-3">Grain</span><span>Interlocked</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Weight</span><span>Lighter Profile</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Aesthetic</span><span>Wide-Plank / Live Edge</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Eco Rating</span><span>Fast Growing</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Strength</span><span>High Ratio</span></div>
                         </div>
                     </div>
                 </div>
