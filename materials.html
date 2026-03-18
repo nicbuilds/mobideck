@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materials | Mobi Deck Premium Wood</title>
+    <title>Materials Catalog | Mobi Deck Premium Hardwoods</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <script>
@@ -47,7 +47,12 @@
             pointer-events: none;
             z-index: 1;
         }
-        .wood-card:hover .wood-overlay { opacity: 1; }
+        .wood-img {
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .wood-card:hover .wood-img {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-mobi-1">
@@ -55,10 +60,8 @@
     <header class="fixed w-full z-50 glass-nav">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-white">
             <div class="flex items-center gap-3">
-                <a href="index.html" class="flex items-center gap-3">
-                    <img src="https://mobi.help/logo_F.png" alt="Mobi Deck Logo" class="h-10 w-auto">
-                    <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
-                </a>
+                <img src="https://mobi.help/logo_F.png" alt="Mobi Deck Logo" class="h-10 w-auto">
+                <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
             </div>
             <div class="hidden md:flex space-x-10 text-xs font-bold uppercase tracking-widest">
                 <a href="index.html" class="hover:text-mobi-5 transition">Home</a>
@@ -72,10 +75,10 @@
         <img src="https://mobi.help/logo_F.png" alt="" class="colossal-logo">
         
         <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
-            <span class="text-mobi-5 font-bold uppercase tracking-[0.4em] text-sm mb-4 block">Selection</span>
-            <h2 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">The Finest <span class="italic">Hardwoods</span></h2>
+            <span class="text-mobi-5 font-bold uppercase tracking-[0.4em] text-sm mb-4 block">The Fleet</span>
+            <h2 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">Premium <span class="italic text-mobi-5">Species</span></h2>
             <p class="text-lg md:text-xl opacity-80 max-w-2xl mx-auto leading-relaxed">
-                We travel the voyage to source only the most resilient, sustainable, and visually stunning woods for your project.
+                Scientifically proven durability. Artistically selected grains. Discover the properties of our world-class timber.
             </p>
         </div>
     </section>
@@ -84,77 +87,87 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group">
-                    <div class="h-64 bg-stone-200 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-mobi-1/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                        <div class="flex items-center justify-center h-full text-mobi-1/20 text-8xl font-black italic select-none">CEDRO</div>
+                <div class="wood-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group">
+                    <div class="h-72 overflow-hidden relative">
+                        <img src="https://mobi.help/cedar1.jpg" alt="Cedro Wood" class="wood-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-mobi-1/20 group-hover:bg-transparent transition-colors"></div>
                     </div>
                     <div class="p-10">
-                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Cedro</h3>
-                        <p class="text-mobi-1/70 mb-6 leading-relaxed">Known for its aromatic scent and natural resistance to insects. Lightweight but incredibly durable for classic deck finishes.</p>
-                        <div class="flex gap-2">
-                            <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold uppercase tracking-widest rounded-full">Aromatic</span>
-                            <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold uppercase tracking-widest rounded-full">Durable</span>
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Cedro (Cedar)</h3>
+                        <p class="text-mobi-1/70 mb-6 leading-relaxed text-sm">
+                            Highly valued for its natural **thujaplicins**—chemical compounds that serve as natural fungicides. It is exceptionally dimensionally stable, meaning it resists warping, twisting, and checking even when exposed to fluctuating humidity.
+                        </p>
+                        <div class="space-y-2 border-t border-stone-100 pt-4">
+                            <div class="flex justify-between text-xs font-bold"><span class="text-mobi-3 uppercase">Janka Hardness:</span> <span>900 lbf</span></div>
+                            <div class="flex justify-between text-xs font-bold"><span class="text-mobi-3 uppercase">Best For:</span> <span>Deck Railing & Pergolas</span></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group">
-                    <div class="h-64 bg-stone-200 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-mobi-2/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                        <div class="flex items-center justify-center h-full text-mobi-1/20 text-8xl font-black italic select-none">MACUL</div>
+                <div class="wood-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group">
+                    <div class="h-72 overflow-hidden relative">
+                        <img src="https://mobi.help/maculi1.jpg" alt="Maculí Wood" class="wood-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-mobi-2/20 group-hover:bg-transparent transition-colors"></div>
                     </div>
                     <div class="p-10">
-                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Macul</h3>
-                        <p class="text-mobi-1/70 mb-6 leading-relaxed">A tropical treasure with high density and stunning grain patterns. Perfect for structures that demand structural strength and beauty.</p>
-                        <div class="flex gap-2">
-                            <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold uppercase tracking-widest rounded-full">High Density</span>
-                            <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold uppercase tracking-widest rounded-full">Tropical</span>
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Maculí</h3>
+                        <p class="text-mobi-1/70 mb-6 leading-relaxed text-sm">
+                            Scientifically known as *Tabebuia rosea*, this wood is remarkably resistant to fungal decay and termites. It features a fine to medium texture with a straight to irregular grain, offering a high-luster finish that is ideal for luxury exterior surfaces.
+                        </p>
+                        <div class="space-y-2 border-t border-stone-100 pt-4">
+                            <div class="flex justify-between text-xs font-bold"><span class="text-mobi-3 uppercase">Durability:</span> <span>Very High</span></div>
+                            <div class="flex justify-between text-xs font-bold"><span class="text-mobi-3 uppercase">Origin:</span> <span>Tropical America</span></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group">
-                    <div class="h-64 bg-stone-200 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-mobi-3/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                        <div class="flex items-center justify-center h-full text-mobi-1/20 text-8xl font-black italic select-none">TZALAM</div>
+                <div class="wood-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group">
+                    <div class="h-72 overflow-hidden relative">
+                        <img src="https://mobi.help/tzalam1.jpg" alt="Tzalam Wood" class="wood-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-mobi-3/20 group-hover:bg-transparent transition-colors"></div>
                     </div>
                     <div class="p-10">
                         <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Tzalam</h3>
-                        <p class="text-mobi-1/70 mb-6 leading-relaxed">Commonly known as Mayan Walnut. It offers a sophisticated dark palette that stands the test of time and weather.</p>
-                        <div class="flex gap-2">
-                            <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold uppercase tracking-widest rounded-full">Mayan Walnut</span>
-                            <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold uppercase tracking-widest rounded-full">Elite</span>
+                        <p class="text-mobi-1/70 mb-6 leading-relaxed text-sm">
+                            Often called "Mayan Walnut," Tzalam is one of the most sought-after tropical hardwoods. It has a high density and natural luster. Its heartwood is highly resistant to rot and moisture, making it superior for heavy-traffic outdoor decks.
+                        </p>
+                        <div class="space-y-2 border-t border-stone-100 pt-4">
+                            <div class="flex justify-between text-xs font-bold"><span class="text-mobi-3 uppercase">Janka Hardness:</span> <span>1,400 lbf</span></div>
+                            <div class="flex justify-between text-xs font-bold"><span class="text-mobi-3 uppercase">Color:</span> <span>Deep Chocolate/Plum</span></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group">
-                    <div class="h-64 bg-stone-200 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-mobi-4/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                        <div class="flex items-center justify-center h-full text-mobi-1/20 text-8xl font-black italic select-none">TECA</div>
+                <div class="wood-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group">
+                    <div class="h-72 overflow-hidden relative">
+                        <img src="https://mobi.help/teca1.jpg" alt="Teca Wood" class="wood-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-mobi-4/20 group-hover:bg-transparent transition-colors"></div>
                     </div>
                     <div class="p-10">
-                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Teca</h3>
-                        <p class="text-mobi-1/70 mb-6 leading-relaxed">The gold standard for outdoor longevity. Its natural oils protect against water, making it the ultimate maritime choice.</p>
-                        <div class="flex gap-2">
-                            <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold uppercase tracking-widest rounded-full">Waterproof</span>
-                            <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold uppercase tracking-widest rounded-full">Premium</span>
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Teca (Teak)</h3>
+                        <p class="text-mobi-1/70 mb-6 leading-relaxed text-sm">
+                            The silica content in Teak makes it virtually waterproof. It contains a high percentage of natural oils that act as a barrier against water, preventing rot and brittleness even without constant sealing.
+                        </p>
+                        <div class="space-y-2 border-t border-stone-100 pt-4">
+                            <div class="flex justify-between text-xs font-bold"><span class="text-mobi-3 uppercase">Silica Content:</span> <span>High (Self-Protecting)</span></div>
+                            <div class="flex justify-between text-xs font-bold"><span class="text-mobi-3 uppercase">Status:</span> <span>Elite Maritime Grade</span></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group lg:col-span-2 lg:flex">
-                    <div class="lg:w-1/2 h-64 lg:h-auto bg-stone-200 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-mobi-5/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                        <div class="flex items-center justify-center h-full text-mobi-1/20 text-8xl font-black italic select-none">PAROTA</div>
+                <div class="wood-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group lg:col-span-2 lg:flex">
+                    <div class="lg:w-1/2 h-72 lg:h-auto overflow-hidden relative">
+                        <img src="https://mobi.help/parota1.jpg" alt="Parota Wood" class="wood-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-mobi-5/20 group-hover:bg-transparent transition-colors"></div>
                     </div>
                     <div class="p-10 lg:w-1/2 lg:flex lg:flex-col lg:justify-center">
                         <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Parota</h3>
-                        <p class="text-mobi-1/70 mb-6 leading-relaxed">Prized for its oversized dimensions and distinct golden-brown streaks. A fast-growing sustainable option for wide-plank decks.</p>
-                        <div class="flex gap-2">
-                            <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold uppercase tracking-widest rounded-full">Sustainable</span>
-                            <span class="px-3 py-1 bg-stone-100 text-[10px] font-bold uppercase tracking-widest rounded-full">Oversized</span>
+                        <p class="text-mobi-1/70 mb-6 leading-relaxed text-sm">
+                            Parota (*Enterolobium cyclocarpum*) is unique for its extreme weight-to-strength ratio. It is significantly lighter than other hardwoods, which reduces structural load while providing massive, wide-plank aesthetics with striking golden-brown sapwood edges.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 border-t border-stone-100 pt-4">
+                            <div class="text-xs font-bold"><span class="text-mobi-3 uppercase block">Grain:</span> Interlocked</div>
+                            <div class="text-xs font-bold"><span class="text-mobi-3 uppercase block">Eco Rating:</span> Sustainable/Fast Growing</div>
                         </div>
                     </div>
                 </div>
@@ -167,8 +180,8 @@
         <div class="flex justify-center mb-8">
             <img src="https://mobi.help/logo_F.png" alt="Mobi Deck" class="h-12 opacity-30 grayscale transition duration-500">
         </div>
-        <p class="text-mobi-1 font-black tracking-[0.2em] uppercase text-sm">Mobi Deck • Materials</p>
-        <p class="text-stone-400 text-xs mt-3 italic">"Built with heart, sourced with conscience."</p>
+        <p class="text-mobi-1 font-black tracking-[0.2em] uppercase text-sm">Mobi Deck • Materials Catalog</p>
+        <p class="text-stone-400 text-xs mt-3 italic">"Craftsmanship built to the highest botanical standards."</p>
     </footer>
 
 </body>
