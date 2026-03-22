@@ -3,121 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optimizador Mobi Deck Pro</title>
+    <title>Cotizador Pro | Mobi Deck</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mobi-dark': '#565F80',
+                        'mobi-purple': '#636396',
+                        'mobi-magenta': '#9B679C',
+                        'mobi-pink': '#CC7696',
+                        'mobi-soft': '#EB7F8F',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
 </head>
-<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+<body class="bg-[#F4F5F8] min-h-screen flex items-center justify-center p-6">
 
-    <div class="max-w-4xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row border border-gray-200">
+    <div class="max-w-5xl w-full bg-white rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
         
-        <div class="p-8 md:w-3/5">
-            <div class="flex items-center gap-3 mb-8">
-                <div class="bg-amber-500 p-2 rounded-lg text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-7h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+        <div class="p-10 md:w-3/5 bg-white">
+            <header class="mb-10">
+                <div class="flex items-center gap-2 mb-2">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-mobi-dark to-mobi-soft"></div>
+                    <h1 class="text-2xl font-800 text-mobi-dark tracking-tighter uppercase">Mobi Deck <span class="text-mobi-magenta">Pro</span></h1>
                 </div>
-                <h2 class="text-2xl font-extrabold text-slate-800 tracking-tight">Mobi Deck Pro <span class="text-amber-600">Optimizador</span></h2>
-            </div>
+                <p class="text-slate-400 text-sm font-medium">Cotizador de Estructuras y Maderas Finas</p>
+            </header>
 
-            <div class="space-y-6">
+            <div class="space-y-8">
                 <div>
-                    <label class="block text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Madera de Especialidad</label>
-                    <div class="grid grid-cols-2 gap-3">
-                        <button onclick="setMadera('maculi', 1200)" id="btn-maculi" class="madera-btn p-4 border-2 border-amber-500 bg-amber-50 rounded-xl text-left transition-all">
-                            <span class="block font-bold text-slate-800">Maculí</span>
-                            <span class="text-xs text-slate-500">$1,200 / m²</span>
-                        </button>
-                        <button onclick="setMadera('parota', 1500)" id="btn-parota" class="madera-btn p-4 border-2 border-gray-100 rounded-xl text-left hover:border-amber-200 transition-all">
-                            <span class="block font-bold text-slate-800">Parota</span>
-                            <span class="text-xs text-slate-500">$1,500 / m²</span>
-                        </button>
+                    <label class="block text-[10px] font-bold text-mobi-purple uppercase tracking-[0.2em] mb-4">Catálogo de Especialidad ($3,000 m²)</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <button onclick="updateWood('Cedro')" id="btn-Cedro" class="wood-card p-4 border-2 border-mobi-soft bg-white text-mobi-magenta rounded-2xl text-center font-bold transition-all shadow-sm">Cedro</button>
+                        <button onclick="updateWood('Maculi')" id="btn-Maculi" class="wood-card p-4 border-2 border-slate-50 bg-slate-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-pink transition-all">Maculí</button>
+                        <button onclick="updateWood('Tzalam')" id="btn-Tzalam" class="wood-card p-4 border-2 border-slate-50 bg-slate-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-pink transition-all">Tzalam</button>
+                        <button onclick="updateWood('Parota')" id="btn-Parota" class="wood-card p-4 border-2 border-slate-50 bg-slate-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-pink transition-all">Parota</button>
+                        <button onclick="updateWood('Teca')" id="btn-Teca" class="wood-card p-4 border-2 border-slate-50 bg-slate-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-pink transition-all">Teca</button>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-500 mb-2">Largo (Metros)</label>
-                        <input type="number" id="largo" value="1" min="1" oninput="calcular()" 
-                            class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none font-bold text-slate-700">
+                <div class="grid grid-cols-2 gap-6 pt-4">
+                    <div class="group">
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2 group-focus-within:text-mobi-magenta transition-colors">Largo (m)</label>
+                        <input type="number" id="largo" value="1" min="1" oninput="calculate()" 
+                            class="w-full p-4 bg-slate-50 border-b-4 border-slate-100 rounded-xl focus:border-mobi-soft outline-none font-extrabold text-mobi-dark text-2xl transition-all">
                     </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-500 mb-2">Ancho (Metros)</label>
-                        <input type="number" id="ancho" value="1" min="1" oninput="calcular()" 
-                            class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none font-bold text-slate-700">
+                    <div class="group">
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2 group-focus-within:text-mobi-magenta transition-colors">Ancho (m)</label>
+                        <input type="number" id="ancho" value="1" min="1" oninput="calculate()" 
+                            class="w-full p-4 bg-slate-50 border-b-4 border-slate-100 rounded-xl focus:border-mobi-soft outline-none font-extrabold text-mobi-dark text-2xl transition-all">
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="p-8 md:w-2/5 bg-slate-900 text-white flex flex-col justify-between">
-            <div>
-                <h3 class="text-lg font-bold mb-6 text-amber-400">Cotización Final</h3>
-                <div class="space-y-4">
+        <div class="p-10 md:w-2/5 bg-mobi-dark text-white flex flex-col justify-between relative">
+            <div class="relative z-10">
+                <h3 class="text-mobi-soft font-bold uppercase tracking-widest text-xs mb-10 opacity-80">Presupuesto Detallado</h3>
+                
+                <div class="space-y-6">
                     <div class="flex justify-between items-center">
-                        <span class="text-slate-400">Superficie útil:</span>
-                        <span id="res-area" class="font-semibold text-lg">1.00 m²</span>
+                        <span class="text-slate-300 text-sm">Madera Seleccionada:</span>
+                        <span id="label-madera" class="font-bold text-mobi-pink">Cedro</span>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-400">Margen desperdicio (10%):</span>
-                        <span id="res-desperdicio" class="font-semibold text-slate-300">0.10 m²</span>
+                    
+                    <div class="space-y-4 pt-4 border-t border-white/10">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-300 font-medium">Estructura Base:</span>
+                            <span id="res-estructura" class="font-bold text-white"></span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-slate-300 font-medium">Material (+10% Desp.):</span>
+                            <span id="res-madera" class="font-bold text-white"></span>
+                        </div>
                     </div>
-                    <div class="pt-4 border-t border-slate-700">
-                        <p class="text-slate-400 text-sm mb-1">Total a pagar:</p>
-                        <p id="res-total" class="text-4xl font-black text-white">$1,320.00</p>
+
+                    <div class="mt-12 pt-8 border-t-2 border-mobi-purple">
+                        <p class="text-mobi-soft text-[10px] uppercase font-black mb-2">Total de Inversión</p>
+                        <p id="res-total" class="text-5xl font-extrabold text-white leading-none tracking-tighter"></p>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-8">
-                <button class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-2xl transition-all shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2 group">
-                    <span>Ir a Mercado Pago</span>
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                </button>
-                <p class="text-[10px] text-center text-slate-500 mt-4 uppercase tracking-widest">Seguridad cifrada por Mercado Pago</p>
-            </div>
+            <button class="mt-10 w-full bg-gradient-to-r from-mobi-magenta via-mobi-pink to-mobi-soft text-white font-black py-5 rounded-2xl transition-all shadow-xl hover:brightness-110 active:scale-95 flex items-center justify-center gap-3">
+                <span class="tracking-tight">RESERVAR DECK PRO</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
         </div>
     </div>
 
     <script>
-        let precioM2 = 1200; // Por defecto Maculí
-        const factorDesperdicio = 1.10;
+        let currentWood = "Cedro";
+        const woodPriceM2 = 3000;
+        const structurePriceM2 = 1500;
+        const wasteFactor = 1.10;
 
-        function setMadera(tipo, precio) {
-            precioM2 = precio;
+        function updateWood(name) {
+            currentWood = name;
+            document.getElementById('label-madera').innerText = name;
             
-            // Actualizar UI de botones
-            document.querySelectorAll('.madera-btn').forEach(btn => {
-                btn.classList.remove('border-amber-500', 'bg-amber-50');
-                btn.classList.add('border-gray-100');
+            document.querySelectorAll('.wood-card').forEach(c => {
+                c.classList.remove('border-mobi-soft', 'bg-white', 'text-mobi-magenta', 'shadow-sm');
+                c.classList.add('border-slate-50', 'bg-slate-50', 'text-slate-400');
             });
+            const activeBtn = document.getElementById(`btn-${name}`);
+            activeBtn.classList.add('border-mobi-soft', 'bg-white', 'text-mobi-magenta', 'shadow-sm');
+            activeBtn.classList.remove('border-slate-50', 'bg-slate-50', 'text-slate-400');
             
-            const btnActivo = document.getElementById(`btn-${tipo}`);
-            btnActivo.classList.remove('border-gray-100');
-            btnActivo.classList.add('border-amber-500', 'bg-amber-50');
-            
-            calcular();
+            calculate();
         }
 
-        function calcular() {
-            const largo = parseFloat(document.getElementById('largo').value) || 0;
-            const ancho = parseFloat(document.getElementById('ancho').value) || 0;
+        function calculate() {
+            const l = parseFloat(document.getElementById('largo').value) || 0;
+            const a = parseFloat(document.getElementById('ancho').value) || 0;
+            const area = l * a;
             
-            const areaBase = largo * ancho;
-            const areaConDesperdicio = areaBase * factorDesperdicio;
-            const desperdicioM2 = areaConDesperdicio - areaBase;
-            const total = areaConDesperdicio * precioM2;
+            const costStructure = area * structurePriceM2;
+            const costWood = (area * wasteFactor) * woodPriceM2;
+            const total = costStructure + costWood;
 
-            // Formatear resultados
-            document.getElementById('res-area').innerText = `${areaBase.toFixed(2)} m²`;
-            document.getElementById('res-desperdicio').innerText = `${desperdicioM2.toFixed(2)} m²`;
-            document.getElementById('res-total').innerText = new Intl.NumberFormat('es-MX', {
-                style: 'currency',
-                currency: 'MXN'
-            }).format(total);
+            const fmt = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
+            
+            document.getElementById('res-estructura').innerText = fmt.format(costStructure);
+            document.getElementById('res-madera').innerText = fmt.format(costWood);
+            document.getElementById('res-total').innerText = fmt.format(total);
         }
+
+        calculate();
     </script>
 </body>
 </html>
