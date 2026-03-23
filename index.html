@@ -30,7 +30,7 @@
         body { scroll-behavior: smooth; margin: 0; }
         .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
         .glass-nav { background: rgba(86, 95, 128, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-        
+
         .parallax-container {
             position: relative;
             height: 90vh;
@@ -47,7 +47,6 @@
             background-size: cover;
             background-position: center;
             z-index: -1;
-            transform: translateZ(0);
         }
 
         .content-overlay {
@@ -85,10 +84,10 @@
 
 <header class="fixed w-full z-[100] glass-nav">
     <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-white">
-        
-        <!-- UPDATED: clickable logo -->
+
+        <!-- FIXED LOGO LINK -->
         <a href="index.html" class="flex items-center gap-4">
-            <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-12 w-auto">
+            <img src="https://mobi.help/logo_cropped_F.png" class="h-12 w-auto">
             <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
         </a>
 
@@ -114,26 +113,60 @@
     </div>
 </header>
 
-<!-- rest of your file stays EXACTLY the same -->
+<!-- HERO -->
+<section class="relative min-h-[80vh] flex items-center hero-gradient text-white overflow-hidden">
+    <img src="https://mobi.help/logo_cropped_F.png" class="hero-logo-bg">
+    <div class="max-w-7xl mx-auto px-6 relative z-10 py-32 w-full">
+        <h2 class="text-5xl md:text-8xl font-extrabold mb-8">
+            A-Whale made <br><span class="text-mobi-5">Wooden Deck awaits</span>
+        </h2>
+        <a href="#step1" class="px-10 py-4 rounded-full bg-white text-mobi-1 font-bold">
+            Begin the Process
+        </a>
+    </div>
+</section>
+
+<!-- STEP 1 -->
+<section id="step1" class="parallax-container">
+    <div class="fixed-bg" style="background-image:url('https://mobi.help/deck1.jpg')"></div>
+    <div class="content-overlay">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="step-card p-10 rounded-3xl">
+                <h3 class="text-3xl font-bold">Project Quotation</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STEP 2 -->
+<section id="step2" class="parallax-container">
+    <div class="fixed-bg" style="background-image:url('https://mobi.help/deck2.jpg')"></div>
+</section>
+
+<!-- STEP 3 -->
+<section id="step3" class="parallax-container">
+    <div class="fixed-bg" style="background-image:url('https://mobi.help/deck3.jpg')"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-24 text-center">
+    <h3 class="text-3xl font-bold">Start Your Project</h3>
+</section>
 
 <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
 
-    menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        mobileMenu.classList.toggle('active');
-    });
+menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mobileMenu.classList.toggle('active');
+});
 
-    document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => mobileMenu.classList.remove('active'));
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-            mobileMenu.classList.remove('active');
-        }
-    });
+document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        mobileMenu.classList.remove('active');
+    }
+});
 </script>
 
 </body>
