@@ -29,12 +29,58 @@
     <style>
         body { scroll-behavior: smooth; overflow-x: hidden; margin: 0; }
         .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
-        .glass-nav { background: rgba(86, 95, 128, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .hero-logo-bg { position: absolute; right: -5%; top: 50%; transform: translateY(-50%); width: 60%; opacity: 0.1; z-index: 1; pointer-events: none; filter: brightness(0) invert(1); }
-        .material-card { background: white; border-radius: 2.5rem; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(0,0,0,0.03); display: flex; flex-direction: column; }
-        .material-card:hover { transform: translateY(-15px); box-shadow: 0 50px 80px -20px rgba(0, 0, 0, 0.15); }
-        .spec-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #f1f1f1; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
-        .spec-row:last-child { border-bottom: none; }
+        .glass-nav { 
+            background: rgba(86, 95, 128, 0.85); 
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+        }
+
+        .hero-logo-bg {
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60%;
+            opacity: 0.1;
+            z-index: 1;
+            pointer-events: none;
+            filter: brightness(0) invert(1);
+        }
+
+        .wood-card {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+            transform-origin: center;
+            z-index: 1;
+            height: 850px;
+            display: flex;
+            flex-direction: column;
+            backface-visibility: hidden;
+        }
+
+        .wood-card:hover {
+            transform: scale(1.05);
+            z-index: 50;
+            box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.3);
+        }
+
+        .wood-img {
+            transition: transform 1.2s ease;
+        }
+        .wood-card:hover .wood-img {
+            transform: scale(1.1);
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
         #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
         #mobile-menu.active { display: flex; opacity: 1; }
     </style>
@@ -47,129 +93,153 @@
                 <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-12 w-auto">
                 <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
             </div>
+
             <div class="hidden md:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
                 <a href="index.html" class="hover:text-mobi-5 transition">Home</a>
-                <a href="optimizer.html" class="hover:text-mobi-5 transition">Cost Calculator</a>
-                <a href="paymentopts.html" class="hover:text-mobi-5 transition">Payment</a>
-                <a href="index.html#contact" class="px-8 py-3 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-500 shadow-xl">Start Project</a>
+                <a href="#woods" class="text-mobi-5">Materials</a>
+                <a href="https://mobi.help/optimizador.html" class="hover:text-mobi-5 transition">Cost Calculator</a>
+                <a href="index.html#contact" class="px-6 py-2.5 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-300">Get Quote</a>
             </div>
+
             <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
         <div id="mobile-menu" class="fixed inset-x-0 top-[72px] bg-mobi-1 text-white p-8 flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl z-[90]">
             <a href="index.html" class="mobile-link">Home</a>
-            <a href="optimizer.html" class="mobile-link">Cost Calculator</a>
-            <a href="paymentopts.html" class="mobile-link">Payment</a>
-            <a href="index.html#contact" class="mobile-link">Start Project</a>
+            <a href="#woods" class="mobile-link text-mobi-5">Materials</a>
+            <a href="https://mobi.help/optimizador.html" class="mobile-link">Cost Calculator</a>
+            <a href="index.html#contact" class="mobile-link">Get Quote</a>
         </div>
     </header>
 
-    <section class="relative min-h-[60vh] flex items-center hero-gradient text-white overflow-hidden">
+    <section class="relative min-h-[70vh] flex items-center hero-gradient text-white overflow-hidden">
         <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
         <div class="max-w-7xl mx-auto px-6 relative z-10 py-32 w-full">
-            <div class="max-w-3xl">
-                <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5 italic">Premium Selection</span>
-                <h2 class="text-5xl md:text-8xl font-extrabold mb-8 leading-[1.1] tracking-tighter">Nature's <br><span class="text-mobi-4 italic">Finest Woods.</span></h2>
-                <p class="text-lg md:text-xl opacity-80 max-w-xl font-medium leading-relaxed">Explore our curated collection of sustainable tropical hardwoods, each selected for its unique grain, durability, and soul.</p>
+            <div class="max-w-3xl text-left">
+                <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5">The Fleet</span>
+                <h2 class="text-5xl md:text-8xl font-extrabold mb-8 leading-[1.1]">
+                    Premium <br><span class="italic text-mobi-5">Species.</span>
+                </h2>
+                <p class="text-lg md:text-xl opacity-80 mb-10 max-w-xl font-medium">
+                    A comparative guide to the world's most durable and aesthetically superior timbers, curated for architectural excellence.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://mobi.help/optimizador.html" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-mobi-1 font-black uppercase text-xs tracking-widest hover:bg-mobi-5 hover:text-white transition-all duration-300 shadow-xl">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        Cost Calculator
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 relative -mt-20 z-20">
+    <section id="woods" class="py-24 px-6 relative -mt-20 z-20">
         <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-                <div class="material-card group">
-                    <div class="aspect-square overflow-hidden">
-                        <img src="https://mobi.help/maculi.png" alt="Maculí" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                
+                <div class="wood-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://mobi.help/1cedar.png" alt="Cedro Wood" class="wood-img w-full h-full object-cover">
                     </div>
-                    <div class="p-10 flex flex-col h-full">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="w-8 h-[2px] bg-mobi-5"></span>
-                            <h3 class="text-2xl font-extrabold tracking-tight">Maculí</h3>
+                    <div class="p-10 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Cedro (Cedar)</h3>
+                        <p class="text-mobi-1/70 mb-8 text-sm leading-relaxed">
+                            Spanish Cedar is a marvel of biological engineering. Renowned for its aromatic scent, it contains high concentrations of natural thujaplicins. These chemical compounds act as a built-in defense mechanism, making the wood naturally toxic to decay-causing fungi and wood-boring insects.
+                        </p>
+                        <div class="mt-auto space-y-1">
+                            <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>900 lbf (Janka)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Stability</span><span>High (Low Warping)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Color Range</span><span>Light Pink to Red-Brown</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Durability</span><span>Excellent (Fungicide Content)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Best Use</span><span>Railings & Pergolas</span></div>
                         </div>
-                        <p class="text-sm text-mobi-1/60 leading-relaxed mb-8 flex-grow">Known for its elegant pink-to-gold hues and exceptional flexibility. A classic choice for sophisticated exterior structures.</p>
-                        <div class="space-y-1 mb-8">
-                            <div class="spec-row"><span class="text-mobi-3">Durability</span><span>High</span></div>
-                            <div class="spec-row"><span class="text-mobi-3">Color</span><span>Rosy Gold</span></div>
-                        </div>
-                        <a href="optimizer.html" class="w-full py-4 text-center border-2 border-stone-100 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-mobi-5 hover:text-white hover:border-mobi-5 transition-all">Calculate Cost</a>
-                    </div>
-                </div>
-
-                <div class="material-card group">
-                    <div class="aspect-square overflow-hidden">
-                        <img src="https://mobi.help/parota.png" alt="Parota" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                    <div class="p-10 flex flex-col h-full">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="w-8 h-[2px] bg-mobi-4"></span>
-                            <h3 class="text-2xl font-extrabold tracking-tight">Parota</h3>
-                        </div>
-                        <p class="text-sm text-mobi-1/60 leading-relaxed mb-8 flex-grow">Striking grain patterns with deep chocolate tones. Lightweight yet remarkably stable, perfect for large-scale architectural statements.</p>
-                        <div class="space-y-1 mb-8">
-                            <div class="spec-row"><span class="text-mobi-3">Density</span><span>Medium</span></div>
-                            <div class="spec-row"><span class="text-mobi-3">Maintenance</span><span>Low</span></div>
-                        </div>
-                        <a href="optimizer.html" class="w-full py-4 text-center border-2 border-stone-100 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-mobi-4 hover:text-white hover:border-mobi-4 transition-all">Calculate Cost</a>
                     </div>
                 </div>
 
-                <div class="material-card group">
-                    <div class="aspect-square overflow-hidden">
-                        <img src="https://mobi.help/cedar.png" alt="Cedar" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="wood-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://mobi.help/1maculi.png" alt="Maculí Wood" class="wood-img w-full h-full object-cover">
                     </div>
-                    <div class="p-10 flex flex-col h-full">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="w-8 h-[2px] bg-mobi-3"></span>
-                            <h3 class="text-2xl font-extrabold tracking-tight">Cedar</h3>
+                    <div class="p-10 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Maculí</h3>
+                        <p class="text-mobi-1/70 mb-8 text-sm leading-relaxed">
+                            Scientifically labeled *Tabebuia rosea*, Maculí is a high-performance hardwood with a stunning visual profile. It is prized for its straight-to-irregular grain pattern that provides a high-luster finish.
+                        </p>
+                        <div class="mt-auto space-y-1">
+                            <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>1,100 lbf (Estimated)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Texture</span><span>Fine to Medium</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Color Range</span><span>Pale Brown to Golden</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Resilience</span><span>High (Termite Proof)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Origin</span><span>Tropical America</span></div>
                         </div>
-                        <p class="text-sm text-mobi-1/60 leading-relaxed mb-8 flex-grow">Legendary resistance to decay and insects. Its aromatic presence and warm reddish-brown finish bring a timeless comfort to any space.</p>
-                        <div class="space-y-1 mb-8">
-                            <div class="spec-row"><span class="text-mobi-3">Resistance</span><span>Extreme</span></div>
-                            <div class="spec-row"><span class="text-mobi-3">Finish</span><span>Natural Oil</span></div>
-                        </div>
-                        <a href="optimizer.html" class="w-full py-4 text-center border-2 border-stone-100 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-mobi-3 hover:text-white hover:border-mobi-3 transition-all">Calculate Cost</a>
-                    </div>
-                </div>
-
-                <div class="material-card group">
-                    <div class="aspect-square overflow-hidden">
-                        <img src="https://mobi.help/tzalam.png" alt="Tzalam" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                    <div class="p-10 flex flex-col h-full">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="w-8 h-[2px] bg-mobi-2"></span>
-                            <h3 class="text-2xl font-extrabold tracking-tight">Tzalam</h3>
-                        </div>
-                        <p class="text-sm text-mobi-1/60 leading-relaxed mb-8 flex-grow">The "Mayan Walnut." A dense, heavy wood with mesmerizing swirls of dark coffee and amber. Unparalleled luxury for high-traffic decks.</p>
-                        <div class="space-y-1 mb-8">
-                            <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>Ultra-Dense</span></div>
-                            <div class="spec-row"><span class="text-mobi-3">Life Expectancy</span><span>25+ Years</span></div>
-                        </div>
-                        <a href="optimizer.html" class="w-full py-4 text-center border-2 border-stone-100 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-mobi-2 hover:text-white hover:border-mobi-2 transition-all">Calculate Cost</a>
                     </div>
                 </div>
 
-                <div class="material-card group">
-                    <div class="aspect-square overflow-hidden">
-                        <img src="https://mobi.help/teak.png" alt="Teak" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="wood-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://mobi.help/1tzalam.png" alt="Tzalam Wood" class="wood-img w-full h-full object-cover">
                     </div>
-                    <div class="p-10 flex flex-col h-full">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="w-8 h-[2px] bg-mobi-1"></span>
-                            <h3 class="text-2xl font-extrabold tracking-tight">Teak</h3>
+                    <div class="p-10 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Tzalam</h3>
+                        <p class="text-mobi-1/70 mb-8 text-sm leading-relaxed">
+                            Commonly known as "Mayan Walnut," Tzalam is the gold standard for high-density outdoor decking. Its heartwood features a dramatic, deep chocolate hue with occasional plum streaks.
+                        </p>
+                        <div class="mt-auto space-y-1">
+                            <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>1,400 lbf (Janka)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Density</span><span>Very High</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Color Range</span><span>Deep Chocolate/Plum</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Maintenance</span><span>Low (Natural Luster)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Best Use</span><span>Premium Decking</span></div>
                         </div>
-                        <p class="text-sm text-mobi-1/60 leading-relaxed mb-8 flex-grow">The gold standard for outdoor performance. High natural oil content makes it naturally waterproof and virtually immune to the elements.</p>
-                        <div class="space-y-1 mb-8">
-                            <div class="spec-row"><span class="text-mobi-3">Weathering</span><span>Excellent</span></div>
-                            <div class="spec-row"><span class="text-mobi-3">Oil Content</span><span>Very High</span></div>
-                        </div>
-                        <a href="optimizer.html" class="w-full py-4 text-center border-2 border-stone-100 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-mobi-1 hover:text-white hover:border-mobi-1 transition-all">Calculate Cost</a>
                     </div>
                 </div>
 
+                <div class="wood-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://mobi.help/1teca.png" alt="Teca Wood" class="wood-img w-full h-full object-cover">
+                    </div>
+                    <div class="p-10 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Teca (Teak)</h3>
+                        <p class="text-mobi-1/70 mb-8 text-sm leading-relaxed">
+                            Teak is the undisputed king of maritime timber. It produces a natural oily resin that acts as a permanent waterproofing agent.
+                        </p>
+                        <div class="mt-auto space-y-1">
+                            <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>1,070 lbf (Janka)</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Silica</span><span>Self-Protecting Content</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Color Range</span><span>Golden to Dark Honey</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Grade</span><span>Elite Maritime</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Weathering</span><span>Excellent (Zero Rot)</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wood-card bg-white rounded-[2.5rem] overflow-hidden shadow-sm">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://mobi.help/1parota.png" alt="Parota Wood" class="wood-img w-full h-full object-cover">
+                    </div>
+                    <div class="p-10 flex-grow flex flex-col">
+                        <h3 class="text-3xl font-extrabold text-mobi-2 mb-4">Parota</h3>
+                        <p class="text-mobi-1/70 mb-8 text-sm leading-relaxed">
+                            Parota (*Enterolobium cyclocarpum*) is favored for its massive scale and sustainability. It offers a unique weight-to-strength ratio.
+                        </p>
+                        <div class="mt-auto space-y-1">
+                            <div class="spec-row"><span class="text-mobi-3">Grain</span><span>Interlocked</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Weight</span><span>Lighter Profile</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Aesthetic</span><span>Wide-Plank / Live Edge</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Eco Rating</span><span>Fast Growing</span></div>
+                            <div class="spec-row"><span class="text-mobi-3">Strength</span><span>High Ratio</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-20 text-center">
+                <a href="https://mobi.help/optimizador.html" class="inline-flex items-center gap-3 px-12 py-5 rounded-full bg-mobi-1 text-white font-black uppercase text-xs tracking-[0.2em] hover:bg-mobi-5 transition-all duration-300 shadow-2xl">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    Cost Calculator
+                </a>
             </div>
         </div>
     </section>
@@ -182,8 +252,18 @@
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', (e) => { e.stopPropagation(); mobileMenu.classList.toggle('active'); });
-        document.querySelectorAll('.mobile-link').forEach(link => { link.addEventListener('click', () => mobileMenu.classList.remove('active')); });
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('active');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        });
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
