@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Options & Optimizer | Mobi Deck</title>
+    <title>Payment Options | Mobi Deck</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <script>
@@ -43,22 +43,16 @@
             filter: brightness(0) invert(1);
         }
 
-        .payment-card, .optimizer-card {
+        .payment-card {
             background: white;
             border-radius: 2.5rem;
             transition: all 0.4s ease;
             border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .payment-card:hover, .optimizer-card:hover {
+        .payment-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.1);
-        }
-
-        .wood-btn.active {
-            border-color: #CC7696;
-            background-color: #fdf2f7;
-            color: #9B679C;
         }
 
         #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
@@ -77,7 +71,7 @@
             <div class="hidden md:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
                 <a href="index.html" class="hover:text-mobi-5 transition">Home</a>
                 <a href="materials.html" class="hover:text-mobi-5 transition">Materials</a>
-                <a href="index.html#contact" class="px-6 py-2.5 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-300">Get Quote</a>
+                <a href="index.html#contact" class="px-6 py-2.5 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-300 shadow-lg">Get Quote</a>
             </div>
 
             <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
@@ -107,7 +101,7 @@
     </section>
 
     <section class="py-24 px-6 relative -mt-20 z-20">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 mb-20">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
             
             <div class="payment-card p-10 md:p-16 border-l-8 border-mobi-1">
                 <div class="flex justify-between items-start mb-8">
@@ -185,81 +179,6 @@
                 </p>
             </div>
         </div>
-
-        <div class="max-w-7xl mx-auto">
-            <div class="optimizer-card overflow-hidden flex flex-col lg:flex-row shadow-xl border border-stone-100">
-                <div class="p-10 lg:p-16 lg:w-3/5">
-                    <div class="flex items-center gap-3 mb-10">
-                        <div class="bg-mobi-3 p-2 rounded-lg text-white">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <h2 class="text-2xl font-800 text-mobi-1 tracking-tighter uppercase italic">Project <span class="text-mobi-4">Optimizer</span></h2>
-                    </div>
-
-                    <div class="space-y-10">
-                        <div>
-                            <label class="block text-[10px] font-black text-mobi-2 uppercase tracking-[0.2em] mb-4">Premium Wood Catalog (Price/m²)</label>
-                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="wood-catalog">
-                                <button onclick="updateWood('Pino Tratado', 2000)" id="btn-Pino-Tratado" class="wood-btn p-3 border-2 border-stone-50 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-5 transition-all text-xs">Pino Tratado<br><span class="font-normal opacity-60">$2,000</span></button>
-                                <button onclick="updateWood('Cedro', 3000)" id="btn-Cedro" class="wood-btn p-3 border-2 border-mobi-5 bg-white text-mobi-3 rounded-2xl text-center font-bold transition-all shadow-sm text-xs active">Cedro<br><span class="font-normal opacity-60">$3,000</span></button>
-                                <button onclick="updateWood('Maculi', 3000)" id="btn-Maculi" class="wood-btn p-3 border-2 border-stone-50 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-5 transition-all text-xs">Maculí<br><span class="font-normal opacity-60">$3,000</span></button>
-                                <button onclick="updateWood('Parota', 3200)" id="btn-Parota" class="wood-btn p-3 border-2 border-stone-50 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-5 transition-all text-xs">Parota<br><span class="font-normal opacity-60">$3,200</span></button>
-                                <button onclick="updateWood('Tzalam', 3750)" id="btn-Tzalam" class="wood-btn p-3 border-2 border-stone-50 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-5 transition-all text-xs">Tzalam<br><span class="font-normal opacity-60">$3,750</span></button>
-                                <button onclick="updateWood('Teca', 4350)" id="btn-Teca" class="wood-btn p-3 border-2 border-stone-50 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-5 transition-all text-xs">Teca<br><span class="font-normal opacity-60">$4,350</span></button>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-8">
-                            <div class="relative group">
-                                <label class="block text-[10px] font-black text-slate-400 uppercase mb-3">Length (m)</label>
-                                <input type="number" id="largo" value="1" min="1" oninput="calculate()" 
-                                    class="w-full p-5 bg-stone-50 border-b-4 border-stone-100 rounded-2xl focus:border-mobi-5 outline-none font-800 text-mobi-1 text-2xl transition-all">
-                            </div>
-                            <div class="relative group">
-                                <label class="block text-[10px] font-black text-slate-400 uppercase mb-3">Width (m)</label>
-                                <input type="number" id="ancho" value="1" min="1" oninput="calculate()" 
-                                    class="w-full p-5 bg-stone-50 border-b-4 border-stone-100 rounded-2xl focus:border-mobi-5 outline-none font-800 text-mobi-1 text-2xl transition-all">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-10 lg:p-16 lg:w-2/5 bg-mobi-1 text-white flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-mobi-5 font-black uppercase tracking-[0.3em] text-[10px] mb-12">Investment Summary</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex justify-between items-center border-b border-white/10 pb-4">
-                                <span class="text-white/50 text-xs font-bold uppercase tracking-widest">Wood:</span>
-                                <span id="label-madera" class="font-extrabold text-mobi-5">Cedro</span>
-                            </div>
-                            
-                            <div class="space-y-4 pt-2">
-                                <div class="flex justify-between text-sm font-medium">
-                                    <span class="text-white/40">Structure ($1,500/m²):</span>
-                                    <span id="res-estructura" class="text-white"></span>
-                                </div>
-                                <div class="flex justify-between text-sm font-medium">
-                                    <span class="text-white/40">Material (+10% Waste):</span>
-                                    <span id="res-madera" class="text-white"></span>
-                                </div>
-                            </div>
-
-                            <div class="mt-16 pt-10 border-t-2 border-mobi-2">
-                                <p class="text-mobi-5 text-[10px] uppercase font-black tracking-widest mb-2">Total Project Investment</p>
-                                <p id="res-total" class="text-5xl md:text-6xl font-black text-white leading-none tracking-tighter">$4,800.00</p>
-                                <p class="text-[9px] text-white/30 mt-6 uppercase leading-loose font-bold tracking-widest italic">Includes premium hardware, structural installation, and professional sealing.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="mt-12 w-full bg-gradient-to-r from-mobi-3 via-mobi-4 to-mobi-5 text-white font-black py-6 rounded-3xl transition-all shadow-2xl hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
-                        <span class="uppercase tracking-widest text-xs">Reserve Project Installation</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </button>
-                </div>
-            </div>
-        </div>
     </section>
 
     <footer class="py-12 bg-stone-50 text-center border-t border-stone-200 relative z-20">
@@ -268,7 +187,6 @@
     </footer>
 
     <script>
-        // Menu Toggle Logic
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         menuToggle.addEventListener('click', (e) => {
@@ -283,55 +201,6 @@
                 mobileMenu.classList.remove('active');
             }
         });
-
-        // Optimizer Logic
-        let currentWoodName = "Cedro";
-        let currentWoodPrice = 3000;
-        const structurePriceM2 = 1500;
-        const wasteFactor = 1.10;
-
-        function updateWood(name, price) {
-            currentWoodName = name;
-            currentWoodPrice = price;
-            document.getElementById('label-madera').innerText = name;
-            
-            document.querySelectorAll('.wood-btn').forEach(btn => {
-                btn.classList.remove('border-mobi-5', 'bg-white', 'text-mobi-3', 'shadow-sm', 'active');
-                btn.classList.add('border-stone-50', 'bg-stone-50', 'text-slate-400');
-            });
-            
-            const activeId = `btn-${name.replace(/\s+/g, '-')}`;
-            const activeBtn = document.getElementById(activeId);
-            if(activeBtn) {
-                activeBtn.classList.add('border-mobi-5', 'bg-white', 'text-mobi-3', 'shadow-sm', 'active');
-                activeBtn.classList.remove('border-stone-50', 'bg-stone-50', 'text-slate-400');
-            }
-            
-            calculate();
-        }
-
-        function calculate() {
-            const l = parseFloat(document.getElementById('largo').value) || 0;
-            const a = parseFloat(document.getElementById('ancho').value) || 0;
-            const area = l * a;
-            
-            // Fixed cost per user requirement: $1,500/m2 for structure
-            const costStructure = area * structurePriceM2;
-            
-            // Material cost: (Area * 1.10 waste) * specific wood price
-            const costWood = (area * wasteFactor) * currentWoodPrice;
-            
-            const total = costStructure + costWood;
-
-            const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
-            
-            document.getElementById('res-estructura').innerText = fmt.format(costStructure);
-            document.getElementById('res-madera').innerText = fmt.format(costWood);
-            document.getElementById('res-total').innerText = fmt.format(total);
-        }
-
-        // Initialize calculations
-        calculate();
     </script>
 </body>
 </html>
