@@ -3,104 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotizador Pro | Mobi Deck</title>
+    <title>Calculadora de Proyectos | Mobi Deck Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'mobi-dark': '#565F80',
-                        'mobi-purple': '#636396',
-                        'mobi-magenta': '#9B679C',
-                        'mobi-pink': '#CC7696',
-                        'mobi-soft': '#EB7F8F',
-                    }
+          theme: {
+            extend: {
+              colors: {
+                mobi: {
+                  1: '#565F80',
+                  2: '#636396',
+                  3: '#9B679C',
+                  4: '#CC7696',
+                  5: '#EB7F8F',
                 }
+              },
+              fontFamily: {
+                sans: ['Plus Jakarta Sans', 'sans-serif'],
+              }
             }
+          }
         }
     </script>
-    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
-</head>
-<body class="bg-[#F4F5F8] min-h-screen flex items-center justify-center p-6">
-
-    <div class="max-w-5xl w-full bg-white rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
+    <style>
+        body { scroll-behavior: smooth; overflow-x: hidden; margin: 0; }
+        .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
+        .glass-nav { background: rgba(86, 95, 128, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
-        <div class="p-10 md:w-3/5 bg-white">
-            <header class="mb-10">
-                <div class="flex items-center gap-2 mb-2">
-                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-mobi-dark to-mobi-soft"></div>
-                    <h1 class="text-2xl font-[800] text-mobi-dark tracking-tighter uppercase">Mobi Deck <span class="text-mobi-magenta">Pro</span></h1>
-                </div>
-                <p class="text-slate-400 text-sm font-medium">Configurador Técnico de Estructuras</p>
-            </header>
+        .hero-logo-bg {
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60%;
+            opacity: 0.1;
+            z-index: 1;
+            pointer-events: none;
+            filter: brightness(0) invert(1);
+        }
 
-            <div class="space-y-8">
-                <div>
-                    <label class="block text-[10px] font-bold text-mobi-purple uppercase tracking-[0.2em] mb-4">Selección de Madera (Precio por m²)</label>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <button onclick="updateWood('Pino Tratado', 2000)" id="btn-Pino-Tratado" class="wood-card p-3 border-2 border-slate-50 bg-slate-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-pink transition-all text-sm leading-tight">Pino Tratado<br><span class="text-[10px] font-normal">$2,000</span></button>
-                        <button onclick="updateWood('Cedro', 3000)" id="btn-Cedro" class="wood-card p-3 border-2 border-mobi-soft bg-white text-mobi-magenta rounded-2xl text-center font-bold transition-all shadow-sm text-sm leading-tight">Cedro<br><span class="text-[10px] font-normal">$3,000</span></button>
-                        <button onclick="updateWood('Maculi', 3000)" id="btn-Maculi" class="wood-card p-3 border-2 border-slate-50 bg-slate-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-pink transition-all text-sm leading-tight">Maculí<br><span class="text-[10px] font-normal">$3,000</span></button>
-                        <button onclick="updateWood('Parota', 3200)" id="btn-Parota" class="wood-card p-3 border-2 border-slate-50 bg-slate-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-pink transition-all text-sm leading-tight">Parota<br><span class="text-[10px] font-normal">$3,200</span></button>
-                        <button onclick="updateWood('Tzalam', 3750)" id="btn-Tzalam" class="wood-card p-3 border-2 border-slate-50 bg-slate-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-pink transition-all text-sm leading-tight">Tzalam<br><span class="text-[10px] font-normal">$3,750</span></button>
-                        <button onclick="updateWood('Teca', 4350)" id="btn-Teca" class="wood-card p-3 border-2 border-slate-50 bg-slate-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-pink transition-all text-sm leading-tight">Teca<br><span class="text-[10px] font-normal">$4,350</span></button>
-                    </div>
-                </div>
+        .optimizer-card {
+            background: white;
+            border-radius: 3rem;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
 
-                <div class="grid grid-cols-2 gap-6 pt-4">
-                    <div class="group">
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2">Largo (m)</label>
-                        <input type="number" id="largo" value="1" min="1" oninput="calculate()" 
-                            class="w-full p-4 bg-slate-50 border-b-4 border-slate-100 rounded-xl focus:border-mobi-soft outline-none font-extrabold text-mobi-dark text-2xl transition-all">
-                    </div>
-                    <div class="group">
-                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-2">Ancho (m)</label>
-                        <input type="number" id="ancho" value="1" min="1" oninput="calculate()" 
-                            class="w-full p-4 bg-slate-50 border-b-4 border-slate-100 rounded-xl focus:border-mobi-soft outline-none font-extrabold text-mobi-dark text-2xl transition-all">
-                    </div>
-                </div>
-            </div>
-        </div>
+        .wood-btn.active {
+            border-color: #CC7696;
+            background-color: #fdf2f7;
+            color: #9B679C;
+            box-shadow: 0 10px 15px -3px rgba(204, 118, 150, 0.1);
+        }
 
-        <div class="p-10 md:w-2/5 bg-mobi-dark text-white flex flex-col justify-between relative">
-            <div class="relative z-10">
-                <h3 class="text-mobi-soft font-bold uppercase tracking-widest text-xs mb-10 opacity-80">Presupuesto Mobi Deck</h3>
-                
-                <div class="space-y-6">
-                    <div class="flex justify-between items-center">
-                        <span class="text-slate-300 text-sm">Madera:</span>
-                        <span id="label-madera" class="font-bold text-mobi-pink text-right">Cedro</span>
-                    </div>
-                    
-                    <div class="space-y-4 pt-4 border-t border-white/10">
-                        <div class="flex justify-between text-sm">
-                            <span class="text-slate-300 font-medium italic">Estructura ($1,500/m²):</span>
-                            <span id="res-estructura" class="font-bold text-white"></span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-slate-300 font-medium italic">Madera (+10% Desp.):</span>
-                            <span id="res-madera" class="font-bold text-white"></span>
-                        </div>
-                    </div>
+        #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
+        #mobile-menu.active { display: flex; opacity: 1; }
+    </style>
+</head>
+<body class="bg-stone-50 text-mobi-1">
 
-                    <div class="mt-12 pt-8 border-t-2 border-mobi-purple">
-                        <p class="text-mobi-soft text-[10px] uppercase font-black mb-2">Inversión Total Proyectada</p>
-                        <p id="res-total" class="text-5xl font-extrabold text-white leading-none tracking-tighter"></p>
-                    </div>
-                </div>
+    <header class="fixed w-full z-[100] glass-nav">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-white">
+            <div class="flex items-center gap-4">
+                <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-12 w-auto">
+                <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
             </div>
 
-            <button class="mt-10 w-full bg-gradient-to-r from-mobi-magenta via-mobi-pink to-mobi-soft text-white font-black py-5 rounded-2xl transition-all shadow-xl hover:brightness-110 active:scale-95 flex items-center justify-center gap-3">
-                <span class="tracking-tight uppercase">Reservar Instalación</span>
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <div class="hidden md:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
+                <a href="index.html" class="hover:text-mobi-5 transition">Home</a>
+                <a href="materials.html" class="hover:text-mobi-5 transition">Materials</a>
+                <a href="paymentopts.html" class="hover:text-mobi-5 transition">Payment</a>
+                <a href="index.html#contact" class="px-6 py-2.5 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-300 shadow-lg">Get Quote</a>
+            </div>
+
+            <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
+        </nav>
+        <div id="mobile-menu" class="fixed inset-x-0 top-[72px] bg-mobi-1 text-white p-8 flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl z-[90]">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="materials.html" class="mobile-link">Materials</a>
+            <a href="paymentopts.html" class="mobile-link">Payment</a>
+            <a href="index.html#contact" class="mobile-link">Get Quote</a>
         </div>
-    </div>
+    </header>
+
+    <section class="relative min-h-[70vh] flex items-center hero-gradient text-white overflow-hidden">
+        <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 py-32 w-full">
+            <div class="max-w-3xl">
+                <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5">Smart Tools</span>
+                <h2 class="text-6xl md:text-9xl font-extrabold mb-8 leading-[0.9] tracking-tighter">
+                    Project <br><span class="text-mobi-4 italic">Calculator.</span>
+                </h2>
+                <p class="text-lg md:text-2xl opacity-90 max-w-xl font-medium leading-relaxed">
+                    Personaliza cada detalle de tu deck. Obtén un desglose preciso de materiales y estructura en segundos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 relative -mt-32 z-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="optimizer-card overflow-hidden flex flex-col lg:flex-row shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)]">
+                
+                <div class="p-10 lg:p-20 lg:w-3/5 bg-white">
+                    <div class="flex items-center gap-4 mb-12">
+                        <div class="w-12 h-1 bg-gradient-to-r from-mobi-3 to-mobi-5"></div>
+                        <h3 class="text-xs font-black text-mobi-2 uppercase tracking-[0.3em]">Configuración Técnica</h3>
+                    </div>
+
+                    <div class="space-y-12">
+                        <div>
+                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">1. Selecciona tu madera premium</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4" id="wood-catalog">
+                                <button onclick="updateWood('Pino Tratado', 2000)" id="btn-Pino-Tratado" class="wood-btn p-5 border-2 border-stone-100 bg-stone-50 rounded-3xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-sm leading-tight">Pino Tratado<br><span class="font-normal opacity-60 text-[10px]">$2,000 m²</span></button>
+                                <button onclick="updateWood('Cedro', 3000)" id="btn-Cedro" class="wood-btn p-5 border-2 border-mobi-4 bg-white text-mobi-3 rounded-3xl text-center font-bold transition-all shadow-sm text-sm leading-tight active">Cedro<br><span class="font-normal opacity-60 text-[10px]">$3,000 m²</span></button>
+                                <button onclick="updateWood('Maculi', 3000)" id="btn-Maculi" class="wood-btn p-5 border-2 border-stone-100 bg-stone-50 rounded-3xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-sm leading-tight">Maculí<br><span class="font-normal opacity-60 text-[10px]">$3,000 m²</span></button>
+                                <button onclick="updateWood('Parota', 3200)" id="btn-Parota" class="wood-btn p-5 border-2 border-stone-100 bg-stone-50 rounded-3xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-sm leading-tight">Parota<br><span class="font-normal opacity-60 text-[10px]">$3,200 m²</span></button>
+                                <button onclick="updateWood('Tzalam', 3750)" id="btn-Tzalam" class="wood-btn p-5 border-2 border-stone-100 bg-stone-50 rounded-3xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-sm leading-tight">Tzalam<br><span class="font-normal opacity-60 text-[10px]">$3,750 m²</span></button>
+                                <button onclick="updateWood('Teca', 4350)" id="btn-Teca" class="wood-btn p-5 border-2 border-stone-100 bg-stone-50 rounded-3xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-sm leading-tight">Teca<br><span class="font-normal opacity-60 text-[10px]">$4,350 m²</span></button>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-10 pt-4">
+                            <div>
+                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">2. Largo del Deck (m)</label>
+                                <input type="number" id="largo" value="1" min="1" oninput="calculate()" 
+                                    class="w-full p-6 bg-stone-50 border-b-4 border-stone-200 rounded-2xl focus:border-mobi-5 outline-none font-800 text-mobi-1 text-3xl transition-all shadow-inner">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">3. Ancho del Deck (m)</label>
+                                <input type="number" id="ancho" value="1" min="1" oninput="calculate()" 
+                                    class="w-full p-6 bg-stone-50 border-b-4 border-stone-200 rounded-2xl focus:border-mobi-5 outline-none font-800 text-mobi-1 text-3xl transition-all shadow-inner">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-10 lg:p-20 lg:w-2/5 bg-mobi-1 text-white flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-mobi-5 opacity-5 rounded-full -mr-32 -mt-32"></div>
+                    
+                    <div class="relative z-10">
+                        <h3 class="text-mobi-5 font-black uppercase tracking-[0.4em] text-[11px] mb-12">Desglose de Inversión</h3>
+                        
+                        <div class="space-y-8">
+                            <div class="flex justify-between items-center pb-6 border-b border-white/10">
+                                <span class="text-white/50 text-xs font-bold uppercase tracking-widest">Especie:</span>
+                                <span id="label-madera" class="text-xl font-800 text-mobi-5">Cedro</span>
+                            </div>
+                            
+                            <div class="space-y-5 pt-2">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-white/40 font-medium">Estructura ($1,500/m²):</span>
+                                    <span id="res-estructura" class="font-bold"></span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-white/40 font-medium italic">Material (+10% Desp.):</span>
+                                    <span id="res-madera" class="font-bold"></span>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 pt-12 border-t-4 border-mobi-2">
+                                <p class="text-mobi-5 text-[10px] uppercase font-black tracking-[0.2em] mb-4">Total Proyectado</p>
+                                <p id="res-total" class="text-6xl md:text-7xl font-900 text-white leading-none tracking-tighter"></p>
+                                <p class="text-[10px] text-white/30 mt-8 leading-relaxed font-medium uppercase tracking-widest">
+                                    *Estimado incluye herrajes estructurales y selladores premium de alta resistencia.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="paymentopts.html" class="mt-16 w-full bg-gradient-to-r from-mobi-3 via-mobi-4 to-mobi-5 text-white font-black py-7 rounded-3xl transition-all shadow-[0_20px_40px_-10px_rgba(235,127,143,0.3)] hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-4 text-sm tracking-widest uppercase group">
+                        <span>Ver Opciones de Pago</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 bg-stone-50 text-center border-t border-stone-200">
+        <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck" class="h-12 mx-auto grayscale opacity-40 mb-6">
+        <p class="text-[11px] font-bold uppercase tracking-[0.4em] text-mobi-1/30">© 2026 Mobi Deck Pro • Crafted for Excellence</p>
+    </footer>
 
     <script>
-        // Precios actualizados
+        // Lógica del Menú Móvil
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Lógica del Optimizador
         let currentWoodName = "Cedro";
         let currentWoodPrice = 3000;
         const structurePriceM2 = 1500;
@@ -111,18 +209,16 @@
             currentWoodPrice = price;
             document.getElementById('label-madera').innerText = name;
             
-            // UI Toggle de Botones
-            document.querySelectorAll('.wood-card').forEach(c => {
-                c.classList.remove('border-mobi-soft', 'bg-white', 'text-mobi-magenta', 'shadow-sm');
-                c.classList.add('border-slate-50', 'bg-slate-50', 'text-slate-400');
+            document.querySelectorAll('.wood-btn').forEach(btn => {
+                btn.classList.remove('border-mobi-4', 'bg-white', 'text-mobi-3', 'shadow-sm', 'active');
+                btn.classList.add('border-stone-100', 'bg-stone-50', 'text-slate-400');
             });
             
-            // Usar una búsqueda por ID para el botón activo (reemplaza espacios por guiones si es necesario)
             const activeId = `btn-${name.replace(/\s+/g, '-')}`;
             const activeBtn = document.getElementById(activeId);
             if(activeBtn) {
-                activeBtn.classList.add('border-mobi-soft', 'bg-white', 'text-mobi-magenta', 'shadow-sm');
-                activeBtn.classList.remove('border-slate-50', 'bg-slate-50', 'text-slate-400');
+                activeBtn.classList.add('border-mobi-4', 'bg-white', 'text-mobi-3', 'shadow-sm', 'active');
+                activeBtn.classList.remove('border-stone-100', 'bg-stone-50', 'text-slate-400');
             }
             
             calculate();
@@ -133,12 +229,8 @@
             const a = parseFloat(document.getElementById('ancho').value) || 0;
             const area = l * a;
             
-            // Estructura: $1,500 por cada m2 de área útil
             const costStructure = area * structurePriceM2;
-            
-            // Madera: (Área útil * 1.10 de desperdicio) * Precio específico de la madera
             const costWood = (area * wasteFactor) * currentWoodPrice;
-            
             const total = costStructure + costWood;
 
             const fmt = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
@@ -148,7 +240,7 @@
             document.getElementById('res-total').innerText = fmt.format(total);
         }
 
-        // Inicio por defecto con Cedro
+        // Inicialización
         calculate();
     </script>
 </body>
