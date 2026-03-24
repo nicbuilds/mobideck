@@ -59,6 +59,8 @@
 
         #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
         #mobile-menu.active { display: flex; opacity: 1; }
+
+        input:disabled { opacity: 0.5; cursor: not-allowed; }
     </style>
 </head>
 <body class="bg-stone-50 text-mobi-1">
@@ -81,12 +83,6 @@
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
-        <div id="mobile-menu" class="fixed inset-x-0 top-[72px] bg-mobi-1 text-white p-8 flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl z-[90]">
-            <a href="index.html" class="mobile-link">Home</a>
-            <a href="materials.html" class="mobile-link">Materials</a>
-            <a href="paymentopts.html" class="mobile-link">Payment</a>
-            <a href="index.html#contact" class="mobile-link">Get Quote</a>
-        </div>
     </header>
 
     <section class="relative min-h-[50vh] flex items-center hero-gradient text-white overflow-hidden">
@@ -98,7 +94,7 @@
                     Project <br><span class="text-mobi-4 italic">Calculator.</span>
                 </h2>
                 <p class="text-lg opacity-90 max-w-xl font-medium leading-relaxed">
-                    Personaliza cada detalle de tu deck. Obtén un desglose estimado de materiales y estructura en segundos.
+                    Personaliza cada detalle de tu deck. Ingresa las dimensiones o el área total para obtener un presupuesto al instante.
                 </p>
             </div>
         </div>
@@ -116,7 +112,7 @@
 
                     <div class="space-y-8">
                         <div>
-                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">1. Madera Premium y WPC (Precio m²)</label>
+                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">1. Selecciona Material (m²)</label>
                             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="wood-catalog">
                                 <button onclick="updateWood('Pino Tratado', 2000)" id="btn-Pino-Tratado" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Pino Tratado<br><span class="font-normal opacity-60 text-[9px]">$2,000</span></button>
                                 <button onclick="updateWood('Cedro', 3000)" id="btn-Cedro" class="wood-btn p-3 border-2 border-mobi-4 bg-white text-mobi-3 rounded-2xl text-center font-bold transition-all shadow-sm text-xs leading-tight active">Cedro<br><span class="font-normal opacity-60 text-[9px]">$3,000</span></button>
@@ -129,16 +125,21 @@
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div>
                                 <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">2. Largo (m)</label>
-                                <input type="number" id="largo" value="1" min="1" oninput="calculate()" 
+                                <input type="number" id="largo" value="1" min="0" step="0.1" oninput="calculate('dims')" 
                                     class="w-full p-4 bg-stone-50 border-b-4 border-stone-200 rounded-xl focus:border-mobi-5 outline-none font-800 text-mobi-1 text-2xl transition-all">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">3. Ancho (m)</label>
-                                <input type="number" id="ancho" value="1" min="1" oninput="calculate()" 
+                                <input type="number" id="ancho" value="1" min="0" step="0.1" oninput="calculate('dims')" 
                                     class="w-full p-4 bg-stone-50 border-b-4 border-stone-200 rounded-xl focus:border-mobi-5 outline-none font-800 text-mobi-1 text-2xl transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-black text-mobi-3 uppercase tracking-widest mb-2">O Área Total (m²)</label>
+                                <input type="number" id="area_total" placeholder="Ej: 20" min="0" step="0.1" oninput="calculate('area')" 
+                                    class="w-full p-4 bg-mobi-5/5 border-b-4 border-mobi-5/20 rounded-xl focus:border-mobi-5 outline-none font-800 text-mobi-3 text-2xl transition-all">
                             </div>
                         </div>
                     </div>
@@ -150,8 +151,13 @@
                         
                         <div class="space-y-5">
                             <div class="flex justify-between items-center pb-4 border-b border-white/10">
-                                <span class="text-white/50 text-[10px] font-bold uppercase tracking-widest">Madera / WPC:</span>
+                                <span class="text-white/50 text-[10px] font-bold uppercase tracking-widest">Material:</span>
                                 <span id="label-madera" class="text-lg font-800 text-mobi-5">Cedro</span>
+                            </div>
+
+                            <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                                <span class="text-white/50 text-[10px] font-bold uppercase tracking-widest">Superficie:</span>
+                                <span class="text-lg font-800"><span id="res-area-display">1.00</span> m²</span>
                             </div>
                             
                             <div class="space-y-3 pt-2">
@@ -190,13 +196,6 @@
     </footer>
 
     <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mobileMenu.classList.toggle('active');
-        });
-
         let currentWoodName = "Cedro";
         let currentWoodPrice = 3000;
         const structurePriceM2 = 1500;
@@ -221,32 +220,53 @@
             calculate();
         }
 
-        function calculate() {
-            const l = parseFloat(document.getElementById('largo').value) || 0;
-            const a = parseFloat(document.getElementById('ancho').value) || 0;
-            const area = l * a;
+        function calculate(source) {
+            const largoInput = document.getElementById('largo');
+            const anchoInput = document.getElementById('ancho');
+            const areaInput = document.getElementById('area_total');
             
-            const costStructure = area * structurePriceM2;
-            const costWood = (area * wasteFactor) * currentWoodPrice;
+            let finalArea = 0;
+
+            if (source === 'area' && areaInput.value > 0) {
+                // Si el usuario escribe en Área, desactivamos largo y ancho para claridad
+                largoInput.disabled = true;
+                anchoInput.disabled = true;
+                finalArea = parseFloat(areaInput.value);
+            } else if (source === 'dims' || !areaInput.value) {
+                // Si el usuario usa dimensiones o borra el área total
+                largoInput.disabled = false;
+                anchoInput.disabled = false;
+                areaInput.value = ""; // Limpia el área si se tocan las dims
+                const l = parseFloat(largoInput.value) || 0;
+                const a = parseFloat(anchoInput.value) || 0;
+                finalArea = l * a;
+            } else {
+                // Cálculo inicial por defecto
+                finalArea = parseFloat(largoInput.value) * parseFloat(anchoInput.value);
+            }
+            
+            const costStructure = finalArea * structurePriceM2;
+            const costWood = (finalArea * wasteFactor) * currentWoodPrice;
             const total = costStructure + costWood;
 
             const fmt = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
             
+            document.getElementById('res-area-display').innerText = finalArea.toFixed(2);
             document.getElementById('res-estructura').innerText = fmt.format(costStructure);
             document.getElementById('res-madera').innerText = fmt.format(costWood);
             document.getElementById('res-total').innerText = fmt.format(total);
         }
+
+        // Hamburguer Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+
         calculate();
     </script>
-
-    <a href="http://wa.me/529997394656" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       class="fixed bottom-8 right-8 z-[150] flex items-center justify-center w-16 h-16 bg-mobi-5 text-white rounded-full shadow-2xl hover:scale-110 transition-transform duration-300"
-       aria-label="Chat on WhatsApp">
-        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
-    </a>
 </body>
 </html>
