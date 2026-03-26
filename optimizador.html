@@ -94,7 +94,7 @@
                     Project <br><span class="text-mobi-4 italic">Calculator.</span>
                 </h2>
                 <p class="text-lg opacity-90 max-w-xl font-medium leading-relaxed">
-                    Personaliza cada detalle de tu deck. Ingresa las dimensiones o el área total para obtener un presupuesto al instante basado en precios actualizados.
+                    Personaliza cada detalle de tu deck. Ingresa las dimensiones o el área total para obtener un presupuesto al instante.
                 </p>
             </div>
         </div>
@@ -114,13 +114,12 @@
                         <div>
                             <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">1. Selecciona Material (m²)</label>
                             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="wood-catalog">
-                                <button onclick="updateWood('Maculi', 1520)" id="btn-Maculi" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Maculí<br><span class="font-normal opacity-60 text-[9px]">$1,520</span></button>
-                                <button onclick="updateWood('Cedro', 1560)" id="btn-Cedro" class="wood-btn p-3 border-2 border-mobi-4 bg-white text-mobi-3 rounded-2xl text-center font-bold transition-all shadow-sm text-xs leading-tight active">Cedro<br><span class="font-normal opacity-60 text-[9px]">$1,560</span></button>
-                                <button onclick="updateWood('Parota', 1580)" id="btn-Parota" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Parota<br><span class="font-normal opacity-60 text-[9px]">$1,580</span></button>
-                                <button onclick="updateWood('Tzalam', 1900)" id="btn-Tzalam" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Tzalam<br><span class="font-normal opacity-60 text-[9px]">$1,900</span></button>
-                                <button onclick="updateWood('Teak WPC', 2000)" id="btn-Teak-WPC" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Teak WPC<br><span class="font-normal opacity-60 text-[9px]">$2,000</span></button>
-                                <button onclick="updateWood('Walnut WPC', 2000)" id="btn-Walnut-WPC" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Walnut WPC<br><span class="font-normal opacity-60 text-[9px]">$2,000</span></button>
-                                <button onclick="updateWood('Teca', 2264)" id="btn-Teca" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Teca<br><span class="font-normal opacity-60 text-[9px]">$2,264</span></button>
+                                <button onclick="updateWood('Maculis', 1000)" id="btn-Maculis" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Maculís<br><span class="font-normal opacity-60 text-[9px]">$1,000</span></button>
+                                <button onclick="updateWood('Parota', 1100)" id="btn-Parota" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Parota<br><span class="font-normal opacity-60 text-[9px]">$1,100</span></button>
+                                <button onclick="updateWood('Cedro', 1200)" id="btn-Cedro" class="wood-btn p-3 border-2 border-mobi-4 bg-white text-mobi-3 rounded-2xl text-center font-bold transition-all shadow-sm text-xs leading-tight active">Cedro<br><span class="font-normal opacity-60 text-[9px]">$1,200</span></button>
+                                <button onclick="updateWood('Tzalam', 1500)" id="btn-Tzalam" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Tzalam<br><span class="font-normal opacity-60 text-[9px]">$1,500</span></button>
+                                <button onclick="updateWood('Teka', 1500)" id="btn-Teka" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Teka<br><span class="font-normal opacity-60 text-[9px]">$1,500</span></button>
+                                <button onclick="updateWood('WPC', 2000)" id="btn-WPC" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">WPC<br><span class="font-normal opacity-60 text-[9px]">$2,000</span></button>
                             </div>
                         </div>
 
@@ -199,10 +198,10 @@
     </footer>
 
     <script>
-        // Precios Actualizados 2026
+        // Precios Actualizados según solicitud
         let currentWoodName = "Cedro";
-        let currentWoodPrice = 1560;
-        const wasteFactor = 1.10; // 10% de desperdicio en madera
+        let currentWoodPrice = 1200; //
+        const wasteFactor = 1.10;
 
         function updateWood(name, price) {
             currentWoodName = name;
@@ -245,9 +244,7 @@
                 finalArea = parseFloat(largoInput.value) * parseFloat(anchoInput.value);
             }
             
-            // Lógica de Costos Solicitada:
-            // Estructura: 1/3 del costo por m2
-            // Instalación: 1/5 del costo por m2
+            // Lógica: Estructura 1/3 e Instalación 1/5 del costo de madera
             const costStructure = (currentWoodPrice / 3) * finalArea;
             const costInstallation = (currentWoodPrice / 5) * finalArea;
             const costWood = (finalArea * wasteFactor) * currentWoodPrice;
@@ -261,15 +258,6 @@
             document.getElementById('res-estructura').innerText = fmt.format(costStructure);
             document.getElementById('res-instalacion').innerText = fmt.format(costInstallation);
             document.getElementById('res-total').innerText = fmt.format(total);
-        }
-
-        // Hamburguer Menu
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if(menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.toggle('active');
-            });
         }
 
         calculate();
