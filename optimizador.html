@@ -198,10 +198,11 @@
     </footer>
 
     <script>
-        // Precios Actualizados según solicitud
+        // Variables globales
         let currentWoodName = "Cedro";
-        let currentWoodPrice = 1200; //
+        let currentWoodPrice = 1200;
         const wasteFactor = 1.10;
+        const profitMargin = 1.10; // 10% de ganancia oculto aplicado al final
 
         function updateWood(name, price) {
             currentWoodName = name;
@@ -244,10 +245,10 @@
                 finalArea = parseFloat(largoInput.value) * parseFloat(anchoInput.value);
             }
             
-            // Lógica: Estructura 1/3 e Instalación 1/5 del costo de madera
-            const costStructure = (currentWoodPrice / 3) * finalArea;
-            const costInstallation = (currentWoodPrice / 5) * finalArea;
-            const costWood = (finalArea * wasteFactor) * currentWoodPrice;
+            // Lógica de Costos con Ganancia Oculta (Profit Margin = 1.10)
+            const costStructure = ((currentWoodPrice / 3) * finalArea) * profitMargin;
+            const costInstallation = ((currentWoodPrice / 5) * finalArea) * profitMargin;
+            const costWood = ((finalArea * wasteFactor) * currentWoodPrice) * profitMargin;
             
             const total = costStructure + costInstallation + costWood;
 
