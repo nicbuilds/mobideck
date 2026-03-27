@@ -119,6 +119,7 @@
                                 <button onclick="updateWood('Cedro', 1200)" id="btn-Cedro" class="wood-btn p-3 border-2 border-mobi-4 bg-white text-mobi-3 rounded-2xl text-center font-bold transition-all shadow-sm text-xs leading-tight active">Cedro<br><span class="font-normal opacity-60 text-[9px]">$1,200</span></button>
                                 <button onclick="updateWood('Tzalam', 1500)" id="btn-Tzalam" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Tzalam<br><span class="font-normal opacity-60 text-[9px]">$1,500</span></button>
                                 <button onclick="updateWood('Teka', 1500)" id="btn-Teka" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Teka<br><span class="font-normal opacity-60 text-[9px]">$1,500</span></button>
+                                <button onclick="updateWood('Cumaru', 1700)" id="btn-Cumaru" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Cumarú<br><span class="font-normal opacity-60 text-[9px]">$1,700</span></button>
                                 <button onclick="updateWood('WPC', 2000)" id="btn-WPC" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">WPC<br><span class="font-normal opacity-60 text-[9px]">$2,000</span></button>
                             </div>
                         </div>
@@ -198,11 +199,10 @@
     </footer>
 
     <script>
-        // Configuración de costos y márgenes
         let currentWoodName = "Cedro";
         let currentWoodPrice = 1200;
-        const wasteFactor = 1.10; // 10% desperdicio madera
-        const profitMargin = 1.20; // 20% ganancia oculta (aplicada a estructura e instalación)
+        const wasteFactor = 1.10;
+        const profitMargin = 1.20; // 20% de ganancia oculto aplicado a estructura e instalación
 
         function updateWood(name, price) {
             currentWoodName = name;
@@ -245,16 +245,13 @@
                 finalArea = parseFloat(largoInput.value) * parseFloat(anchoInput.value);
             }
             
-            // CÁLCULO DE COSTOS CON MARGEN DEL 20% OCULTO EN OPERACIÓN:
-            
-            // 1. Madera: Costo real + Desperdicio (Visible/Transparente)
+            // Madera: Precio base + 10% desperdicio
             const costWood = (finalArea * wasteFactor) * currentWoodPrice;
 
-            // 2. Estructura e Instalación: Aquí se suma el 20% de ganancia (Profit Margin = 1.20)
-            // Estructura = (1/3 de madera * área) * 1.20
+            // Estructura: 1/3 del costo madera + 20% margen oculto
             const costStructure = ((currentWoodPrice / 3) * finalArea) * profitMargin;
             
-            // Instalación = (1/5 de madera * área) * 1.20
+            // Instalación: 1/5 del costo madera + 20% margen oculto
             const costInstallation = ((currentWoodPrice / 5) * finalArea) * profitMargin;
             
             const total = costStructure + costInstallation + costWood;
