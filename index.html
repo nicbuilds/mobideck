@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hire Mobi Deck | Professional Process</title>
+    <title>Mobi Deck | Proceso Profesional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <script>
@@ -31,6 +31,7 @@
         .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
         .glass-nav { background: rgba(86, 95, 128, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
+        /* PARALLAX SYSTEM */
         .parallax-container {
             position: relative;
             height: 90vh;
@@ -113,44 +114,48 @@
         <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
         <div class="max-w-7xl mx-auto px-6 relative z-10 py-32 w-full">
             <div class="max-w-3xl text-left">
-                <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5">Service Guide</span>
+                <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5">Guía de Servicio</span>
                 <h2 class="text-5xl md:text-8xl font-extrabold mb-8 leading-[1.1]">
-                    Whale made decks <br><span class="text-mobi-5">built in days not weeks</span>
+                    Whale made decks <br><span class="text-mobi-5 uppercase text-3xl md:text-5xl block mt-4">built in days not weeks</span>
                 </h2>
                 <p class="text-lg md:text-xl opacity-80 mb-10 max-w-xl font-medium">
-                    Una experiencia premium de principio a fin. Sigue nuestra guía estructurada para integrar Mobi Deck en tu próximo proyecto arquitectónico.
+                    Una experiencia premium de principio a fin. Sigue nuestra guía estructurada para la contratación de Mobi Deck en tu próximo proyecto.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#step1" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
-                        Comenzar Proceso
+                    <a href="#identidad" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
+                        Conoce nuestra esencia
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-stone-100 border-b border-stone-200 relative z-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <span class="text-mobi-5 font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Nuestra Identidad</span>
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-mobi-1 leading-tight mb-6">
-                        Somos una empresa <span class="text-mobi-3 italic text-5xl">mexa</span> dedicada a la construcción y mantenimiento de decks.
-                    </h2>
-                    <p class="text-mobi-1/70 text-lg leading-relaxed mb-4">
-                        Nos distinguimos por nuestra calidad premium y un servicio de clase mundial. Somos diferentes porque la excelencia es nuestro estándar mínimo.
-                    </p>
-                </div>
-                <div class="relative p-10 bg-white rounded-[3rem] shadow-xl border border-stone-200">
-                    <div class="absolute -top-6 -left-6 bg-mobi-5 text-white p-4 rounded-2xl shadow-lg">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z"/></svg>
+    <section id="identidad" class="parallax-container">
+        <div class="fixed-bg" style="background-image: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=2000&auto=format&fit=crop');">
+            <div class="absolute inset-0 bg-mobi-1/60 backdrop-blur-[2px]"></div>
+        </div>
+        <div class="content-overlay">
+            <div class="max-w-7xl mx-auto px-6 w-full text-white">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <span class="text-mobi-5 font-bold uppercase tracking-[0.3em] text-[10px]">Nuestra Identidad</span>
+                        <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                            Somos una empresa mexa dedicada a la construcción y mantenimiento de decks.
+                        </h2>
+                        <div class="h-1 w-20 bg-mobi-5"></div>
                     </div>
-                    <p class="text-2xl md:text-3xl font-bold text-mobi-2 leading-snug italic">
-                        "Construimos decks que reflejan la fuerza del mar, su resistencia y que capturan su belleza."
-                    </p>
-                    <div class="mt-8 flex items-center gap-4">
-                        <div class="h-[1px] Array w-12 bg-mobi-5"></div>
-                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-mobi-1/50">Mobi Deck • Espíritu Marítimo</span>
+                    <div class="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-[3rem] border border-white/20">
+                        <p class="text-2xl md:text-3xl font-bold mb-6 italic leading-snug">
+                            "Construimos decks que reflejan la fuerza del mar, su resistencia y que capturan su belleza."
+                        </p>
+                        <p class="text-lg opacity-90 leading-relaxed mb-8">
+                            Nos distinguimos por nuestra calidad premium y servicio de clase mundial. Somos diferentes en la calidad de nuestro servicio.
+                        </p>
+                        <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-mobi-5">
+                            <span>Calidad Premium</span>
+                            <span class="opacity-30">|</span>
+                            <span>Sello Mexicano</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -167,11 +172,11 @@
                     <span class="text-4xl font-black text-mobi-5/30 italic block mb-2">01</span>
                     <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-6">Project Quotation</h3>
                     <p class="text-mobi-1/70 leading-relaxed mb-6">
-                        Proporciona tus <strong>planos arquitectónicos</strong> o permítenos <strong>diseñar desde cero</strong>. Aseguramos que cada presupuesto sea estructuralmente sólido.
+                        Proporciona tus planos arquitectónicos o solicita un diseño desde cero. Aseguramos cotizaciones estructuralmente sólidas y adaptadas a tu espacio.
                     </p>
                     <div class="flex flex-wrap gap-4 text-[10px] font-bold uppercase tracking-widest text-mobi-2 mb-8">
-                        <span class="bg-stone-100 px-3 py-1 rounded-md">Blueprint Assessment</span>
-                        <span class="bg-stone-100 px-3 py-1 rounded-md">Custom Design</span>
+                        <span class="bg-stone-100 px-3 py-1 rounded-md">Evaluación de Planos</span>
+                        <span class="bg-stone-100 px-3 py-1 rounded-md">Diseño a Medida</span>
                     </div>
                     <a href="https://mobi.help/materials" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-5 text-mobi-5 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-5 hover:text-white transition-all duration-300">
                         Ver Materiales
@@ -191,10 +196,10 @@
                     <span class="text-4xl font-black text-mobi-4/30 italic block mb-2">02</span>
                     <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-6">Financial Schedule</h3>
                     <p class="text-mobi-1/70 leading-relaxed mb-8">
-                        Pagos por hitos para asegurar la mano de obra y los materiales premium:
+                        Esquema de pagos por hitos para garantizar el suministro de materiales premium y la ejecución artesanal.
                     </p>
                     <a href="https://mobi.help/paymentopts" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-4 text-mobi-4 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-4 hover:text-white transition-all duration-300">
-                        Ver Opciones de Pago
+                        Opciones de Pago
                     </a>
                 </div>
             </div>
@@ -211,10 +216,10 @@
                     <span class="text-4xl font-black text-mobi-2/30 italic block mb-2">03</span>
                     <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-6">Build & Install</h3>
                     <p class="text-mobi-1/70 leading-relaxed mb-6">
-                        Mediciones finales seguidas de una instalación maestra. Manejamos logística, preparación de madera y montaje in situ.
+                        Mediciones finales seguidas de una instalación maestra. Gestionamos logística, preparación de madera y ensamble en sitio para entregar el deck de tus sueños.
                     </p>
                     <div class="flex items-center gap-2 text-mobi-5 font-bold text-xs uppercase tracking-tighter">
-                        <span>Measure</span> <span class="opacity-30">|</span> <span>Logistics</span> <span class="opacity-30">|</span> <span>Master Build</span>
+                        <span>Medición</span> <span class="opacity-30">|</span> <span>Logística</span> <span class="opacity-30">|</span> <span>Construcción Maestra</span>
                     </div>
                 </div>
             </div>
@@ -224,8 +229,8 @@
     <section id="contact" class="py-24 px-6 bg-white relative z-20">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
-                <h3 class="text-4xl font-extrabold text-mobi-1 mb-4">Comienza tu Proyecto</h3>
-                <p class="text-mobi-1/60 font-medium">Envía tu consulta para iniciar el Paso 1.</p>
+                <h3 class="text-4xl font-extrabold text-mobi-1 mb-4">Inicia tu Proyecto</h3>
+                <p class="text-mobi-1/60 font-medium">Envía tu solicitud para comenzar con el Paso 1.</p>
             </div>
             <form action="https://formspree.io/f/mreykjlr" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12 rounded-[2rem] border border-stone-200 bg-stone-50/50">
                 <div class="space-y-2">
@@ -233,14 +238,14 @@
                     <input type="text" name="name" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
                 </div>
                 <div class="space-y-2">
-                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Correo Electrónico</label>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Email</label>
                     <input type="email" name="email" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
                 </div>
                 <div class="md:col-span-2 space-y-2">
                     <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Estado de Planos</label>
                     <select name="blueprints" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
-                        <option value="ready">Ya cuento con planos</option>
-                        <option value="none">Necesito desarrollo de planos</option>
+                        <option value="ready">Tengo planos listos</option>
+                        <option value="none">Necesito diseño/planos</option>
                     </select>
                 </div>
                 <div class="md:col-span-2 space-y-2">
@@ -248,7 +253,7 @@
                     <textarea name="message" rows="4" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition" placeholder="Cuéntanos sobre tu espacio..."></textarea>
                 </div>
                 <button type="submit" class="md:col-span-2 py-5 bg-mobi-1 text-white rounded-full font-extrabold text-lg hover:bg-mobi-5 transition-all shadow-xl">
-                    Enviar Consulta
+                    Enviar Solicitud
                 </button>
             </form>
         </div>
