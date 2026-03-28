@@ -165,11 +165,11 @@
                                     <span id="res-madera" class="font-bold"></span>
                                 </div>
                                 <div class="flex justify-between text-xs">
-                                    <span class="text-white/40 font-medium">Estructura (1/3):</span>
+                                    <span class="text-white/40 font-medium">Estructura (1/3 de $1,745):</span>
                                     <span id="res-estructura" class="font-bold"></span>
                                 </div>
                                 <div class="flex justify-between text-xs">
-                                    <span class="text-white/40 font-medium">Instalación (1/5):</span>
+                                    <span class="text-white/40 font-medium">Instalación (1/5 de $1,745):</span>
                                     <span id="res-instalacion" class="font-bold"></span>
                                 </div>
                             </div>
@@ -203,6 +203,7 @@
         let currentWoodPrice = 1200;
         const wasteFactor = 1.10; 
         const profitMargin = 1.35; // 35% de ganancia oculto aplicado a estructura e instalación
+        const fixedOperationalBase = 1745; // Nueva base de cálculo para estructura e instalación
 
         function updateWood(name, price) {
             currentWoodName = name;
@@ -245,14 +246,14 @@
                 finalArea = parseFloat(largoInput.value) * parseFloat(anchoInput.value);
             }
             
-            // Madera: Costo base + 10% desperdicio (Visible)
+            // Madera: Se mantiene el precio de catálogo (currentWoodPrice) + 10% desperdicio
             const costWood = (finalArea * wasteFactor) * currentWoodPrice;
 
-            // Estructura: 1/3 del costo madera + 35% margen oculto
-            const costStructure = ((currentWoodPrice / 3) * finalArea) * profitMargin;
+            // Estructura: 1/3 de $1,745 por m2 + 35% margen oculto
+            const costStructure = ((fixedOperationalBase / 3) * finalArea) * profitMargin;
             
-            // Instalación: 1/5 del costo madera + 35% margen oculto
-            const costInstallation = ((currentWoodPrice / 5) * finalArea) * profitMargin;
+            // Instalación: 1/5 de $1,745 por m2 + 35% margen oculto
+            const costInstallation = ((fixedOperationalBase / 5) * finalArea) * profitMargin;
             
             const total = costStructure + costInstallation + costWood;
 
