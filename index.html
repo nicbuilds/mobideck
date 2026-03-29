@@ -48,8 +48,7 @@
             object-fit: cover;
             z-index: -1;
             transform: translateZ(0);
-            /* Asegura que el video no se oculte en móviles */
-            display: block;
+            pointer-events: none; /* Evita que el video interfiera con el scroll */
         }
 
         .content-overlay {
@@ -164,7 +163,15 @@
     </section>
 
     <section id="step1" class="parallax-container">
-        <video autoplay="autoplay" muted="muted" loop playsinline webkit-playsinline class="fixed-bg">
+        <video 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            webkit-playsinline
+            preload="auto"
+            class="fixed-bg"
+            style="background-color: #565F80;">
             <source src="https://mobi.help/xanax_Prompt_A_split_screen_on_the_left_a_clean_3D_wireframe__b497e901-8703-4a3d-9100-9091766fafe3_1.mp4" type="video/mp4">
         </video>
         <div class="absolute inset-0 bg-mobi-1/40"></div>
@@ -189,7 +196,15 @@
     </section>
 
     <section id="step2" class="parallax-container">
-        <video autoplay="autoplay" muted="muted" loop playsinline webkit-playsinline class="fixed-bg">
+        <video 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            webkit-playsinline
+            preload="auto"
+            class="fixed-bg"
+            style="background-color: #000;">
             <source src="https://mobi.help/xanax_Prompt_Extreme_close-up_of_premium_Cumar_hardwood_decki_7bf156da-67e3-4255-aa44-ec2a37cf9273_0.mp4" type="video/mp4">
         </video>
         <div class="absolute inset-0 bg-black/50"></div>
@@ -210,7 +225,15 @@
     </section>
 
     <section id="step3" class="parallax-container">
-        <video autoplay="autoplay" muted="muted" loop playsinline webkit-playsinline class="fixed-bg">
+        <video 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            webkit-playsinline
+            preload="auto"
+            class="fixed-bg"
+            style="background-color: #565F80;">
             <source src="https://mobi.help/social_xanax_A_slow_cinematic_low-angle_tracking_shot_along_a_massiv_e352d8f0-aefb-44fd-a4f4-d4445fc9d322_2.mp4" type="video/mp4">
         </video>
         <div class="absolute inset-0 bg-mobi-1/50"></div>
@@ -269,16 +292,27 @@
     </footer>
 
     <script>
-        // Script adicional para forzar el play en iOS si el auto-play falla
-        document.addEventListener('DOMContentLoaded', () => {
+        // SOLUCIÓN AGRESIVA PARA iOS:
+        // Safari bloquea videos si no hay interacción. Este script fuerza el play en cuanto el usuario toca la pantalla.
+        function forceVideoPlay() {
             const videos = document.querySelectorAll('video');
-            videos.forEach(v => {
-                v.muted = true;
-                v.play().catch(error => {
-                    console.log("Autoplay preventivo activado");
-                });
+            videos.forEach(video => {
+                video.muted = true; // Doble confirmación de silencio
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        console.log("Video iniciado correctamente");
+                    }).catch(error => {
+                        console.log("Error de reproducción, reintentando...");
+                    });
+                }
             });
-        });
+        }
+
+        // Intenta al cargar y al primer toque/scroll
+        window.addEventListener('load', forceVideoPlay);
+        window.addEventListener('touchstart', forceVideoPlay, {once: true});
+        window.addEventListener('mousedown', forceVideoPlay, {once: true});
 
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
