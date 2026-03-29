@@ -47,6 +47,16 @@
             pointer-events: none;
         }
 
+        /* ESTADO EXPANDIDO CORREGIDO PARA IPHONE */
+        .section-expanded {
+            height: auto !important;
+            min-height: 90vh;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
         .fixed-bg {
             position: fixed;
             top: 0;
@@ -152,7 +162,7 @@
 
         <div class="absolute inset-0 bg-mobi-1/60 backdrop-blur-[2px] z-[1]"></div>
         
-        <div class="content-overlay relative z-10">
+        <div class="content-overlay relative z-10 py-12">
             <div class="max-w-7xl mx-auto px-6 w-full text-white">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6">
@@ -179,7 +189,7 @@
                     </div>
                 </div>
                 
-                <div class="mt-16 flex justify-center md:justify-start">
+                <div class="mt-12 md:mt-16 flex justify-center md:justify-start pb-4">
                     <a href="#step1" class="group flex items-center gap-4 bg-mobi-5 hover:bg-white text-white hover:text-mobi-1 px-8 py-4 rounded-full font-bold uppercase text-xs tracking-[0.2em] transition-all duration-300 shadow-xl">
                         Comienza tu proyecto
                         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
@@ -298,18 +308,17 @@
         function expandirIdentidad() {
             const sec = document.getElementById('identidad');
             sec.classList.remove('section-retracted');
+            sec.classList.add('section-expanded'); // Aplica altura auto y min-height
             
             const vids = sec.querySelectorAll('video');
             vids.forEach(v => {
                 v.muted = true;
                 v.play().catch(()=>{});
             });
-
-            sec.style.opacity = "1";
             
             setTimeout(() => {
                 sec.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
+            }, 150);
         }
 
         function forceVideoPlay() {
