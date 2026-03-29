@@ -37,6 +37,14 @@
             height: 90vh;
             overflow: hidden;
             clip-path: inset(0 0 0 0);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ESTADO RETRAÍDO DE LA SECCIÓN ENTERA */
+        .section-retracted {
+            height: 0 !important;
+            opacity: 0;
+            pointer-events: none;
         }
 
         .fixed-bg {
@@ -80,18 +88,6 @@
 
         #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
         #mobile-menu.active { display: flex; opacity: 1; }
-
-        /* NUEVOS ESTILOS PARA SECCIÓN RETRAÍDA */
-        #identidad-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s ease-out, opacity 0.4s ease;
-            opacity: 0;
-        }
-        #identidad-content.expanded {
-            max-height: 1000px;
-            opacity: 1;
-        }
     </style>
 </head>
 <body class="bg-stone-50 text-mobi-1">
@@ -134,7 +130,7 @@
                     Una experiencia premium de principio a fin. Sigue nuestra guía estructurada para la contratación de Mobi Deck en tu próximo proyecto.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <button onclick="toggleIdentidad()" id="btn-identidad" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
+                    <button onclick="expandirIdentidad()" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
                         Conoce nuestra esencia
                     </button>
                 </div>
@@ -142,13 +138,13 @@
         </div>
     </section>
 
-    <section id="identidad" class="parallax-container">
+    <section id="identidad" class="parallax-container section-retracted">
         <div class="fixed-bg" style="background-image: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=2000&auto=format&fit=crop');">
             <div class="absolute inset-0 bg-mobi-1/60 backdrop-blur-[2px]"></div>
         </div>
         <div class="content-overlay">
             <div class="max-w-7xl mx-auto px-6 w-full text-white">
-                <div id="identidad-content" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6">
                         <span class="text-mobi-5 font-bold uppercase tracking-[0.3em] text-[10px]">Nuestra Identidad</span>
                         <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">
@@ -169,12 +165,6 @@
                             <span>Sello Mexicano</span>
                         </div>
                     </div>
-                </div>
-                <div id="ver-mas-container" class="mt-8 text-center md:text-left">
-                    <button onclick="toggleIdentidad()" class="inline-flex items-center gap-2 text-mobi-5 font-bold uppercase tracking-[0.2em] text-xs hover:text-white transition group">
-                        <span id="txt-ver-mas">Ver más</span>
-                        <svg id="icon-ver-mas" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
                 </div>
             </div>
         </div>
@@ -286,23 +276,16 @@
     </footer>
 
     <script>
-        // TOGGLE IDENTIDAD
-        function toggleIdentidad() {
-            const content = document.getElementById('identidad-content');
-            const txt = document.getElementById('txt-ver-mas');
-            const icon = document.getElementById('icon-ver-mas');
+        // FUNCIÓN PARA EXPANDIR SECCIÓN ENTERA
+        function expandirIdentidad() {
+            const sec = document.getElementById('identidad');
+            sec.classList.remove('section-retracted');
+            sec.style.opacity = "1";
             
-            content.classList.toggle('expanded');
-            
-            if (content.classList.contains('expanded')) {
-                txt.innerText = 'Ver menos';
-                icon.style.transform = 'rotate(180deg)';
-                // Scroll suave a la sección
-                document.getElementById('identidad').scrollIntoView({ behavior: 'smooth' });
-            } else {
-                txt.innerText = 'Ver más';
-                icon.style.transform = 'rotate(0deg)';
-            }
+            // Scroll suave después de que la altura empiece a cambiar
+            setTimeout(() => {
+                sec.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
         }
 
         // AUTO-PLAY VIDEOS iOS
