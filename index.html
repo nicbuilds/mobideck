@@ -138,11 +138,22 @@
         </div>
     </section>
 
-    <section id="identidad" class="parallax-container section-retracted">
-        <div class="fixed-bg" style="background-image: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=2000&auto=format&fit=crop');">
-            <div class="absolute inset-0 bg-mobi-1/60 backdrop-blur-[2px]"></div>
-        </div>
-        <div class="content-overlay">
+    <section id="identidad" class="parallax-container section-retracted relative overflow-hidden">
+        
+        <video 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            webkit-playsinline
+            class="fixed-bg z-[-1]"
+            style="background-color: #000;">
+            <source src="https://mobi.help/xanax_A_cinematic_slow-motion_underwater_video_deep_in_the_da_80a1563d-fc4d-4508-8ec2-f182ce2efe99_0.mp4" type="video/mp4">
+        </video>
+
+        <div class="absolute inset-0 bg-mobi-1/60 backdrop-blur-[2px] z-[1]"></div>
+        
+        <div class="content-overlay relative z-10">
             <div class="max-w-7xl mx-auto px-6 w-full text-white">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="space-y-6">
@@ -280,6 +291,14 @@
         function expandirIdentidad() {
             const sec = document.getElementById('identidad');
             sec.classList.remove('section-retracted');
+            
+            // Forzar el inicio de los videos dentro de la sección si Safari los pausó
+            const vids = sec.querySelectorAll('video');
+            vids.forEach(v => {
+                v.muted = true;
+                v.play().catch(()=>{});
+            });
+
             sec.style.opacity = "1";
             
             // Scroll suave después de que la altura empiece a cambiar
@@ -288,11 +307,12 @@
             }, 100);
         }
 
-        // AUTO-PLAY VIDEOS iOS
+        // AUTO-PLAY VIDEOS iOS (Mejorado)
         function forceVideoPlay() {
             const videos = document.querySelectorAll('video');
             videos.forEach(video => {
                 video.muted = true;
+                // Intentar reproducir, ignorando el error si el navegador bloquea el autoplay
                 video.play().catch(() => {});
             });
         }
