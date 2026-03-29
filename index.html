@@ -139,7 +139,6 @@
     </section>
 
     <section id="identidad" class="parallax-container section-retracted relative overflow-hidden">
-        
         <video 
             autoplay 
             muted 
@@ -170,12 +169,21 @@
                         <p class="text-lg opacity-90 leading-relaxed mb-8">
                             Nos distinguimos por nuestra calidad premium y servicio de clase mundial. Somos diferentes en la calidad de nuestro servicio.
                         </p>
-                        <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-mobi-5">
-                            <span>Calidad Premium</span>
-                            <span class="opacity-30">|</span>
-                            <span>Sello Mexicano</span>
+                        <div class="flex items-center gap-6">
+                            <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-mobi-5">
+                                <span>Calidad Premium</span>
+                                <span class="opacity-30">|</span>
+                                <span>Sello Mexicano</span>
+                            </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="mt-16 flex justify-center md:justify-start">
+                    <a href="#step1" class="group flex items-center gap-4 bg-mobi-5 hover:bg-white text-white hover:text-mobi-1 px-8 py-4 rounded-full font-bold uppercase text-xs tracking-[0.2em] transition-all duration-300 shadow-xl">
+                        Comienza tu proyecto
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -287,12 +295,10 @@
     </footer>
 
     <script>
-        // FUNCIÓN PARA EXPANDIR SECCIÓN ENTERA
         function expandirIdentidad() {
             const sec = document.getElementById('identidad');
             sec.classList.remove('section-retracted');
             
-            // Forzar el inicio de los videos dentro de la sección si Safari los pausó
             const vids = sec.querySelectorAll('video');
             vids.forEach(v => {
                 v.muted = true;
@@ -301,18 +307,15 @@
 
             sec.style.opacity = "1";
             
-            // Scroll suave después de que la altura empiece a cambiar
             setTimeout(() => {
                 sec.scrollIntoView({ behavior: 'smooth' });
             }, 100);
         }
 
-        // AUTO-PLAY VIDEOS iOS (Mejorado)
         function forceVideoPlay() {
             const videos = document.querySelectorAll('video');
             videos.forEach(video => {
                 video.muted = true;
-                // Intentar reproducir, ignorando el error si el navegador bloquea el autoplay
                 video.play().catch(() => {});
             });
         }
