@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobi Deck | Proceso y Materiales</title>
+    <title>Mobi Deck | Proceso Profesional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <script>
@@ -49,9 +49,6 @@
             z-index: -1;
         }
 
-        .section-retracted { height: 0 !important; opacity: 0; pointer-events: none; overflow: hidden; transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
-        .section-expanded { height: 100vh !important; opacity: 1 !important; pointer-events: auto !important; }
-
         .master-card {
             background: rgba(255, 255, 255, 0.98);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
@@ -59,17 +56,15 @@
             border-left: 8px solid #EB7F8F;
         }
 
-        .step-item { border-bottom: 1px solid rgba(86, 95, 128, 0.1); padding-bottom: 1.5rem; }
-        .step-item:last-child { border-bottom: none; padding-bottom: 0; }
-
-        .material-card-mini {
-            background: white;
-            border-radius: 1.5rem;
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+        .step-divider {
+            height: 1px;
+            background: linear-gradient(to right, #EB7F8F, transparent);
+            margin: 2rem 0;
+            opacity: 0.2;
         }
-        .material-card-mini:hover { transform: translateY(-5px); }
+
+        #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
+        #mobile-menu.active { display: flex; opacity: 1; }
     </style>
 </head>
 <body class="bg-stone-50 text-mobi-1">
@@ -77,101 +72,57 @@
     <header class="fixed w-full z-[100] glass-nav">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-white">
             <a href="#" class="flex items-center gap-4">
-                <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck" class="h-12">
+                <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-12 w-auto">
                 <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
             </a>
             <div class="hidden md:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
-                <a href="#pasos" class="hover:text-mobi-5 transition">Proceso</a>
-                <a href="#materiales" class="hover:text-mobi-5 transition">Materiales</a>
+                <a href="#proceso" class="hover:text-mobi-5 transition">Nuestro Proceso</a>
                 <a href="#contact" class="px-6 py-2.5 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-300">Contact Us</a>
             </div>
         </nav>
     </header>
 
-    <section class="relative h-[90vh] flex items-center hero-gradient text-white overflow-hidden">
+    <section class="relative h-screen flex items-center hero-gradient text-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 z-10 w-full">
             <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5">Guía de Servicio</span>
             <h2 class="text-5xl md:text-8xl font-extrabold mb-8 leading-[1.1]">Whale made decks</h2>
-            <p class="text-lg md:text-xl opacity-80 mb-10 max-w-xl">Una experiencia premium de principio a fin.</p>
-            <button onclick="expandirIdentidad()" class="inline-flex items-center justify-center px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
-                Conoce nuestra esencia
-            </button>
+            <p class="text-lg md:text-xl opacity-80 mb-10 max-w-xl">Experiencia premium de principio a fin.</p>
+            <a href="#proceso" class="inline-flex items-center justify-center px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">Explorar Proceso</a>
         </div>
     </section>
 
-    <section id="identidad" class="parallax-container section-retracted">
-        <video autoplay muted loop playsinline class="fixed-bg">
-            <source src="https://mobi.help/xanax_A_cinematic_slow-motion_underwater_video_deep_in_the_da_80a1563d-fc4d-4508-8ec2-f182ce2efe99_0.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-mobi-1/60 backdrop-blur-[2px]"></div>
-        <div class="max-w-7xl mx-auto px-6 w-full z-10 text-white">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <span class="text-mobi-5 font-bold uppercase tracking-[0.3em] text-[10px]">Nuestra Identidad</span>
-                    <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">Somos una empresa mexa dedicada a la construcción de decks.</h2>
-                </div>
-                <div class="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-[3rem] border border-white/20">
-                    <p class="text-2xl md:text-3xl font-bold italic leading-snug">"Construimos decks que reflejan la fuerza del mar."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="pasos" class="parallax-container">
+    <section id="proceso" class="parallax-container">
         <video autoplay muted loop playsinline class="fixed-bg">
             <source src="https://mobi.help/xanax_Prompt_A_split_screen_on_the_left_a_clean_3D_wireframe__b497e901-8703-4a3d-9100-9091766fafe3_1.mp4" type="video/mp4">
         </video>
         <div class="absolute inset-0 bg-mobi-1/40"></div>
+        
         <div class="max-w-7xl mx-auto px-6 w-full z-10">
-            <div class="master-card max-w-2xl p-10 md:p-14">
-                <div class="space-y-8">
-                    <div class="step-item">
-                        <span class="text-mobi-5 font-black italic text-xl">01</span>
-                        <h3 class="text-xl font-extrabold text-mobi-1">Project Quotation</h3>
-                        <p class="text-sm text-mobi-1/70 mt-2">Evaluación de planos arquitectónicos o diseño desde cero para una cotización sólida.</p>
+            <div class="master-card max-w-2xl p-10 md:p-16">
+                <div class="space-y-12">
+                    <div>
+                        <span class="text-mobi-5 font-black italic text-2xl">01</span>
+                        <h3 class="text-2xl font-extrabold text-mobi-1 mb-4">Project Quotation</h3>
+                        <p class="text-mobi-1/70 leading-relaxed">Proporciona tus planos arquitectónicos o solicita un diseño desde cero. Aseguramos cotizaciones sólidas.</p>
                     </div>
-                    <div class="step-item">
-                        <span class="text-mobi-4 font-black italic text-xl">02</span>
-                        <h3 class="text-xl font-extrabold text-mobi-1">Cronograma Financiero</h3>
-                        <p class="text-sm text-mobi-1/70 mt-2">Esquema 50-30-20: Anticipo inicial, pago de progreso y finiquito previo a instalación.</p>
-                    </div>
-                    <div class="step-item">
-                        <span class="text-mobi-2 font-black italic text-xl">03</span>
-                        <h3 class="text-xl font-extrabold text-mobi-1">Build & Install</h3>
-                        <p class="text-sm text-mobi-1/70 mt-2">Mediciones finales seguidas de una instalación maestra con ensamble premium en sitio.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="materiales" class="parallax-container">
-        <video autoplay muted loop playsinline class="fixed-bg">
-            <source src="https://mobi.help/xanax_Prompt_Extreme_close-up_of_premium_Cumar_hardwood_decki_7bf156da-67e3-4255-aa44-ec2a37cf9273_0.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-black/50"></div>
-        <div class="max-w-7xl mx-auto px-6 w-full z-10">
-            <div class="bg-white/95 backdrop-blur-md p-8 md:p-10 rounded-[3rem] shadow-2xl">
-                <div class="mb-8">
-                    <span class="text-mobi-5 font-bold uppercase tracking-widest text-[10px]">Selección Premium</span>
-                    <h3 class="text-3xl font-black text-mobi-1">Materiales</h3>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="material-card-mini">
-                        <img src="https://mobi.help/Tzalam_mobi.png" class="w-full h-24 object-cover">
-                        <div class="p-3 text-center"><h4 class="font-bold text-[10px] uppercase">Tzalam</h4></div>
+                    <div class="step-divider"></div>
+
+                    <div>
+                        <span class="text-mobi-4 font-black italic text-2xl">02</span>
+                        <h3 class="text-2xl font-extrabold text-mobi-1 mb-4">Cronograma Financiero</h3>
+                        <p class="text-mobi-1/70 leading-relaxed">Esquema de inversión: 50% anticipo para inicio, 30% progreso y 20% previo a la instalación final.</p>
                     </div>
-                    <div class="material-card-mini">
-                        <img src="https://mobi.help/Cumaru_mobi.png" class="w-full h-24 object-cover">
-                        <div class="p-3 text-center"><h4 class="font-bold text-[10px] uppercase">Cumarú</h4></div>
-                    </div>
-                    <div class="material-card-mini">
-                        <img src="https://mobi.help/Teca_mobi.png" class="w-full h-24 object-cover">
-                        <div class="p-3 text-center"><h4 class="font-bold text-[10px] uppercase">Teca</h4></div>
-                    </div>
-                    <div class="material-card-mini">
-                        <img src="https://mobi.help/WPC_mobi.png" class="w-full h-24 object-cover">
-                        <div class="p-3 text-center"><h4 class="font-bold text-[10px] uppercase">WPC</h4></div>
+
+                    <div class="step-divider"></div>
+
+                    <div>
+                        <span class="text-mobi-2 font-black italic text-2xl">03</span>
+                        <h3 class="text-2xl font-extrabold text-mobi-1 mb-4">Build & Install</h3>
+                        <p class="text-mobi-1/70 leading-relaxed">Mediciones finales seguidas de una instalación maestra. Gestión logística y ensamble premium en sitio.</p>
+                        <div class="mt-6">
+                            <a href="https://mobi.help/materials.html" class="text-mobi-5 font-bold uppercase text-[10px] tracking-widest border-b-2 border-mobi-5 pb-1 hover:text-mobi-1 hover:border-mobi-1 transition">Ver Catálogo de Materiales →</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -180,42 +131,51 @@
 
     <section class="parallax-container">
         <video autoplay muted loop playsinline class="fixed-bg">
+            <source src="https://mobi.help/xanax_Prompt_Extreme_close-up_of_premium_Cumar_hardwood_decki_7bf156da-67e3-4255-aa44-ec2a37cf9273_0.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="max-w-7xl mx-auto px-6 w-full text-white z-10 text-right">
+            <h4 class="text-3xl md:text-5xl font-bold opacity-40 uppercase tracking-tighter">Calidad que se siente</h4>
+        </div>
+    </section>
+
+    <section class="parallax-container">
+        <video autoplay muted loop playsinline class="fixed-bg">
             <source src="https://mobi.help/social_xanax_A_slow_cinematic_low-angle_tracking_shot_along_a_massiv_e352d8f0-aefb-44fd-a4f4-d4445fc9d322_2.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-mobi-1/40"></div>
-        <div class="max-w-7xl mx-auto px-6 w-full z-10 text-center">
-            <div class="py-20 border-2 border-dashed border-white/20 rounded-[4rem]">
-                <p class="text-white/30 font-bold uppercase tracking-[0.5em] text-sm italic">Próximamente: Nueva Función</p>
-            </div>
+        <div class="absolute inset-0 bg-mobi-1/50"></div>
+        <div class="max-w-7xl mx-auto px-6 w-full text-white z-10">
+            <h4 class="text-3xl md:text-5xl font-bold opacity-40 uppercase tracking-tighter">Whale Made Precision</h4>
         </div>
     </section>
 
     <section id="contact" class="py-24 px-6 bg-white relative z-20">
         <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-12">
-                <h3 class="text-4xl font-extrabold text-mobi-1 mb-2">Manda tus datos</h3>
-                <p class="text-mobi-1/60 font-medium">Inicia tu proyecto con nosotros hoy mismo.</p>
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-extrabold text-mobi-1 mb-4">Inicia tu Proyecto</h3>
+                <p class="text-mobi-1/60 font-medium">Envía tu solicitud para comenzar con el Paso 1.</p>
             </div>
-            <form action="https://formspree.io/f/mreykjlr" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 p-8 rounded-[3rem] bg-stone-50 border border-stone-200">
-                <input type="text" name="name" placeholder="Nombre completo" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-mobi-5">
-                <input type="email" name="email" placeholder="Correo electrónico" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-mobi-5">
-                <textarea name="message" placeholder="¿Cómo podemos ayudarte?" rows="3" class="md:col-span-2 w-full bg-white border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-mobi-5"></textarea>
-                <button type="submit" class="md:col-span-2 py-4 bg-mobi-1 text-white rounded-full font-bold hover:bg-mobi-5 transition shadow-lg">Enviar Solicitud</button>
+            <form action="https://formspree.io/f/mreykjlr" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12 rounded-[2rem] border border-stone-200 bg-stone-50/50">
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Nombre Completo</label>
+                    <input type="text" name="name" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Email</label>
+                    <input type="email" name="email" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
+                </div>
+                <div class="md:col-span-2 space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Mensaje</label>
+                    <textarea name="message" rows="4" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition" placeholder="Cuéntanos sobre tu espacio..."></textarea>
+                </div>
+                <button type="submit" class="md:col-span-2 py-5 bg-mobi-1 text-white rounded-full font-extrabold text-lg hover:bg-mobi-5 transition-all shadow-xl">Enviar Solicitud</button>
             </form>
         </div>
     </section>
 
-    <footer class="py-12 bg-stone-100 text-center relative z-20 border-t border-stone-200">
-        <p class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/40">© 2026 Mobi Deck • Construcción Profesional</p>
+    <footer class="py-12 bg-stone-50 text-center border-t border-stone-200 relative z-20">
+        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-mobi-1/40">© 2026 Mobi Deck • mobi.help</p>
     </footer>
 
-    <script>
-        function expandirIdentidad() {
-            const sec = document.getElementById('identidad');
-            sec.classList.remove('section-retracted');
-            sec.classList.add('section-expanded');
-            setTimeout(() => { sec.scrollIntoView({ behavior: 'smooth' }); }, 100);
-        }
-    </script>
 </body>
 </html>
