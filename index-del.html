@@ -31,46 +31,37 @@
         .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
         .glass-nav { background: rgba(86, 95, 128, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         
-        .parallax-section {
+        .parallax-container {
             position: relative;
-            min-height: 100vh;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
         }
 
         .fixed-bg {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            pointer-events: none;
         }
 
-        .step-card {
+        .master-card {
             background: rgba(255, 255, 255, 0.98);
-            border-left: 6px solid #EB7F8F;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            transition: transform 0.4s ease;
-        }
-        
-        .step-card:hover { transform: translateY(-10px); }
-
-        .hero-logo-bg {
-            position: absolute;
-            right: -5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 60%;
-            opacity: 0.1;
-            z-index: 1;
-            pointer-events: none;
-            filter: brightness(0) invert(1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            border-radius: 4rem 0 4rem 0;
+            border-left: 8px solid #EB7F8F;
         }
 
-        /* Estado para la sección de identidad */
-        .section-retracted { height: 0 !important; opacity: 0; overflow: hidden; }
-        .section-expanded { height: auto !important; opacity: 1; padding: 10rem 0; }
+        .step-divider {
+            height: 1px;
+            background: linear-gradient(to right, #EB7F8F, transparent);
+            margin: 2rem 0;
+            opacity: 0.2;
+        }
 
         #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
         #mobile-menu.active { display: flex; opacity: 1; }
@@ -84,96 +75,77 @@
                 <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-12 w-auto">
                 <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
             </a>
-
             <div class="hidden md:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
-                <a href="#step1" class="hover:text-mobi-5 transition">01. Quotation</a>
-                <a href="#step2" class="hover:text-mobi-5 transition">02. Payment</a>
-                <a href="#step3" class="hover:text-mobi-5 transition">03. Installation</a>
+                <a href="#proceso" class="hover:text-mobi-5 transition">Nuestro Proceso</a>
                 <a href="#contact" class="px-6 py-2.5 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-300">Contact Us</a>
             </div>
-
-            <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
         </nav>
-        <div id="mobile-menu" class="fixed inset-x-0 top-[72px] bg-mobi-1 text-white p-8 flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl z-[90]">
-            <a href="#step1" class="mobile-link">01. Quotation</a>
-            <a href="#step2" class="mobile-link">02. Payment</a>
-            <a href="#step3" class="mobile-link">03. Installation</a>
-            <a href="#contact" class="mobile-link text-mobi-5">Contact Us</a>
-        </div>
     </header>
 
-    <section class="relative min-h-[90vh] flex items-center hero-gradient text-white overflow-hidden">
-        <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
-        <div class="max-w-7xl mx-auto px-6 relative z-10 py-32 w-full">
-            <div class="max-w-3xl">
-                <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5">Guía de Servicio</span>
-                <h2 class="text-5xl md:text-8xl font-extrabold mb-8 leading-[1.1]">
-                    Whale made decks <br><span class="text-mobi-5 uppercase text-3xl md:text-5xl block mt-4">built in days not weeks</span>
-                </h2>
-                <p class="text-lg md:text-xl opacity-80 mb-10 max-w-xl font-medium">
-                    Una experiencia premium de principio a fin. Sigue nuestra guía estructurada para la contratación de Mobi Deck en tu próximo proyecto.
-                </p>
-                <button onclick="expandirIdentidad()" class="inline-flex items-center justify-center px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
-                    Conoce nuestra esencia
-                </button>
+    <section class="relative h-screen flex items-center hero-gradient text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 z-10 w-full">
+            <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5">Guía de Servicio</span>
+            <h2 class="text-5xl md:text-8xl font-extrabold mb-8 leading-[1.1]">Whale made decks</h2>
+            <p class="text-lg md:text-xl opacity-80 mb-10 max-w-xl">Experiencia premium de principio a fin.</p>
+            <a href="#proceso" class="inline-flex items-center justify-center px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">Explorar Proceso</a>
+        </div>
+    </section>
+
+    <section id="proceso" class="parallax-container">
+        <video autoplay muted loop playsinline class="fixed-bg">
+            <source src="https://mobi.help/xanax_Prompt_A_split_screen_on_the_left_a_clean_3D_wireframe__b497e901-8703-4a3d-9100-9091766fafe3_1.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-mobi-1/40"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 w-full z-10">
+            <div class="master-card max-w-2xl p-10 md:p-16">
+                <div class="space-y-12">
+                    <div>
+                        <span class="text-mobi-5 font-black italic text-2xl">01</span>
+                        <h3 class="text-2xl font-extrabold text-mobi-1 mb-4">Project Quotation</h3>
+                        <p class="text-mobi-1/70 leading-relaxed">Proporciona tus planos arquitectónicos o solicita un diseño desde cero. Aseguramos cotizaciones sólidas.</p>
+                    </div>
+
+                    <div class="step-divider"></div>
+
+                    <div>
+                        <span class="text-mobi-4 font-black italic text-2xl">02</span>
+                        <h3 class="text-2xl font-extrabold text-mobi-1 mb-4">Cronograma Financiero</h3>
+                        <p class="text-mobi-1/70 leading-relaxed">Esquema de inversión: 50% anticipo para inicio, 30% progreso y 20% previo a la instalación final.</p>
+                    </div>
+
+                    <div class="step-divider"></div>
+
+                    <div>
+                        <span class="text-mobi-2 font-black italic text-2xl">03</span>
+                        <h3 class="text-2xl font-extrabold text-mobi-1 mb-4">Build & Install</h3>
+                        <p class="text-mobi-1/70 leading-relaxed">Mediciones finales seguidas de una instalación maestra. Gestión logística y ensamble premium en sitio.</p>
+                        <div class="mt-6">
+                            <a href="https://mobi.help/materials.html" class="text-mobi-5 font-bold uppercase text-[10px] tracking-widest border-b-2 border-mobi-5 pb-1 hover:text-mobi-1 hover:border-mobi-1 transition">Ver Catálogo de Materiales →</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="process-steps" class="relative">
-        <video autoplay muted loop playsinline class="fixed-bg z-[-2]">
-            <source src="https://mobi.help/xanax_A_cinematic_slow-motion_underwater_video_deep_in_the_da_80a1563d-fc4d-4508-8ec2-f182ce2efe99_0.mp4" type="video/mp4">
+    <section class="parallax-container">
+        <video autoplay muted loop playsinline class="fixed-bg">
+            <source src="https://mobi.help/xanax_Prompt_Extreme_close-up_of_premium_Cumar_hardwood_decki_7bf156da-67e3-4255-aa44-ec2a37cf9273_0.mp4" type="video/mp4">
         </video>
-        <div class="fixed inset-0 bg-mobi-1/50 backdrop-blur-[2px] z-[-1]"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="max-w-7xl mx-auto px-6 w-full text-white z-10 text-right">
+            <h4 class="text-3xl md:text-5xl font-bold opacity-40 uppercase tracking-tighter">Calidad que se siente</h4>
+        </div>
+    </section>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            
-            <div id="identidad" class="section-retracted transition-all duration-700">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-white">
-                    <div class="space-y-6">
-                        <span class="text-mobi-5 font-bold uppercase tracking-[0.3em] text-[10px]">Nuestra Identidad</span>
-                        <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">Somos una empresa mexa dedicada a la construcción de decks.</h2>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-[3rem] border border-white/20">
-                        <p class="text-2xl font-bold italic leading-snug">"Construimos decks que reflejan la fuerza del mar."</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="step1" class="min-h-screen flex items-center py-32">
-                <div class="step-card max-w-xl p-8 md:p-16 rounded-tr-[4rem] rounded-bl-[4rem]">
-                    <span class="text-4xl font-black text-mobi-5/30 italic block mb-2">01</span>
-                    <h3 class="text-3xl font-extrabold text-mobi-1 mb-6">Project Quotation</h3>
-                    <p class="text-mobi-1/70 leading-relaxed mb-6">Proporciona tus planos arquitectónicos o solicita un diseño desde cero.</p>
-                    <div class="flex gap-4 text-[10px] font-bold uppercase tracking-widest text-mobi-2">
-                        <span class="bg-stone-100 px-3 py-1 rounded-md">Evaluación de Planos</span>
-                        <span class="bg-stone-100 px-3 py-1 rounded-md">Diseño a Medida</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="h-[40vh]"></div>
-
-            <div id="step2" class="min-h-screen flex items-center justify-end py-32">
-                <div class="step-card max-w-xl p-8 md:p-16 rounded-tl-[4rem] rounded-br-[4rem] border-l-0 border-r-4 border-mobi-4 text-right">
-                    <span class="text-4xl font-black text-mobi-4/30 italic block mb-2">02</span>
-                    <h3 class="text-3xl font-extrabold text-mobi-1 mb-6">Cronograma financiero</h3>
-                    <p class="text-mobi-1/70 leading-relaxed mb-4">Esquema de pagos: 50% anticipo, 30% progreso y 20% previo a instalación.</p>
-                </div>
-            </div>
-
-            <div class="h-[40vh]"></div>
-
-            <div id="step3" class="min-h-screen flex items-center py-32">
-                <div class="step-card max-w-xl p-8 md:p-16 rounded-tr-[4rem] rounded-bl-[4rem] border-mobi-2">
-                    <span class="text-4xl font-black text-mobi-2/30 italic block mb-2">03</span>
-                    <h3 class="text-3xl font-extrabold text-mobi-1 mb-6">Build & Install</h3>
-                    <p class="text-mobi-1/70 leading-relaxed mb-8">Mediciones finales seguidas de una instalación maestra en sitio.</p>
-                    <a href="https://mobi.help/materials.html" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-4 text-mobi-4 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-4 hover:text-white transition-all">Ver materiales</a>
-                </div>
-            </div>
+    <section class="parallax-container">
+        <video autoplay muted loop playsinline class="fixed-bg">
+            <source src="https://mobi.help/social_xanax_A_slow_cinematic_low-angle_tracking_shot_along_a_massiv_e352d8f0-aefb-44fd-a4f4-d4445fc9d322_2.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-mobi-1/50"></div>
+        <div class="max-w-7xl mx-auto px-6 w-full text-white z-10">
+            <h4 class="text-3xl md:text-5xl font-bold opacity-40 uppercase tracking-tighter">Whale Made Precision</h4>
         </div>
     </section>
 
@@ -193,13 +165,6 @@
                     <input type="email" name="email" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
                 </div>
                 <div class="md:col-span-2 space-y-2">
-                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Estado de Planos</label>
-                    <select name="blueprints" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
-                        <option value="ready">Tengo planos listos</option>
-                        <option value="none">Necesito diseño/planos</option>
-                    </select>
-                </div>
-                <div class="md:col-span-2 space-y-2">
                     <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Mensaje</label>
                     <textarea name="message" rows="4" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition" placeholder="Cuéntanos sobre tu espacio..."></textarea>
                 </div>
@@ -209,27 +174,8 @@
     </section>
 
     <footer class="py-12 bg-stone-50 text-center border-t border-stone-200 relative z-20">
-        <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck" class="h-10 mx-auto grayscale opacity-50 mb-4">
         <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-mobi-1/40">© 2026 Mobi Deck • mobi.help</p>
     </footer>
 
-    <script>
-        function expandirIdentidad() {
-            const sec = document.getElementById('identidad');
-            sec.classList.toggle('section-retracted');
-            sec.classList.toggle('section-expanded');
-            if(!sec.classList.contains('section-retracted')) {
-                sec.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('active'));
-        
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
-        });
-    </script>
 </body>
 </html>
