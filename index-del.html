@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobi Deck | Proceso Profesional</title>
+    <title>Mobi Deck | Proceso Profesional & Garantía</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <script>
@@ -27,236 +27,78 @@
         }
     </script>
     <style>
-        body { scroll-behavior: smooth; margin: 0; overflow-x: hidden; }
+        body { scroll-behavior: smooth; margin: 0; }
         .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
         .glass-nav { background: rgba(86, 95, 128, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-        
-        /* Parallax Global Background */
-        .parallax-bg-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        .fixed-video { width: 100%; height: 100%; object-fit: cover; }
-        .video-overlay { position: absolute; inset: 0; background: rgba(44, 48, 64, 0.5); backdrop-filter: blur(1px); }
-
-        .hero-logo-bg {
-            position: absolute;
-            right: -5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 60%;
-            opacity: 0.1;
-            z-index: 1;
-            filter: brightness(0) invert(1);
-        }
-
-        .process-card {
-            background: rgba(255, 255, 255, 0.98);
-            border-top: 8px solid #EB7F8F;
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Wood Cards - Compact version */
-        .wood-card {
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            height: 540px;
-            background: white;
-            border-radius: 1.5rem;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        .wood-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.3); }
-        
-        .spec-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.4rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-        }
-
-        .section-retracted { height: 0; opacity: 0; overflow: hidden; transition: all 0.8s ease; }
-        .section-expanded { height: auto; opacity: 1; padding: 8rem 0; }
+        .parallax-container { position: relative; height: 90vh; overflow: hidden; clip-path: inset(0 0 0 0); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .section-retracted { height: 0 !important; opacity: 0; pointer-events: none; }
+        .section-expanded { height: auto !important; min-height: 90vh; opacity: 1 !important; pointer-events: auto !important; padding-top: 5rem; padding-bottom: 5rem; }
+        .fixed-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; transform: translateZ(0); pointer-events: none; }
+        .content-overlay { position: relative; height: 100%; width: 100%; display: flex; align-items: center; z-index: 10; }
+        .step-card { background: rgba(255, 255, 255, 0.98); border-left: 6px solid #EB7F8F; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+        .hero-logo-bg { position: absolute; right: -5%; top: 50%; transform: translateY(-50%); width: 60%; opacity: 0.1; z-index: 1; pointer-events: none; filter: brightness(0) invert(1); }
+        #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
+        #mobile-menu.active { display: flex; opacity: 1; }
     </style>
 </head>
 <body class="bg-stone-50 text-mobi-1">
 
-    <div class="parallax-bg-container">
-        <video autoplay muted loop playsinline class="fixed-video">
-            <source src="https://mobi.help/xanax_A_cinematic_slow-motion_underwater_video_deep_in_the_da_80a1563d-fc4d-4508-8ec2-f182ce2efe99_0.mp4" type="video/mp4">
-        </video>
-        <div class="video-overlay"></div>
-    </div>
-
     <header class="fixed w-full z-[100] glass-nav">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-white">
-            <a href="#" class="flex items-center gap-4">
-                <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-10 w-auto">
+            <a href="index.html" class="flex items-center gap-4">
+                <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-12 w-auto">
                 <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
             </a>
             <div class="hidden md:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
-                <a href="#proceso" class="hover:text-mobi-5">Proceso</a>
-                <a href="#catalogo" class="hover:text-mobi-5">Materiales</a>
-                <a href="#contact" class="px-6 py-2.5 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-300">Get Quote</a>
+                <a href="#step1" class="hover:text-mobi-5 transition">01. Cotización</a>
+                <a href="#step2" class="hover:text-mobi-5 transition">02. Pagos</a>
+                <a href="#step3" class="hover:text-mobi-5 transition">03. Garantía</a>
+                <a href="#contact" class="px-6 py-2.5 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-300">Contacto</a>
             </div>
+            <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </nav>
     </header>
 
-    <section class="relative min-h-[90vh] flex items-center hero-gradient text-white overflow-hidden">
+    <section class="relative min-h-[80vh] flex items-center hero-gradient text-white overflow-hidden">
         <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
         <div class="max-w-7xl mx-auto px-6 relative z-10 py-32 w-full">
-            <div class="max-w-3xl">
-                <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5">Guía de Servicio</span>
+            <div class="max-w-3xl text-left">
+                <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5">Calidad Premium y Clase Mundial</span>
                 <h2 class="text-5xl md:text-8xl font-extrabold mb-8 leading-[1.1]">
-                    Whale made decks <br><span class="text-mobi-5 uppercase text-3xl md:text-5xl block mt-4">built in days not weeks</span>
+                    Whale made decks <br><span class="text-mobi-5 uppercase text-3xl md:text-5xl block mt-4">Construcción en días, no semanas</span>
                 </h2>
                 <p class="text-lg md:text-xl opacity-80 mb-10 max-w-xl font-medium">
-                    Una experiencia premium de principio a fin. Sigue nuestra guía estructurada para la contratación de Mobi Deck en tu próximo proyecto.
+                    Especialistas mexicanos en construcción y mantenimiento de decks[cite: 5]. Respaldamos cada proyecto con contratos formales y garantías de hasta 10 años[cite: 2, 21].
                 </p>
-                <button onclick="expandirIdentidad()" class="inline-flex items-center justify-center px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
-                    Conoce nuestra esencia
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <section id="proceso" class="relative py-32">
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div id="identidad" class="section-retracted">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-white mb-20">
-                    <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">Somos una empresa mexa dedicada a la construcción de decks.</h2>
-                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-[3rem] border border-white/20">
-                        <p class="text-2xl font-bold italic leading-snug">"Construimos decks que reflejan la fuerza del mar."</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="process-card rounded-[3rem] p-10 md:p-16">
-                <div class="text-center mb-16">
-                    <h3 class="text-3xl font-extrabold text-mobi-1 uppercase tracking-tighter">Project Workflow</h3>
-                </div>
-                <div class="grid md:grid-cols-3 gap-12">
-                    <div>
-                        <span class="text-5xl font-black text-mobi-5/20 italic block mb-4">01</span>
-                        <h4 class="text-xl font-bold mb-3 text-mobi-2">Quotation</h4>
-                        <p class="text-sm text-mobi-1/70 leading-relaxed">Evaluación de planos arquitectónicos o diseño desde cero para tu espacio.</p>
-                    </div>
-                    <div>
-                        <span class="text-5xl font-black text-mobi-4/20 italic block mb-4">02</span>
-                        <h4 class="text-xl font-bold mb-3 text-mobi-2">Payment</h4>
-                        <p class="text-sm text-mobi-1/70 leading-relaxed">Esquema financiero: 50% anticipo, 30% progreso y 20% previo a entrega.</p>
-                    </div>
-                    <div>
-                        <span class="text-5xl font-black text-mobi-2/20 italic block mb-4">03</span>
-                        <h4 class="text-xl font-bold mb-3 text-mobi-2">Installation</h4>
-                        <p class="text-sm text-mobi-1/70 leading-relaxed">Mediciones de precisión y ejecución maestra por nuestro equipo especializado.</p>
-                    </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="expandirIdentidad()" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
+                        Nuestra Identidad
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="catalogo" class="relative py-24">
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="mb-16 text-center text-white">
-                <span class="text-mobi-5 font-bold uppercase tracking-[0.3em] text-[10px]">The Fleet</span>
-                <h2 class="text-4xl font-extrabold mt-2">Premium Materials</h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <div class="wood-card">
-                    <div class="h-40 overflow-hidden"><img src="https://mobi.help/1cedar.png" class="w-full h-full object-cover" alt="Cedro"></div>
-                    <div class="p-6 flex flex-col h-full">
-                        <h3 class="text-lg font-bold text-mobi-2 mb-2">Cedro (Cedar)</h3>
-                        <p class="text-[11px] text-mobi-1/70 mb-4 line-clamp-3">Aromático y resistente. Contiene thujaplicinas naturales que lo hacen tóxico para hongos e insectos.</p>
-                        <div class="mt-auto space-y-1">
-                            <div class="spec-row"><span>Hardness</span><span>900 lbf</span></div>
-                            <div class="spec-row"><span>Best Use</span><span>Railings</span></div>
-                        </div>
+    <section id="identidad" class="parallax-container section-retracted relative overflow-hidden">
+        <video autoplay muted loop playsinline class="fixed-bg z-[-1]" style="background-color: #000;">
+            <source src="https://mobi.help/xanax_A_cinematic_slow-motion_underwater_video_deep_in_the_da_80a1563d-fc4d-4508-8ec2-f182ce2efe99_0.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-mobi-1/60 backdrop-blur-[2px] z-[1]"></div>
+        <div class="content-overlay relative z-10 py-12">
+            <div class="max-w-7xl mx-auto px-6 w-full text-white text-center md:text-left">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <span class="text-mobi-5 font-bold uppercase tracking-[0.3em] text-[10px]">Maderas Finas</span>
+                        <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">Materia prima de origen natural.</h2>
+                        <p class="text-lg opacity-90 leading-relaxed">Trabajamos con maderas seleccionadas como Cedro, Maculí, Tzalam, Parota, Teca, Cumarú y Pino. Entendemos que cada veta es única y refleja la belleza de un organismo vivo[cite: 9, 34].</p>
                     </div>
-                </div>
-                <div class="wood-card">
-                    <div class="h-40 overflow-hidden"><img src="https://mobi.help/1maculi.png" class="w-full h-full object-cover" alt="Maculís"></div>
-                    <div class="p-6 flex flex-col h-full">
-                        <h3 class="text-lg font-bold text-mobi-2 mb-2">Maculís</h3>
-                        <p class="text-[11px] text-mobi-1/70 mb-4 line-clamp-3">Tabebuia rosea. Veteado irregular con un brillo natural espectacular. Altamente resiliente.</p>
-                        <div class="mt-auto space-y-1">
-                            <div class="spec-row"><span>Hardness</span><span>1,100 lbf</span></div>
-                            <div class="spec-row"><span>Origin</span><span>Tropical Am.</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="wood-card">
-                    <div class="h-40 overflow-hidden"><img src="https://mobi.help/1tzalam.png" class="w-full h-full object-cover" alt="Tzalam"></div>
-                    <div class="p-6 flex flex-col h-full">
-                        <h3 class="text-lg font-bold text-mobi-2 mb-2">Tzalam</h3>
-                        <p class="text-[11px] text-mobi-1/70 mb-4 line-clamp-3">Nogal Maya. El estándar de oro para decks exteriores por su densidad y tono chocolate profundo.</p>
-                        <div class="mt-auto space-y-1">
-                            <div class="spec-row"><span>Hardness</span><span>1,400 lbf</span></div>
-                            <div class="spec-row"><span>Maintenance</span><span>Low</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="wood-card">
-                    <div class="h-40 overflow-hidden"><img src="https://mobi.help/1teca.png" class="w-full h-full object-cover" alt="Teca"></div>
-                    <div class="p-6 flex flex-col h-full">
-                        <h3 class="text-lg font-bold text-mobi-2 mb-2">Teca (Teak)</h3>
-                        <p class="text-[11px] text-mobi-1/70 mb-4 line-clamp-3">Rey de las maderas marítimas. Su resina oleosa actúa como impermeabilizante permanente.</p>
-                        <div class="mt-auto space-y-1">
-                            <div class="spec-row"><span>Hardness</span><span>1,070 lbf</span></div>
-                            <div class="spec-row"><span>Weathering</span><span>Elite</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="wood-card">
-                    <div class="h-40 overflow-hidden"><img src="https://mobi.help/1parota.png" class="w-full h-full object-cover" alt="Parota"></div>
-                    <div class="p-6 flex flex-col h-full">
-                        <h3 class="text-lg font-bold text-mobi-2 mb-2">Parota</h3>
-                        <p class="text-[11px] text-mobi-1/70 mb-4 line-clamp-3">Sustentable y de gran escala. Ideal para diseños de tablón ancho y cubiertas monumentales.</p>
-                        <div class="mt-auto space-y-1">
-                            <div class="spec-row"><span>Aesthetic</span><span>Wide Plank</span></div>
-                            <div class="spec-row"><span>Eco Rating</span><span>Fast Grow</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="wood-card">
-                    <div class="h-40 overflow-hidden"><img src="https://mobi.help/01cumaru.jpg" class="w-full h-full object-cover" alt="Cumarú"></div>
-                    <div class="p-6 flex flex-col h-full">
-                        <h3 class="text-lg font-bold text-mobi-2 mb-2">Cumarú</h3>
-                        <p class="text-[11px] text-mobi-1/70 mb-4 line-clamp-3">Una de las más densas del mundo. Clasificación de fuego Clase A y durabilidad de 50+ años.</p>
-                        <div class="mt-auto space-y-1">
-                            <div class="spec-row"><span>Hardness</span><span>3,540 lbf</span></div>
-                            <div class="spec-row"><span>Fire Rating</span><span>Class A</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="wood-card">
-                    <div class="h-40 overflow-hidden"><img src="https://mobi.help/01teakwpc.jpg" class="w-full h-full object-cover" alt="Teak WPC"></div>
-                    <div class="p-6 flex flex-col h-full">
-                        <h3 class="text-lg font-bold text-mobi-2 mb-2">Teak WPC</h3>
-                        <p class="text-[11px] text-mobi-1/70 mb-4 line-clamp-3">Tecnología de polímeros que imita la teca. Sin mantenimiento, sin astillas, sin decoloración.</p>
-                        <div class="mt-auto space-y-1">
-                            <div class="spec-row"><span>Maintenance</span><span>Zero</span></div>
-                            <div class="spec-row"><span>UV Resist</span><span>High</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="wood-card">
-                    <div class="h-40 overflow-hidden"><img src="https://mobi.help/01walnutwpc.jpg" class="w-full h-full object-cover" alt="Walnut WPC"></div>
-                    <div class="p-6 flex flex-col h-full">
-                        <h3 class="text-lg font-bold text-mobi-2 mb-2">Walnut WPC</h3>
-                        <p class="text-[11px] text-mobi-1/70 mb-4 line-clamp-3">Tono espresso de lujo con máxima estabilidad dimensional. Fabricado con materiales reciclados.</p>
-                        <div class="mt-auto space-y-1">
-                            <div class="spec-row"><span>Stability</span><span>Max</span></div>
-                            <div class="spec-row"><span>Eco Rating</span><span>Recycled</span></div>
+                    <div class="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-[3rem] border border-white/20">
+                        <p class="text-2xl md:text-3xl font-bold mb-6 italic leading-snug">"Construimos decks que reflejan la fuerza del mar y capturan su belleza estructural."</p>
+                        <div class="grid grid-cols-2 gap-4 text-[10px] font-bold uppercase tracking-widest text-mobi-5">
+                            <div class="border border-white/20 p-4 rounded-2xl text-center">Resistencia Real</div>
+                            <div class="border border-white/20 p-4 rounded-2xl text-center">Sello Mexicano</div>
                         </div>
                     </div>
                 </div>
@@ -264,51 +106,132 @@
         </div>
     </section>
 
-    <section id="contact" class="relative py-24 px-6">
-        <div class="max-w-4xl mx-auto relative z-10">
-            <div class="text-center mb-16 text-white">
-                <h3 class="text-4xl font-extrabold mb-4">Inicia tu Proyecto</h3>
-                <p class="opacity-80">Cuéntanos tu visión para comenzar con la cotización.</p>
+    <section id="step1" class="parallax-container">
+        <video autoplay muted loop playsinline class="fixed-bg" style="background-color: #565F80;">
+            <source src="https://mobi.help/xanax_Prompt_A_split_screen_on_the_left_a_clean_3D_wireframe__b497e901-8703-4a3d-9100-9091766fafe3_1.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-mobi-1/40"></div>
+        <div class="content-overlay">
+            <div class="max-w-7xl mx-auto px-6 w-full">
+                <div class="step-card max-w-xl p-8 md:p-16 rounded-tr-[4rem] rounded-bl-[4rem]">
+                    <span class="text-4xl font-black text-mobi-5/30 italic block mb-2">01</span>
+                    <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-6">Cotización y Proyecto</h3>
+                    <p class="text-mobi-1/70 leading-relaxed mb-6">
+                        Desarrollamos planos técnicos (Anexo A) para asegurar precisión absoluta[cite: 15]. Si Mobi Deck realiza el diseño, asumimos total responsabilidad sobre la estética y funcionalidad del proyecto[cite: 16].
+                    </p>
+                    <div class="flex flex-wrap gap-4 text-[10px] font-bold uppercase tracking-widest text-mobi-2">
+                        <span class="bg-stone-100 px-3 py-1 rounded-md">Desarrollo de Planos</span>
+                        <span class="bg-stone-100 px-3 py-1 rounded-md">Medidas de Precisión</span>
+                    </div>
+                </div>
             </div>
-            <form action="https://formspree.io/f/mreykjlr" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12 rounded-[2rem] border border-white/20 bg-white/95 backdrop-blur-md">
+        </div>
+    </section>
+
+    <section id="step2" class="parallax-container">
+        <video autoplay muted loop playsinline class="fixed-bg" style="background-color: #000;">
+            <source src="https://mobi.help/xanax_Prompt_Extreme_close-up_of_premium_Cumar_hardwood_decki_7bf156da-67e3-4255-aa44-ec2a37cf9273_0.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="content-overlay justify-end">
+            <div class="max-w-7xl mx-auto px-6 w-full flex justify-end">
+                <div class="step-card max-w-xl p-8 md:p-16 rounded-tl-[4rem] rounded-br-[4rem] border-l-0 border-r-4 border-mobi-4 text-right">
+                    <span class="text-4xl font-black text-mobi-4/30 italic block mb-2">02</span>
+                    <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-6">Esquema de Pagos</h3>
+                    <p class="text-mobi-1/70 leading-relaxed mb-8">
+                        Seguridad para tu inversión: <br>
+                        <strong>50% Anticipo</strong> al firmar[cite: 11], <br>
+                        <strong>30% de Progreso</strong> [cite: 12] y <br>
+                        <strong>20% Saldo Final</strong> previo a la instalación[cite: 13].
+                    </p>
+                    <span class="text-[10px] font-bold uppercase text-mobi-4 tracking-widest">Contratos con Folio Único [cite: 2]</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="step3" class="parallax-container">
+        <video autoplay muted loop playsinline class="fixed-bg" style="background-color: #565F80;">
+            <source src="https://mobi.help/social_xanax_A_slow_cinematic_low-angle_tracking_shot_along_a_massiv_e352d8f0-aefb-44fd-a4f4-d4445fc9d322_2.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-mobi-1/50"></div>
+        <div class="content-overlay">
+            <div class="max-w-7xl mx-auto px-6 w-full">
+                <div class="step-card max-w-2xl p-8 md:p-12 rounded-tr-[4rem] rounded-bl-[4rem] border-mobi-2 flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1">
+                        <span class="text-4xl font-black text-mobi-2/30 italic block mb-2">03</span>
+                        <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-6">Garantía Certificada</h3>
+                        <div class="space-y-4 text-mobi-1/70 text-sm leading-relaxed">
+                            <p><strong>• Estructura:</strong> Cobertura de 5 a 10 años en integridad estructural y soportes[cite: 21, 31].</p>
+                            <p><strong>• Mano de Obra:</strong> 1 año de garantía en instalación, fijaciones y niveles[cite: 21, 32].</p>
+                            <p class="text-xs italic">Para mantener la garantía, es obligatorio el mantenimiento preventivo anual exclusivo de Mobi Deck[cite: 22, 41].</p>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 w-40 md:w-56">
+                        <img src="https://mobi.help/5yrwarranty.png" alt="Sello de Garantía 5 Años" class="w-full h-auto drop-shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 bg-white relative z-20">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-extrabold text-mobi-1 mb-4">Inicia tu Proyecto</h3>
+                <p class="text-mobi-1/60 font-medium italic">"Mérida, Yucatán • Servicio de Clase Mundial" [cite: 3]</p>
+            </div>
+            <form action="https://formspree.io/f/mreykjlr" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12 rounded-[2rem] border border-stone-200 bg-stone-50/50">
                 <div class="space-y-2">
                     <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Nombre Completo</label>
-                    <input type="text" name="name" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-mobi-5 transition">
+                    <input type="text" name="name" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-mobi-5 transition">
                 </div>
                 <div class="space-y-2">
                     <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Email</label>
-                    <input type="email" name="email" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-mobi-5 transition">
+                    <input type="email" name="email" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-mobi-5 transition">
                 </div>
                 <div class="md:col-span-2 space-y-2">
-                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Estado de Planos</label>
-                    <select name="blueprints" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-mobi-5 transition">
-                        <option value="ready">Tengo planos listos</option>
-                        <option value="none">Necesito diseño/planos</option>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Madera de Interés</label>
+                    <select name="wood" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-mobi-5 transition">
+                        <option value="tzalam">Tzalam</option>
+                        <option value="parota">Parota</option>
+                        <option value="teca">Teca</option>
+                        <option value="cedro">Cedro</option>
+                        <option value="cumaru">Cumarú</option>
+                        <option value="maculis">Maculí</option>
+                        <option value="pino">Pino</option>
                     </select>
                 </div>
                 <div class="md:col-span-2 space-y-2">
-                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Mensaje / Detalles del Proyecto</label>
-                    <textarea name="message" rows="4" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-mobi-5 transition" placeholder="Cuéntanos sobre el área, tipo de madera de interés..."></textarea>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Mensaje</label>
+                    <textarea name="message" rows="4" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-mobi-5 transition" placeholder="Háblanos de tu terraza..."></textarea>
                 </div>
-                <button type="submit" class="md:col-span-2 py-5 bg-mobi-1 text-white rounded-full font-extrabold text-lg hover:bg-mobi-5 transition-all shadow-xl">Enviar Solicitud</button>
+                <button type="submit" class="md:col-span-2 py-5 bg-mobi-1 text-white rounded-full font-extrabold text-lg hover:bg-mobi-5 transition-all shadow-xl">
+                    Enviar Solicitud
+                </button>
             </form>
         </div>
     </section>
 
-    <footer class="py-12 bg-white text-center border-t border-stone-200 relative z-20">
+    <footer class="py-12 bg-stone-50 text-center border-t border-stone-200 relative z-20">
         <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck" class="h-10 mx-auto grayscale opacity-50 mb-4">
-        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-mobi-1/40">© 2026 Mobi Deck • Materials & Process</p>
+        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-mobi-1/40">© 2026 Mobi Deck • Nicolás Andrés Medina Razo • mobi.help</p>
     </footer>
 
     <script>
         function expandirIdentidad() {
             const sec = document.getElementById('identidad');
-            sec.classList.toggle('section-retracted');
-            sec.classList.toggle('section-expanded');
-            if(sec.classList.contains('section-expanded')) {
-                sec.scrollIntoView({ behavior: 'smooth' });
-            }
+            sec.classList.remove('section-retracted');
+            sec.classList.add('section-expanded');
+            setTimeout(() => { sec.scrollIntoView({ behavior: 'smooth' }); }, 150);
         }
+        function forceVideoPlay() {
+            document.querySelectorAll('video').forEach(v => { v.muted = true; v.play().catch(() => {}); });
+        }
+        window.addEventListener('load', forceVideoPlay);
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle?.addEventListener('click', (e) => { e.stopPropagation(); mobileMenu.classList.toggle('active'); });
     </script>
 </body>
 </html>
