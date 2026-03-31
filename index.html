@@ -96,6 +96,41 @@
             filter: brightness(0) invert(1);
         }
 
+        /* ESTILOS DE MATERIALES COMPACTOS */
+        .wood-card {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+            transform-origin: center;
+            z-index: 1;
+            height: 100%; /* Ajuste para que sean del mismo tamaño y sin altura fija excesiva */
+            display: flex;
+            flex-direction: column;
+            backface-visibility: hidden;
+        }
+
+        .wood-card:hover {
+            transform: scale(1.05);
+            z-index: 50;
+            box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.3);
+        }
+
+        .wood-img {
+            transition: transform 1.2s ease;
+        }
+        .wood-card:hover .wood-img {
+            transform: scale(1.1);
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.35rem 0; /* Menos espacio vertical */
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.65rem; /* Letra más pequeña para las especificaciones */
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
         #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
         #mobile-menu.active { display: flex; opacity: 1; }
     </style>
@@ -221,12 +256,170 @@
                                 <span class="bg-stone-100 px-3 py-1 rounded-md">Maderas Naturales</span>
                                 <span class="bg-stone-100 px-3 py-1 rounded-md">Diseño a Medida</span>
                             </div>
-                            <a href="https://mobi.help/materials" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-5 text-mobi-5 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-5 hover:text-white transition-all duration-300">
+                            <button onclick="toggleMaterials()" type="button" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-5 text-mobi-5 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-5 hover:text-white transition-all duration-300">
                                 Ver Materiales
-                            </a>
+                            </button>
                         </div>
                         <div class="w-full md:w-1/2">
                             <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800" alt="Diseño de Arquitectura" class="w-full h-40 md:h-48 object-cover rounded-xl shadow-md">
+                        </div>
+                    </div>
+
+                    <div id="materials-container" class="hidden w-full mt-12 pt-10 border-t border-stone-200">
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/1cedar.png" alt="Cedro Wood" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Cedro (Cedar)</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        Renowned for its aromatic scent, containing natural thujaplicins that make it naturally toxic to decay-causing fungi and wood-boring insects.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>900 lbf</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Stability</span><span>High</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Pink to Brown</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Durability</span><span>Excellent</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Best Use</span><span>Pergolas</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/1maculi.png" alt="Maculís Wood" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Maculís</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        A high-performance hardwood with a stunning visual profile. Prized for its straight-to-irregular grain pattern and high-luster finish.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>1,100 lbf</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Texture</span><span>Fine-Med</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Pale Golden</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Resilience</span><span>High</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Origin</span><span>Tropical</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/1tzalam.png" alt="Tzalam Wood" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Tzalam</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        The gold standard for outdoor decking. Known as "Mayan Walnut," it features a dramatic deep chocolate hue with natural luster.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>1,400 lbf</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Density</span><span>Very High</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Choco/Plum</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Maint.</span><span>Low</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Best Use</span><span>Decking</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/1teca.png" alt="Teca Wood" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Teca (Teak)</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        The undisputed king of maritime timber. It produces a natural oily resin that acts as a permanent, self-protecting waterproofing agent.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>1,070 lbf</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Silica</span><span>High</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Golden Honey</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Grade</span><span>Maritime</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Weather</span><span>Excellent</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/1parota.png" alt="Parota Wood" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Parota</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        Favored for its massive scale and sustainability. It offers a unique weight-to-strength ratio with a beautifully interlocked grain.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Grain</span><span>Interlocked</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Weight</span><span>Lighter</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Aesthetic</span><span>Live Edge</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Eco</span><span>Fast Grow</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Strength</span><span>High Ratio</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/01teakwpc.jpg" alt="Teak WPC" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Teak WPC</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        Combines Teak aesthetics with aerospace-grade polymer. Requires zero oiling, offering an anti-slip, splinter-free surface.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Material</span><span>Composite</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Maint.</span><span>Ultra-Low</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">UV Resist</span><span>High</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Surface</span><span>Anti-Slip</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Best Use</span><span>Pool Decks</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/01walnutwpc.jpg" alt="Walnut WPC" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Walnut WPC</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        Sophisticated dark tones of luxury Walnut engineered for absolute dimensional stability without warping or expansion.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>Impact Resist</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Stability</span><span>Maximum</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Espresso</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Eco</span><span>Recycled</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Finish</span><span>Matte</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/01cumaru.jpg" alt="Cumarú Wood" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Cumarú</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        "Brazilian Teak" is incredibly dense with a Class A fire rating, making it nearly as resistant to flame and rot as concrete.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>3,540 lbf</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Lifespan</span><span>50+ Years</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Golden/Red</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Fire Rating</span><span>Class A</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Best Use</span><span>Luxury</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -352,6 +545,23 @@
             setTimeout(() => {
                 sec.scrollIntoView({ behavior: 'smooth' });
             }, 150);
+        }
+
+        function toggleMaterials() {
+            const container = document.getElementById('materials-container');
+            const section = document.getElementById('step1');
+            
+            if (container.classList.contains('hidden')) {
+                container.classList.remove('hidden');
+                section.classList.add('section-expanded');
+                setTimeout(() => {
+                    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            } else {
+                container.classList.add('hidden');
+                section.classList.remove('section-expanded');
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         function forceVideoPlay() {
