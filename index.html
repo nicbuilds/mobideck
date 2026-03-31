@@ -229,7 +229,7 @@
                             "Construimos decks que reflejan la fuerza del mar, su resistencia y que capturan su belleza."
                         </p>
                         <p class="text-lg opacity-90 leading-relaxed mb-8">
-                            Nos distinguimos por nuestra calidad premium y servicio profesional. Trabajamos con maderas finas como Cedro, Maculí, Tzalam, Teca, Parota, Cumarú y Pino.
+                            Nos distinguimos por nuestra calidad premium y servicio profesional.
                         </p>
                         <div class="flex items-center gap-6">
                             <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-mobi-5">
@@ -262,9 +262,9 @@
                     <div class="flex flex-col md:flex-row gap-8 items-center">
                         <div class="w-full md:w-1/2">
                             <span class="text-4xl font-black text-mobi-5/30 italic block mb-2">01</span>
-                            <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-4">Project Quotation</h3>
+                            <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-4">Diseño y materiales</h3>
                             <p class="text-mobi-1/70 leading-relaxed mb-4">
-                                Proporciona tus planos arquitectónicos o solicita un diseño desde cero. La responsabilidad recae en Mobi Deck solo cuando desarrollamos el proyecto.
+                                Proporciona tus planos arquitectónicos o solicita un diseño desde cero y elije una madera.
                             </p>
                             <p class="text-mobi-1/70 leading-relaxed mb-6">
                                 Evaluamos las condiciones del terreno y tus preferencias estéticas para trazar la estrategia ideal, asegurando que tu deck luzca espectacular y perdure con el tiempo.
@@ -455,7 +455,7 @@
                     <div class="flex flex-col md:flex-row-reverse gap-8 items-center text-right">
                         <div class="w-full md:w-1/2">
                             <span class="text-4xl font-black text-mobi-4/30 italic block mb-2">02</span>
-                            <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-4">Financial Schedule</h3>
+                            <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-4">Estime costos y estructure sus pagos</h3>
                             <p class="text-mobi-1/70 leading-relaxed mb-4">
                                 Esquema transparente: Anticipo del 50% a la firma, 30% de progreso y 20% de saldo final un día antes de la instalación.
                             </p>
@@ -463,7 +463,7 @@
                                 Te otorgamos un contrato claro y detallado que estipula las fechas de entrega, responsabilidades y alcances del proyecto, garantizando seguridad total en tu inversión.
                             </p>
                             <button onclick="toggleOptimizer()" type="button" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-4 text-mobi-4 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-4 hover:text-white transition-all duration-300">
-                                Opciones de Pago
+                                Estime costos
                             </button>
                         </div>
                         <div class="w-full md:w-1/2">
@@ -553,10 +553,17 @@
                                     </div>
                                 </div>
 
-                                <a href="paymentopts.html" class="mt-10 w-full bg-gradient-to-r from-mobi-3 via-mobi-4 to-mobi-5 text-white font-black py-5 rounded-2xl transition-all shadow-xl hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 text-[11px] tracking-widest uppercase group">
-                                    <span>Ver Opciones de Pago</span>
-                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                                </a>
+                                <div class="mt-10 w-full">
+                                    <button onclick="togglePaymentInfo()" type="button" class="w-full bg-gradient-to-r from-mobi-3 via-mobi-4 to-mobi-5 text-white font-black py-5 rounded-2xl transition-all shadow-xl hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 text-[11px] tracking-widest uppercase group">
+                                        <span>Ver Opciones de Pago</span>
+                                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </button>
+                                    <div id="payment-info-container" class="hidden mt-4 p-5 bg-white/10 rounded-2xl border border-white/20 text-center transition-all duration-300">
+                                        <p class="text-[12px] font-bold tracking-wide leading-relaxed text-white">
+                                            Puede pagar con tarjeta de credito, debito, efectivo o por transferencia
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -685,6 +692,15 @@
                 container.classList.add('hidden');
                 section.classList.remove('section-expanded');
                 section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function togglePaymentInfo() {
+            const container = document.getElementById('payment-info-container');
+            if (container.classList.contains('hidden')) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
             }
         }
 
