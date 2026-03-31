@@ -101,7 +101,7 @@
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
             transform-origin: center;
             z-index: 1;
-            height: 100%; /* Ajuste para que sean del mismo tamaño y sin altura fija excesiva */
+            height: 100%; 
             display: flex;
             flex-direction: column;
             backface-visibility: hidden;
@@ -123,13 +123,30 @@
         .spec-row {
             display: flex;
             justify-content: space-between;
-            padding: 0.35rem 0; /* Menos espacio vertical */
+            padding: 0.35rem 0; 
             border-bottom: 1px solid rgba(0,0,0,0.05);
-            font-size: 0.65rem; /* Letra más pequeña para las especificaciones */
+            font-size: 0.65rem; 
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.05em;
         }
+
+        /* ESTILOS DE CALCULADORA */
+        .optimizer-card {
+            background: white;
+            border-radius: 2.5rem;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .wood-btn.active {
+            border-color: #CC7696;
+            background-color: #fdf2f7;
+            color: #9B679C;
+            box-shadow: 0 10px 15px -3px rgba(204, 118, 150, 0.05);
+        }
+
+        input:disabled { opacity: 0.5; cursor: not-allowed; }
 
         #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
         #mobile-menu.active { display: flex; opacity: 1; }
@@ -445,12 +462,102 @@
                             <p class="text-mobi-1/70 leading-relaxed mb-6">
                                 Te otorgamos un contrato claro y detallado que estipula las fechas de entrega, responsabilidades y alcances del proyecto, garantizando seguridad total en tu inversión.
                             </p>
-                            <a href="https://mobi.help/paymentopts" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-4 text-mobi-4 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-4 hover:text-white transition-all duration-300">
+                            <button onclick="toggleOptimizer()" type="button" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-4 text-mobi-4 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-4 hover:text-white transition-all duration-300">
                                 Opciones de Pago
-                            </a>
+                            </button>
                         </div>
                         <div class="w-full md:w-1/2">
                             <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800" alt="Esquema Financiero" class="w-full h-40 md:h-48 object-cover rounded-xl shadow-md">
+                        </div>
+                    </div>
+
+                    <div id="optimizer-container" class="hidden w-full mt-12 pt-10 border-t border-stone-200 text-left">
+                        <div class="optimizer-card overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+                            <div class="p-8 lg:p-12 lg:w-3/5 bg-white">
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="w-10 h-1 bg-gradient-to-r from-mobi-3 to-mobi-5"></div>
+                                    <h3 class="text-[10px] font-black text-mobi-2 uppercase tracking-[0.3em]">Configuración Técnica</h3>
+                                </div>
+
+                                <div class="space-y-8">
+                                    <div>
+                                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">1. Selecciona Material (m²)</label>
+                                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="wood-catalog">
+                                            <button onclick="updateWood('Maculis', 1000)" id="btn-Maculis" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Maculís<br><span class="font-normal opacity-60 text-[9px]">$1,000</span></button>
+                                            <button onclick="updateWood('Parota', 1100)" id="btn-Parota" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Parota<br><span class="font-normal opacity-60 text-[9px]">$1,100</span></button>
+                                            <button onclick="updateWood('Cedro', 1200)" id="btn-Cedro" class="wood-btn p-3 border-2 border-mobi-4 bg-white text-mobi-3 rounded-2xl text-center font-bold transition-all shadow-sm text-xs leading-tight active">Cedro<br><span class="font-normal opacity-60 text-[9px]">$1,200</span></button>
+                                            <button onclick="updateWood('Tzalam', 1500)" id="btn-Tzalam" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Tzalam<br><span class="font-normal opacity-60 text-[9px]">$1,500</span></button>
+                                            <button onclick="updateWood('Teka', 1500)" id="btn-Teka" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Teka<br><span class="font-normal opacity-60 text-[9px]">$1,500</span></button>
+                                            <button onclick="updateWood('Cumaru', 1700)" id="btn-Cumaru" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Cumarú<br><span class="font-normal opacity-60 text-[9px]">$1,700</span></button>
+                                            <button onclick="updateWood('WPC', 2000)" id="btn-WPC" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">WPC<br><span class="font-normal opacity-60 text-[9px]">$2,000</span></button>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div>
+                                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">2. Largo (m)</label>
+                                            <input type="number" id="largo" value="1" min="0" step="0.1" oninput="calculate('dims')" 
+                                                class="w-full p-4 bg-stone-50 border-b-4 border-stone-200 rounded-xl focus:border-mobi-5 outline-none font-800 text-mobi-1 text-2xl transition-all">
+                                        </div>
+                                        <div>
+                                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">3. Ancho (m)</label>
+                                            <input type="number" id="ancho" value="1" min="0" step="0.1" oninput="calculate('dims')" 
+                                                class="w-full p-4 bg-stone-50 border-b-4 border-stone-200 rounded-xl focus:border-mobi-5 outline-none font-800 text-mobi-1 text-2xl transition-all">
+                                        </div>
+                                        <div>
+                                            <label class="block text-[10px] font-black text-mobi-3 uppercase tracking-widest mb-2">O Área Total (m²)</label>
+                                            <input type="number" id="area_total" placeholder="Ej: 20" min="0" step="0.1" oninput="calculate('area')" 
+                                                class="w-full p-4 bg-mobi-5/5 border-b-4 border-mobi-5/20 rounded-xl focus:border-mobi-5 outline-none font-800 text-mobi-3 text-2xl transition-all">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-8 lg:p-12 lg:w-2/5 bg-mobi-1 text-white flex flex-col justify-between relative">
+                                <div class="relative z-10">
+                                    <h3 class="text-mobi-5 font-black uppercase tracking-[0.3em] text-[9px] mb-8">Investment Summary</h3>
+                                    
+                                    <div class="space-y-5">
+                                        <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                                            <span class="text-white/50 text-[10px] font-bold uppercase tracking-widest">Material:</span>
+                                            <span id="label-madera" class="text-lg font-800 text-mobi-5">Cedro</span>
+                                        </div>
+
+                                        <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                                            <span class="text-white/50 text-[10px] font-bold uppercase tracking-widest">Superficie:</span>
+                                            <span class="text-lg font-800"><span id="res-area-display">1.00</span> m²</span>
+                                        </div>
+                                        
+                                        <div class="space-y-3 pt-2">
+                                            <div class="flex justify-between text-xs">
+                                                <span class="text-white/40 font-medium italic">Madera (+10% Desp.):</span>
+                                                <span id="res-madera" class="font-bold"></span>
+                                            </div>
+                                            <div class="flex justify-between text-xs">
+                                                <span class="text-white/40 font-medium">Estructura (1/3 de $1,745):</span>
+                                                <span id="res-estructura" class="font-bold"></span>
+                                            </div>
+                                            <div class="flex justify-between text-xs">
+                                                <span class="text-white/40 font-medium">Instalación (1/5 de $1,745):</span>
+                                                <span id="res-instalacion" class="font-bold"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-10 pt-8 border-t-2 border-mobi-2">
+                                            <p class="text-mobi-5 text-[9px] uppercase font-black tracking-widest mb-2">Total Project Investment</p>
+                                            <p id="res-total" class="text-4xl md:text-5xl font-900 text-white leading-tight tracking-tighter"></p>
+                                            <p class="text-[9px] text-white/30 mt-6 leading-relaxed font-bold uppercase tracking-widest italic">
+                                                Includes premium hardware and structural sealing.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="paymentopts.html" class="mt-10 w-full bg-gradient-to-r from-mobi-3 via-mobi-4 to-mobi-5 text-white font-black py-5 rounded-2xl transition-all shadow-xl hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 text-[11px] tracking-widest uppercase group">
+                                    <span>Ver Opciones de Pago</span>
+                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -534,7 +641,7 @@
         function expandirIdentidad() {
             const sec = document.getElementById('identidad');
             sec.classList.remove('section-retracted');
-            sec.classList.add('section-expanded'); // Aplica altura auto y min-height
+            sec.classList.add('section-expanded'); 
             
             const vids = sec.querySelectorAll('video');
             vids.forEach(v => {
@@ -550,6 +657,23 @@
         function toggleMaterials() {
             const container = document.getElementById('materials-container');
             const section = document.getElementById('step1');
+            
+            if (container.classList.contains('hidden')) {
+                container.classList.remove('hidden');
+                section.classList.add('section-expanded');
+                setTimeout(() => {
+                    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            } else {
+                container.classList.add('hidden');
+                section.classList.remove('section-expanded');
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function toggleOptimizer() {
+            const container = document.getElementById('optimizer-container');
+            const section = document.getElementById('step2');
             
             if (container.classList.contains('hidden')) {
                 container.classList.remove('hidden');
@@ -587,6 +711,72 @@
             if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
                 mobileMenu.classList.remove('active');
             }
+        });
+
+        // CALCULATOR LOGIC
+        let currentWoodName = "Cedro";
+        let currentWoodPrice = 1200;
+        const wasteFactor = 1.10; 
+        const profitMargin = 1.35; 
+        const fixedOperationalBase = 1745; 
+
+        function updateWood(name, price) {
+            currentWoodName = name;
+            currentWoodPrice = price;
+            document.getElementById('label-madera').innerText = name;
+            
+            document.querySelectorAll('.wood-btn').forEach(btn => {
+                btn.classList.remove('border-mobi-4', 'bg-white', 'text-mobi-3', 'shadow-sm', 'active');
+                btn.classList.add('border-stone-100', 'bg-stone-50', 'text-slate-400');
+            });
+            
+            const activeId = `btn-${name.replace(/\s+/g, '-')}`;
+            const activeBtn = document.getElementById(activeId);
+            if(activeBtn) {
+                activeBtn.classList.add('border-mobi-4', 'bg-white', 'text-mobi-3', 'shadow-sm', 'active');
+                activeBtn.classList.remove('border-stone-100', 'bg-stone-50', 'text-slate-400');
+            }
+            calculate();
+        }
+
+        function calculate(source) {
+            const largoInput = document.getElementById('largo');
+            const anchoInput = document.getElementById('ancho');
+            const areaInput = document.getElementById('area_total');
+            
+            let finalArea = 0;
+
+            if (source === 'area' && areaInput.value > 0) {
+                largoInput.disabled = true;
+                anchoInput.disabled = true;
+                finalArea = parseFloat(areaInput.value);
+            } else if (source === 'dims' || !areaInput.value) {
+                largoInput.disabled = false;
+                anchoInput.disabled = false;
+                areaInput.value = ""; 
+                const l = parseFloat(largoInput.value) || 0;
+                const a = parseFloat(anchoInput.value) || 0;
+                finalArea = l * a;
+            } else {
+                finalArea = parseFloat(largoInput.value) * parseFloat(anchoInput.value);
+            }
+            
+            const costWood = (finalArea * wasteFactor) * currentWoodPrice;
+            const costStructure = ((fixedOperationalBase / 3) * finalArea) * profitMargin;
+            const costInstallation = ((fixedOperationalBase / 5) * finalArea) * profitMargin;
+            const total = costStructure + costInstallation + costWood;
+
+            const fmt = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
+            
+            document.getElementById('res-area-display').innerText = finalArea.toFixed(2);
+            document.getElementById('res-madera').innerText = fmt.format(costWood);
+            document.getElementById('res-estructura').innerText = fmt.format(costStructure);
+            document.getElementById('res-instalacion').innerText = fmt.format(costInstallation);
+            document.getElementById('res-total').innerText = fmt.format(total);
+        }
+
+        window.addEventListener('load', () => {
+             calculate();
         });
     </script>
     <a href="http://wa.me/529997394656" 
