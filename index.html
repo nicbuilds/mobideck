@@ -35,6 +35,7 @@
         .parallax-container {
             position: relative;
             height: 90vh;
+            height: 90dvh;
             overflow: hidden;
             clip-path: inset(0 0 0 0);
             transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
@@ -47,10 +48,11 @@
             pointer-events: none;
         }
 
-        /* ESTADO EXPANDIDO CORREGIDO PARA IPHONE */
+        /* ESTADO EXPANDIDO CORREGIDO PARA IPHONE / FB BROWSER */
         .section-expanded {
             height: auto !important;
             min-height: 90vh;
+            min-height: 90dvh;
             opacity: 1 !important;
             pointer-events: auto !important;
             padding-top: 5rem;
@@ -63,6 +65,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            height: 100dvh;
             object-fit: cover;
             z-index: -1;
             transform: translateZ(0);
@@ -71,7 +74,7 @@
 
         .content-overlay {
             position: relative;
-            height: 100%;
+            min-height: 100%;
             width: 100%;
             display: flex;
             align-items: center;
@@ -180,7 +183,7 @@
         </div>
     </header>
 
-    <section class="relative min-h-[80vh] flex items-center hero-gradient text-white overflow-hidden">
+    <section class="relative min-h-[80vh] min-h-[80dvh] flex items-center hero-gradient text-white overflow-hidden">
         <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
         <div class="max-w-7xl mx-auto px-6 relative z-10 py-32 w-full">
             <div class="max-w-3xl text-left">
@@ -620,7 +623,7 @@
                 </div>
                 <div class="space-y-2">
                     <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Telefono</label>
-                    <input type="email" name="email" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
+                    <input type="tel" name="tel" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
                 </div>
                 <div class="md:col-span-2 space-y-2">
                     <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Estado de Planos</label>
