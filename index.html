@@ -158,6 +158,25 @@
 
         #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
         #mobile-menu.active { display: flex; opacity: 1; }
+
+        /* CARRUSEL STYLES */
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+        .carousel-container::-webkit-scrollbar { display: none; }
+        .carousel-item {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
+        }
+        @media (min-width: 768px) {
+            .carousel-item { flex: 0 0 45%; }
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-mobi-1">
@@ -606,6 +625,27 @@
                             <img src="https://mobi.help/5yrwarranty.png" alt="5 Years Warranty" class="w-64 md:w-80 max-h-40 md:max-h-48 object-contain object-center md:object-right transform scale-125 md:scale-[1.35] origin-center md:origin-right">
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-stone-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-6 text-center md:text-left">
+                <span class="text-mobi-5 font-black uppercase tracking-[0.3em] text-[10px]">Portafolio</span>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-mobi-1 mt-1 tracking-tight">Nuestra Experiencia</h3>
+            </div>
+            
+            <div class="carousel-container">
+                <div class="carousel-item">
+                    <img src="https://mobi.help/deck1.jpeg" alt="Proyecto Mobi Deck 1" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://mobi.help/deck2.jpeg" alt="Proyecto Mobi Deck 2" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://mobi.help/deck3.jpeg" alt="Proyecto Mobi Deck 3" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
                 </div>
             </div>
         </div>
