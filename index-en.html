@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobi Deck | Whale made decks</title>
+
+    <meta property="og:title" content="Mobi Deck | Whale Made Decks">
+    <meta property="og:description" content="Premium decks in days, not weeks. Construction and maintenance of decks with premium quality and Mexican seal.">
+    <meta property="og:image" content="https://mobi.help/logo_cropped_F.png">
+    <meta property="og:url" content="https://mobi.help">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mobi Deck | Whale Made Decks">
+    <meta name="twitter:description" content="Premium decks in days, not weeks. Construction and maintenance of decks with premium quality and Mexican seal.">
+    <meta name="twitter:image" content="https://mobi.help/logo_cropped_F.png">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" href="/favicon-32x32.png">
+    
+    <link rel="manifest" href="/site.webmanifest">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Mobi Deck",
+      "url": "https://mobi.help",
+      "logo": "https://mobi.help/logo_cropped_F.png"
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                mobi: {
+                  1: '#565F80',
+                  2: '#636396',
+                  3: '#9B679C',
+                  4: '#CC7696',
+                  5: '#EB7F8F',
+                }
+              },
+              fontFamily: {
+                sans: ['Plus Jakarta Sans', 'sans-serif'],
+              }
+            }
+          }
+        }
+    </script>
+    <style>
+        body { scroll-behavior: smooth; margin: 0; }
+        .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
+        .glass-nav { background: rgba(86, 95, 128, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        
+        .parallax-container {
+            position: relative;
+            min-height: 90vh; 
+            min-height: 90dvh;
+            height: auto;
+            overflow: hidden;
+            clip-path: inset(0 0 0 0);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-retracted {
+            height: 0 !important;
+            min-height: 0 !important;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .section-expanded {
+            height: auto !important;
+            min-height: 90vh !important;
+            min-height: 90dvh !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        .fixed-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            height: 100dvh;
+            object-fit: cover;
+            z-index: -1;
+            transform: translateZ(0);
+            pointer-events: none;
+        }
+
+        .content-overlay {
+            position: relative;
+            min-height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column; 
+            z-index: 10;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-left: 6px solid #EB7F8F;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            height: auto;
+            min-height: min-content;
+        }
+
+        .hero-logo-bg {
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60%;
+            opacity: 0.1;
+            z-index: 1;
+            pointer-events: none;
+            filter: brightness(0) invert(1);
+        }
+
+        .wood-card {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+            transform-origin: center;
+            z-index: 1;
+            height: auto; 
+            min-height: 100%; 
+            display: flex;
+            flex-direction: column;
+            backface-visibility: hidden;
+        }
+
+        .wood-card:hover {
+            transform: scale(1.05);
+            z-index: 50;
+            box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.3);
+        }
+
+        .wood-img {
+            transition: transform 1.2s ease;
+        }
+        .wood-card:hover .wood-img {
+            transform: scale(1.1);
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.35rem 0; 
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.65rem; 
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .optimizer-card {
+            background: white;
+            border-radius: 2.5rem;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            height: auto;
+            min-height: min-content;
+        }
+
+        .wood-btn.active {
+            border-color: #CC7696;
+            background-color: #fdf2f7;
+            color: #9B679C;
+            box-shadow: 0 10px 15px -3px rgba(204, 118, 150, 0.05);
+        }
+
+        input:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
+        #mobile-menu.active { display: flex; opacity: 1; }
+
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+        .carousel-container::-webkit-scrollbar { display: none; }
+        .carousel-item {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
+        }
+        @media (min-width: 768px) {
+            .carousel-item { flex: 0 0 45%; }
+        }
+        
+        .lang-btn {
+            transition: all 0.3s ease;
+            filter: grayscale(0.2);
+        }
+        .lang-btn:hover {
+            filter: grayscale(0);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-mobi-1">
+
+    <header class="fixed w-full z-[100] glass-nav">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-white">
+            <a href="index.html" class="flex items-center gap-4">
+                <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-12 w-auto">
+                <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-[0.2em]">
+                <a href="#step1" class="hover:text-mobi-5 transition">01. Quotation</a>
+                <a href="#step2" class="hover:text-mobi-5 transition">02. Payment</a>
+                <a href="#step3" class="hover:text-mobi-5 transition">03. Installation</a>
+                <a href="https://customer.mobi.help" target="_blank" class="hover:text-mobi-5 transition">Customer Support</a>
+                <a href="#contact" class="px-6 py-2.5 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-300">Contact Us</a>
+                
+                <a href="/index.html" class="lang-btn flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 transition" title="Español">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg" alt="Español" class="w-6 h-4 object-cover rounded-sm shadow-sm">
+                    <span class="text-[9px]">ES</span>
+                </a>
+            </div>
+
+            <div class="flex items-center gap-4 md:hidden">
+                <a href="/index.html" class="lang-btn flex items-center p-1">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg" alt="Español" class="w-8 h-5 object-cover rounded-sm shadow-md">
+                </a>
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="fixed inset-x-0 top-[72px] bg-mobi-1 text-white p-8 flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl z-[90]">
+            <a href="#step1" class="mobile-link">01. Quotation</a>
+            <a href="#step2" class="mobile-link">02. Payment</a>
+            <a href="#step3" class="mobile-link">03. Installation</a>
+            <a href="https://customer.mobi.help" target="_blank" class="mobile-link">Customer Support</a>
+            <a href="#contact" class="mobile-link text-mobi-5">Contact Us</a>
+        </div>
+    </header>
+
+    <section class="relative min-h-[80vh] min-h-[80dvh] flex flex-col justify-center hero-gradient text-white overflow-hidden">
+        <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 py-32 w-full my-auto flex-shrink-0">
+            <div class="max-w-3xl text-left">
+                <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5">Service Guide</span>
+                <h2 class="text-5xl md:text-8xl font-extrabold mb-8 leading-[1.1]">
+                    Premium decks in days <br><span class="text-mobi-5 uppercase text-3xl md:text-5xl block mt-4">not weeks</span>
+                </h2>
+                <p class="text-lg md:text-xl opacity-80 mb-10 max-w-xl font-medium">
+                    Decks made with the strength and quality of a whale.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="expandIdentity()" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
+                        Meet our essence
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="identity" class="parallax-container section-retracted relative overflow-hidden">
+        <video 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            webkit-playsinline 
+            class="fixed-bg z-[-1]"
+            style="background-color: #000;">
+            <source src="https://mobi.help/xanax_A_cinematic_slow-motion_underwater_video_deep_in_the_da_80a1563d-fc4d-4508-8ec2-f182ce2efe99_0.mp4" type="video/mp4">
+        </video>
+
+        <div class="absolute inset-0 bg-mobi-1/60 backdrop-blur-[2px] z-[1]"></div>
+        
+        <div class="content-overlay relative z-10 py-12">
+            <div class="max-w-7xl mx-auto px-6 w-full text-white my-auto flex-shrink-0">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <span class="text-mobi-5 font-bold uppercase tracking-[0.3em] text-[10px]">Our Identity</span>
+                        <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                            We are a Mexican company dedicated to the construction and maintenance of decks.
+                        </h2>
+                        <div class="h-1 w-20 bg-mobi-5"></div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-[3rem] border border-white/20">
+                        <p class="text-2xl md:text-3xl font-bold mb-6 italic leading-snug">
+                            "We build decks that reflect the strength of the sea, its resistance, and capture its beauty."
+                        </p>
+                        <p class="text-lg opacity-90 leading-relaxed mb-8">
+                            We distinguish ourselves by our premium quality and professional service.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 md:mt-16 flex justify-center md:justify-start pb-4">
+                    <a href="#step1" class="group flex items-center gap-4 bg-mobi-5 hover:bg-white text-white hover:text-mobi-1 px-8 py-4 rounded-full font-bold uppercase text-xs tracking-[0.2em] transition-all duration-300 shadow-xl">
+                        Start your project
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="step1" class="parallax-container">
+        <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="fixed-bg" style="background-color: #565F80;">
+            <source src="https://mobi.help/xanax_Prompt_A_split_screen_on_the_left_a_clean_3D_wireframe__b497e901-8703-4a3d-9100-9091766fafe3_1.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-mobi-1/40"></div>
+        <div class="content-overlay">
+            <div class="max-w-7xl mx-auto px-6 w-full my-auto py-12 flex-shrink-0">
+                <div class="step-card max-w-4xl p-6 md:p-8 rounded-tr-[4rem] rounded-bl-[4rem]">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="w-full md:w-1/2">
+                            <span class="text-4xl font-black text-mobi-5/30 italic block mb-2">01</span>
+                            <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-4">Design and Materials</h3>
+                            <p class="text-mobi-1/70 leading-relaxed mb-4">
+                                Provide your architectural plans or request a design from scratch and choose a wood type.
+                            </p>
+                            <p class="text-mobi-1/70 leading-relaxed mb-6">
+                               On our first visit, we will take measurements and evaluate ground conditions to trace the ideal strategy, ensuring your deck looks spectacular and lasts over time.
+                            </p>
+                            <button onclick="toggleMaterials()" type="button" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-5 text-mobi-5 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-5 hover:text-white transition-all duration-300">
+                                View Materials
+                            </button>
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800" alt="Architectural Design" class="w-full h-40 md:h-48 object-cover rounded-xl shadow-md">
+                        </div>
+                    </div>
+
+                    <div id="materials-container" class="hidden w-full mt-12 pt-10 border-t border-stone-200">
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/1cedar.png" alt="Cedar Wood" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Cedar</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        Famous for its aroma, it contains natural thujaplicins that make it naturally resistant to fungi and insects.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>900 lbf</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Stability</span><span>High</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Pink to Brown</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Durability</span><span>Excellent</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Best Use</span><span>Pergolas</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/1maculi.png" alt="Maculis Wood" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Maculís</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        High-performance hardwood with impressive visual profile. Valued for its irregular grain and high gloss.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>1,100 lbf</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Texture</span><span>Fine-Med</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Pale Golden</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Resilience</span><span>High</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Origin</span><span>Tropical</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/1tzalam.png" alt="Tzalam Wood" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Tzalam</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        The gold standard for outdoor decks. Known as "Mayan Walnut," it stands out for its deep chocolate tone and natural luster.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>1,400 lbf</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Density</span><span>Very High</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Choco/Plum</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Maintenance</span><span>Low</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Best Use</span><span>Decking</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/1teca.png" alt="Teak Wood" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Teak</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        The king of maritime timber. It produces a natural oily resin that acts as a permanent waterproofing agent.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>1,070 lbf</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Silica</span><span>High</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Golden Honey</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Grade</span><span>Maritime</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Weather</span><span>Excellent</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/1parota.png" alt="Parota Wood" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Parota</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        Favorite for its scale and sustainability. Offers a unique weight-to-strength ratio with interlocked grain.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Grain</span><span>Interlocked</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Weight</span><span>Light</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Aesthetic</span><span>Live Edge</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Eco</span><span>Fast Growth</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Strength</span><span>High Ratio</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/01teakwpc.jpg" alt="Teak WPC" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Teak WPC</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        Teak aesthetics with aerospace polymer. Zero oiling, slip-resistant, and splinter-free.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Material</span><span>Composite</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Maintenance</span><span>Ultra-Low</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">UV Resistance</span><span>High</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Surface</span><span>Anti-Slip</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Use</span><span>Pool Area</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/01walnutwpc.jpg" alt="Walnut WPC" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Walnut WPC</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        Luxury Walnut dark tones designed for absolute stability without warping.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>Impact Resist</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Stability</span><span>Maximum</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Espresso</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Eco</span><span>Recycled</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Finish</span><span>Matte</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
+                                <div class="h-40 overflow-hidden relative">
+                                    <img src="https://mobi.help/01cumaru.jpg" alt="Cumaru Wood" class="wood-img w-full h-full object-cover">
+                                </div>
+                                <div class="p-5 flex-grow flex flex-col">
+                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Cumarú</h3>
+                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
+                                        "Brazilian Teak" incredibly dense with Class A fire rating, resistant like concrete.
+                                    </p>
+                                    <div class="mt-auto space-y-0.5">
+                                        <div class="spec-row"><span class="text-mobi-3">Hardness</span><span>3,540 lbf</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Lifespan</span><span>50+ Years</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Golden/Red</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Fire Rating</span><span>Class A</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Best Use</span><span>Luxury</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="step2" class="parallax-container">
+        <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="fixed-bg" style="background-color: #000;">
+            <source src="https://mobi.help/xanax_Prompt_Extreme_close-up_of_premium_Cumar_hardwood_decki_7bf156da-67e3-4255-aa44-ec2a37cf9273_0.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="content-overlay items-end">
+            <div class="max-w-7xl mx-auto px-6 w-full flex justify-end my-auto py-12 flex-shrink-0">
+                <div class="step-card max-w-4xl p-6 md:p-8 rounded-tl-[4rem] rounded-br-[4rem] border-l-0 border-r-4 border-mobi-4">
+                    <div class="flex flex-col md:flex-row-reverse gap-8 items-center text-right">
+                        <div class="w-full md:w-1/2">
+                            <span class="text-4xl font-black text-mobi-4/30 italic block mb-2">02</span>
+                            <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-4">Estimate Costs and Structure Your Payments</h3>
+                            <p class="text-mobi-1/70 leading-relaxed mb-4">
+                                Transparent scheme: 60% down payment, 20% progress payment, and 20% balance one day before installation.
+                            </p>
+                            <p class="text-mobi-1/70 leading-relaxed mb-6">
+                                We provide a clear contract stipulating dates, responsibilities, and scope, guaranteeing total security for your investment.
+                            </p>
+                            <button onclick="toggleOptimizer()" type="button" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-4 text-mobi-4 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-4 hover:text-white transition-all duration-300">
+                                Estimate Cost
+                            </button>
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800" alt="Financial Scheme" class="w-full h-40 md:h-48 object-cover rounded-xl shadow-md">
+                        </div>
+                    </div>
+
+                    <div id="optimizer-container" class="hidden w-full mt-12 pt-10 border-t border-stone-200 text-left">
+                        <div class="optimizer-card overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+                            <div class="p-8 lg:p-12 lg:w-3/5 bg-white">
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="w-10 h-1 bg-gradient-to-r from-mobi-3 to-mobi-5"></div>
+                                    <h3 class="text-[10px] font-black text-mobi-2 uppercase tracking-[0.3em]">Technical Configuration</h3>
+                                </div>
+
+                                <div class="space-y-8">
+                                    <div>
+                                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">1. Select Material (m²)</label>
+                                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="wood-catalog">
+                                            <button onclick="updateWood('Maculis', 1000)" id="btn-Maculis" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Maculís<br><span class="font-normal opacity-60 text-[9px]">$1,000</span></button>
+                                            <button onclick="updateWood('Parota', 1100)" id="btn-Parota" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Parota<br><span class="font-normal opacity-60 text-[9px]">$1,100</span></button>
+                                            <button onclick="updateWood('Cedro', 1560)" id="btn-Cedro" class="wood-btn p-3 border-2 border-mobi-4 bg-white text-mobi-3 rounded-2xl text-center font-bold transition-all shadow-sm text-xs leading-tight active">Cedar<br><span class="font-normal opacity-60 text-[9px]">$1,560</span></button>
+                                            <button onclick="updateWood('Tzalam', 1500)" id="btn-Tzalam" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Tzalam<br><span class="font-normal opacity-60 text-[9px]">$1,500</span></button>
+                                            <button onclick="updateWood('Teka', 1500)" id="btn-Teka" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Teak<br><span class="font-normal opacity-60 text-[9px]">$1,500</span></button>
+                                            <button onclick="updateWood('Cumaru', 1700)" id="btn-Cumaru" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Cumarú<br><span class="font-normal opacity-60 text-[9px]">$1,700</span></button>
+                                            <button onclick="updateWood('WPC', 2000)" id="btn-WPC" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">WPC<br><span class="font-normal opacity-60 text-[9px]">$2,000</span></button>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div>
+                                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">2. Length (m)</label>
+                                            <input type="number" id="largo" value="1" min="0" step="0.1" oninput="calculate('dims')" 
+                                                class="w-full p-4 bg-stone-50 border-b-4 border-stone-200 rounded-xl focus:border-mobi-5 outline-none font-800 text-mobi-1 text-2xl transition-all">
+                                        </div>
+                                        <div>
+                                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">3. Width (m)</label>
+                                            <input type="number" id="ancho" value="1" min="0" step="0.1" oninput="calculate('dims')" 
+                                                class="w-full p-4 bg-stone-50 border-b-4 border-stone-200 rounded-xl focus:border-mobi-5 outline-none font-800 text-mobi-1 text-2xl transition-all">
+                                        </div>
+                                        <div>
+                                            <label class="block text-[10px] font-black text-mobi-3 uppercase tracking-widest mb-2">Or Total Area (m²)</label>
+                                            <input type="number" id="area_total" placeholder="Ex: 20" min="0" step="0.1" oninput="calculate('area')" 
+                                                class="w-full p-4 bg-mobi-5/5 border-b-4 border-mobi-5/20 rounded-xl focus:border-mobi-5 outline-none font-800 text-mobi-3 text-2xl transition-all">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-8 lg:p-12 lg:w-2/5 bg-mobi-1 text-white flex flex-col justify-between relative">
+                                <div class="relative z-10">
+                                    <h3 class="text-mobi-5 font-black uppercase tracking-[0.3em] text-[9px] mb-8">Investment Summary</h3>
+                                    
+                                    <div class="space-y-5">
+                                        <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                                            <span class="text-white/50 text-[10px] font-bold uppercase tracking-widest">Material:</span>
+                                            <span id="label-madera" class="text-lg font-800 text-mobi-5">Cedar</span>
+                                        </div>
+
+                                        <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                                            <span class="text-white/50 text-[10px] font-bold uppercase tracking-widest">Surface:</span>
+                                            <span class="text-lg font-800"><span id="res-area-display">1.00</span> m²</span>
+                                        </div>
+                                        
+                                        <div class="space-y-3 pt-2">
+                                            <div class="flex justify-between text-xs">
+                                                <span class="text-white/40 font-medium italic">Wood (+10% Waste):</span>
+                                                <span id="res-madera" class="font-bold"></span>
+                                            </div>
+                                            <div class="flex justify-between text-xs">
+                                                <span class="text-white/40 font-medium">Structure (1/3 of $1,745):</span>
+                                                <span id="res-estructura" class="font-bold"></span>
+                                            </div>
+                                            <div class="flex justify-between text-xs">
+                                                <span class="text-white/40 font-medium">Installation (1/5 of $1,745):</span>
+                                                <span id="res-instalacion" class="font-bold"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-10 pt-8 border-t-2 border-mobi-2">
+                                            <p class="text-mobi-5 text-[9px] uppercase font-black tracking-widest mb-2">Total Project Investment</p>
+                                            <p id="res-total" class="text-4xl md:text-5xl font-900 text-white leading-tight tracking-tighter"></p>
+                                            <p class="text-[9px] text-white/30 mt-6 leading-relaxed font-bold uppercase tracking-widest italic">
+                                                Includes premium hardware and structural sealing.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-10 w-full">
+                                    <button onclick="togglePaymentInfo()" type="button" class="w-full bg-gradient-to-r from-mobi-3 via-mobi-4 to-mobi-5 text-white font-black py-5 rounded-2xl transition-all shadow-xl hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 text-[11px] tracking-widest uppercase group">
+                                        <span>View Payment Options</span>
+                                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </button>
+                                    <div id="payment-info-container" class="hidden mt-4 p-5 bg-white/10 rounded-2xl border border-white/20 text-center transition-all duration-300">
+                                        <p class="text-[12px] font-bold tracking-wide leading-relaxed text-white">
+                                            You can pay with a credit card for up to 6 monthly installments, or by transfer. For your security, bank details will be provided after proposal authorization and contract signing.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="step3" class="parallax-container">
+        <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="fixed-bg" style="background-color: #565F80;">
+            <source src="https://mobi.help/social_xanax_A_slow_cinematic_low-angle_tracking_shot_along_a_massiv_e352d8f0-aefb-44fd-a4f4-d4445fc9d322_2.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-mobi-1/50"></div>
+        <div class="content-overlay">
+            <div class="max-w-7xl mx-auto px-6 w-full my-auto py-12 flex-shrink-0">
+                <div class="step-card max-w-4xl p-6 md:p-8 rounded-tr-[4rem] rounded-bl-[4rem] border-mobi-2">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="w-full md:w-1/2 flex flex-col items-start">
+                            <span class="text-4xl font-black text-mobi-2/30 italic block mb-2">03</span>
+                            <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-4">Construction and Warranty</h3>
+                            <p class="text-mobi-1/70 leading-relaxed mb-4">
+                                Master installation with 5-year structural warranty and 1-year workmanship warranty. Mandatory annual preventive maintenance by Mobi Deck.
+                            </p>
+                            <p class="text-mobi-1/70 leading-relaxed mb-6">
+                                We execute using hidden fasteners and stainless steel hardware, ensuring your deck withstands the elements under strict standards.
+                            </p>
+                            <div class="flex items-center justify-start w-full text-mobi-5 font-bold text-[12px] md:text-[13px] uppercase tracking-tighter">
+                                <span>5-Year Structural &nbsp;&bull;&nbsp; 1-Year Workmanship</span>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 flex items-center justify-center md:justify-end mt-6 md:mt-0">
+                            <div class="flex flex-col items-center">
+                                <img src="https://mobi.help/5yrwarranty.png" alt="5-Year Warranty" class="w-64 md:w-80 max-h-40 md:max-h-48 object-contain object-center transform scale-125 md:scale-[1.35] origin-center mb-6 md:mb-10">
+                                <a href="https://customer.mobi.help" target="_blank" class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-blue-600 text-white font-bold text-[10px] uppercase tracking-widest hover:bg-blue-700 transition-all duration-300 shadow-lg relative z-10">
+                                    Customer Support
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-stone-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-6 text-center md:text-left">
+                <span class="text-mobi-5 font-black uppercase tracking-[0.3em] text-[10px]">We learned and perfected in Canada what we build for you today</span>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-mobi-1 mt-1 tracking-tight">Our Experience</h3>
+            </div>
+            
+            <div class="carousel-container">
+                <div class="carousel-item">
+                    <img src="https://mobi.help/deck1.jpeg" alt="Mobi Deck Project 1" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://mobi.help/deck2.jpeg" alt="Mobi Deck Project 2" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://mobi.help/deck3.jpeg" alt="Mobi Deck Project 3" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 bg-white relative z-20">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-extrabold text-mobi-1 mb-4">Start Your Project</h3>
+                <p class="text-mobi-1/60 font-medium">Send your request to begin with Step 1.</p>
+            </div>
+            <form action="https://formspree.io/f/mreykjlr" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12 rounded-[2rem] border border-stone-200 bg-stone-50/50">
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Full Name</label>
+                    <input type="text" name="name" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Email</label>
+                    <input type="email" name="email" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Phone</label>
+                    <input type="tel" name="Tel" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
+                </div>
+                <div class="md:col-span-2 space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Blueprint Status</label>
+                    <select name="blueprints" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
+                        <option value="ready">I have plans ready</option>
+                        <option value="none">I need design/blueprints</option>
+                    </select>
+                </div>
+                <div class="md:col-span-2 space-y-2">
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Message</label>
+                    <textarea name="message" rows="4" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition" placeholder="Tell us about your space..."></textarea>
+                </div>
+                <button type="submit" class="md:col-span-2 py-5 bg-mobi-1 text-white rounded-full font-extrabold text-lg hover:bg-mobi-5 transition-all shadow-xl">
+                    Send Request
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-stone-50 text-center border-t border-stone-200 relative z-20">
+        <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck" class="h-10 mx-auto grayscale opacity-50 mb-4">
+        <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-mobi-1/60 mb-2">
+            Nicolás Andrés Medina Razo • RFC: MERN9312202B1
+        </div>
+        <p class="text-[9px] font-bold uppercase tracking-[0.3em] text-mobi-1/40">Calle 66 #561 Centro, Mérida, Yuc. • © 2026 Mobi Deck</p>
+    </footer>
+
+    <script>
+        function expandIdentity() {
+            const sec = document.getElementById('identity');
+            sec.classList.remove('section-retracted');
+            sec.classList.add('section-expanded'); 
+            const vids = sec.querySelectorAll('video');
+            vids.forEach(v => { v.muted = true; v.play().catch(()=>{}); });
+            setTimeout(() => { sec.scrollIntoView({ behavior: 'smooth' }); }, 150);
+        }
+
+        function toggleMaterials() {
+            const container = document.getElementById('materials-container');
+            const section = document.getElementById('step1');
+            if (container.classList.contains('hidden')) {
+                container.classList.remove('hidden');
+                section.classList.add('section-expanded');
+                setTimeout(() => { container.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+            } else {
+                container.classList.add('hidden');
+                section.classList.remove('section-expanded');
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function toggleOptimizer() {
+            const container = document.getElementById('optimizer-container');
+            const section = document.getElementById('step2');
+            if (container.classList.contains('hidden')) {
+                container.classList.remove('hidden');
+                section.classList.add('section-expanded');
+                setTimeout(() => { container.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+            } else {
+                container.classList.add('hidden');
+                section.classList.remove('section-expanded');
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function togglePaymentInfo() {
+            const container = document.getElementById('payment-info-container');
+            container.classList.toggle('hidden');
+        }
+
+        function forceVideoPlay() {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => { video.muted = true; video.play().catch(() => {}); });
+        }
+        window.addEventListener('load', forceVideoPlay);
+        window.addEventListener('touchstart', forceVideoPlay, {once: true});
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('active');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        });
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) { mobileMenu.classList.remove('active'); }
+        });
+
+        let currentWoodName = "Cedar";
+        let currentWoodPrice = 1560; 
+        const wasteFactor = 1.10; 
+        const profitMargin = 1.35; 
+        const fixedOperationalBase = 1745; 
+
+        function updateWood(name, price) {
+            currentWoodName = name;
+            currentWoodPrice = price;
+            document.getElementById('label-madera').innerText = name;
+            document.querySelectorAll('.wood-btn').forEach(btn => {
+                btn.classList.remove('border-mobi-4', 'bg-white', 'text-mobi-3', 'shadow-sm', 'active');
+                btn.classList.add('border-stone-100', 'bg-stone-50', 'text-slate-400');
+            });
+            const activeId = `btn-${name.replace(/\s+/g, '-')}`;
+            const activeBtn = document.getElementById(activeId);
+            if(activeBtn) {
+                activeBtn.classList.add('border-mobi-4', 'bg-white', 'text-mobi-3', 'shadow-sm', 'active');
+                activeBtn.classList.remove('border-stone-100', 'bg-stone-50', 'text-slate-400');
+            }
+            calculate();
+        }
+
+        function calculate(source) {
+            const largoInput = document.getElementById('largo');
+            const anchoInput = document.getElementById('ancho');
+            const areaInput = document.getElementById('area_total');
+            let finalArea = 0;
+            if (source === 'area' && areaInput.value > 0) {
+                largoInput.disabled = true;
+                anchoInput.disabled = true;
+                finalArea = parseFloat(areaInput.value);
+            } else if (source === 'dims' || !areaInput.value) {
+                largoInput.disabled = false;
+                anchoInput.disabled = false;
+                areaInput.value = ""; 
+                const l = parseFloat(largoInput.value) || 0;
+                const a = parseFloat(anchoInput.value) || 0;
+                finalArea = l * a;
+            } else { finalArea = parseFloat(largoInput.value) * parseFloat(anchoInput.value); }
+            const costWood = (finalArea * wasteFactor) * currentWoodPrice;
+            const costStructure = ((fixedOperationalBase / 3) * finalArea) * profitMargin;
+            const costInstallation = ((fixedOperationalBase / 5) * finalArea) * profitMargin;
+            const total = costStructure + costInstallation + costWood;
+            const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+            document.getElementById('res-area-display').innerText = finalArea.toFixed(2);
+            document.getElementById('res-madera').innerText = fmt.format(costWood);
+            document.getElementById('res-estructura').innerText = fmt.format(costStructure);
+            document.getElementById('res-instalacion').innerText = fmt.format(costInstallation);
+            document.getElementById('res-total').innerText = fmt.format(total);
+        }
+
+        window.addEventListener('load', () => { updateWood('Cedro', 1560); calculate(); });
+    </script>
+    <a href="http://wa.me/529997394656" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fixed bottom-8 right-8 z-[150] flex items-center justify-center w-16 h-16 bg-mobi-5 text-white rounded-full shadow-2xl hover:scale-110 transition-transform duration-300"
+       aria-label="Chat on WhatsApp">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+</body>
+</html>
