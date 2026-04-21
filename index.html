@@ -200,6 +200,15 @@
         @media (min-width: 768px) {
             .carousel-item { flex: 0 0 45%; }
         }
+        
+        .lang-btn {
+            transition: all 0.3s ease;
+            filter: grayscale(0.2);
+        }
+        .lang-btn:hover {
+            filter: grayscale(0);
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-mobi-1">
@@ -211,17 +220,27 @@
                 <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
             </a>
 
-            <div class="hidden md:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
+            <div class="hidden md:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-[0.2em]">
                 <a href="#step1" class="hover:text-mobi-5 transition">01. Cotización</a>
                 <a href="#step2" class="hover:text-mobi-5 transition">02. Pago</a>
                 <a href="#step3" class="hover:text-mobi-5 transition">03. Instalación</a>
                 <a href="https://customer.mobi.help" target="_blank" class="hover:text-mobi-5 transition">Soporte a Clientes</a>
                 <a href="#contact" class="px-6 py-2.5 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-300">Contáctanos</a>
+                
+                <a href="index-en.html" class="lang-btn flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 transition" title="English">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" class="w-6 h-4 object-cover rounded-sm shadow-sm">
+                    <span class="text-[9px]">EN</span>
+                </a>
             </div>
 
-            <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+            <div class="flex items-center gap-4 md:hidden">
+                <a href="index-en.html" class="lang-btn flex items-center p-1">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" class="w-8 h-5 object-cover rounded-sm shadow-md">
+                </a>
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
         </nav>
         <div id="mobile-menu" class="fixed inset-x-0 top-[72px] bg-mobi-1 text-white p-8 flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl z-[90]">
             <a href="#step1" class="mobile-link">01. Cotización</a>
@@ -258,7 +277,7 @@
             muted 
             loop 
             playsinline 
-            webkit-playsinline
+            webkit-playsinline 
             class="fixed-bg z-[-1]"
             style="background-color: #000;">
             <source src="https://mobi.help/xanax_A_cinematic_slow-motion_underwater_video_deep_in_the_da_80a1563d-fc4d-4508-8ec2-f182ce2efe99_0.mp4" type="video/mp4">
@@ -283,13 +302,6 @@
                         <p class="text-lg opacity-90 leading-relaxed mb-8">
                             Nos distinguimos por nuestra calidad premium y servicio profesional.
                         </p>
-                        <div class="flex items-center gap-6">
-                            <div class="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-mobi-5">
-                                <span>Calidad Premium</span>
-                                <span class="opacity-30">|</span>
-                                <span>Sello Mexicano</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 
@@ -319,12 +331,8 @@
                                 Proporciona tus planos arquitectónicos o solicita un diseño desde cero y elije una madera.
                             </p>
                             <p class="text-mobi-1/70 leading-relaxed mb-6">
-                               En nuestra primera visita, tomaremos medidas y evaluaremos las condiciones del terreno y tus preferencias estéticas para trazar la estrategia ideal, asegurando que tu deck luzca espectacular y perdure con el tiempo.
+                               En nuestra primera visita, tomaremos medidas y evaluaremos las condiciones del terreno para trazar la estrategia ideal, asegurando que tu deck luzca espectacular y perdure con el tiempo.
                             </p>
-                            <div class="flex flex-wrap gap-4 text-[10px] font-bold uppercase tracking-widest text-mobi-2 mb-6">
-                                <span class="bg-stone-100 px-3 py-1 rounded-md">Maderas Naturales</span>
-                                <span class="bg-stone-100 px-3 py-1 rounded-md">Diseño a Medida</span>
-                            </div>
                             <button onclick="toggleMaterials()" type="button" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-5 text-mobi-5 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-5 hover:text-white transition-all duration-300">
                                 Ver Materiales
                             </button>
@@ -344,7 +352,7 @@
                                 <div class="p-5 flex-grow flex flex-col">
                                     <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Cedro (Cedar)</h3>
                                     <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        Famoso por su aroma, contiene tujaplicinas naturales que lo hacen resistente a hongos y termitas de forma natural.
+                                        Famoso por su aroma, contiene tujaplicinas naturales que lo hacen resistente a hongos e insectos de forma natural.
                                     </p>
                                     <div class="mt-auto space-y-0.5">
                                         <div class="spec-row"><span class="text-mobi-3">Dureza</span><span>900 lbf</span></div>
@@ -363,11 +371,11 @@
                                 <div class="p-5 flex-grow flex flex-col">
                                     <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Maculís</h3>
                                     <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        Madera dura de alto rendimiento con un perfil visual impresionante. Valorado por su grano irregular y acabado brillante.
+                                        Madera dura de alto rendimiento con perfil visual impresionante. Valorada por su grano irregular y alto brillo.
                                     </p>
                                     <div class="mt-auto space-y-0.5">
                                         <div class="spec-row"><span class="text-mobi-3">Dureza</span><span>1,100 lbf</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Textura</span><span>Fina-Media</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Textura</span><span>Fina-Med</span></div>
                                         <div class="spec-row"><span class="text-mobi-3">Color</span><span>Dorado Pálido</span></div>
                                         <div class="spec-row"><span class="text-mobi-3">Resiliencia</span><span>Alta</span></div>
                                         <div class="spec-row"><span class="text-mobi-3">Origen</span><span>Tropical</span></div>
@@ -388,8 +396,8 @@
                                         <div class="spec-row"><span class="text-mobi-3">Dureza</span><span>1,400 lbf</span></div>
                                         <div class="spec-row"><span class="text-mobi-3">Densidad</span><span>Muy Alta</span></div>
                                         <div class="spec-row"><span class="text-mobi-3">Color</span><span>Choco/Ciruela</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Mant.</span><span>Bajo</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Mejor Uso</span><span>Decks</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Mantenimiento</span><span>Bajo</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Mejor Uso</span><span>Decking</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -401,7 +409,7 @@
                                 <div class="p-5 flex-grow flex flex-col">
                                     <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Teca (Teak)</h3>
                                     <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        El rey indiscutible de la madera marítima. Produce una resina aceitosa natural que actúa como impermeabilizante permanente.
+                                        El rey de la madera marítima. Produce una resina aceitosa natural que actúa como impermeabilizante permanente.
                                     </p>
                                     <div class="mt-auto space-y-0.5">
                                         <div class="spec-row"><span class="text-mobi-3">Dureza</span><span>1,070 lbf</span></div>
@@ -420,14 +428,14 @@
                                 <div class="p-5 flex-grow flex flex-col">
                                     <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Parota</h3>
                                     <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        Preferida por su gran escala y sostenibilidad. Ofrece una relación peso-resistencia única con un grano entrelazado hermoso.
+                                        Favorita por su escala y sostenibilidad. Ofrece una relación peso-fuerza única con grano entrelazado.
                                     </p>
                                     <div class="mt-auto space-y-0.5">
                                         <div class="spec-row"><span class="text-mobi-3">Grano</span><span>Entrelazado</span></div>
                                         <div class="spec-row"><span class="text-mobi-3">Peso</span><span>Ligero</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Estética</span><span>Borde Vivo</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Eco</span><span>Crec. Rápido</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Fuerza</span><span>Alta Relación</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Estética</span><span>Live Edge</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Eco</span><span>Crecimiento Rápido</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Fuerza</span><span>Relación Alta</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -439,14 +447,14 @@
                                 <div class="p-5 flex-grow flex flex-col">
                                     <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Teak WPC</h3>
                                     <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        Combina la estética de la Teca con polímeros de grado aeroespacial. No requiere aceitado y es antideslizante.
+                                        Estética de Teca con polímero aeroespacial. Cero aceite, antideslizante y libre de astillas.
                                     </p>
                                     <div class="mt-auto space-y-0.5">
                                         <div class="spec-row"><span class="text-mobi-3">Material</span><span>Compuesto</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Mant.</span><span>Ultra-Bajo</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Resist. UV</span><span>Alta</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Superficie</span><span>Anti-derrape</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Mejor Uso</span><span>Albercas</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Mantenimiento</span><span>Ultra-Bajo</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Resistencia UV</span><span>Alta</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Superficie</span><span>Anti-Slip</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Uso</span><span>Área de Alberca</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -458,7 +466,7 @@
                                 <div class="p-5 flex-grow flex flex-col">
                                     <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Walnut WPC</h3>
                                     <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        Tonos oscuros sofisticados de Nogal de lujo diseñados para estabilidad dimensional absoluta sin deformaciones.
+                                        Tonos oscuros de Nogal de lujo diseñados para estabilidad absoluta sin deformaciones.
                                     </p>
                                     <div class="mt-auto space-y-0.5">
                                         <div class="spec-row"><span class="text-mobi-3">Dureza</span><span>Resist. Impacto</span></div>
@@ -472,18 +480,18 @@
 
                             <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
                                 <div class="h-40 overflow-hidden relative">
-                                    <img src="https://mobi.help/01cumaru.jpg" alt="Madera de Cumarú" class="wood-img w-full h-full object-cover">
+                                    <img src="https://mobi.help/01cumaru.jpg" alt="Madera Cumarú" class="wood-img w-full h-full object-cover">
                                 </div>
                                 <div class="p-5 flex-grow flex flex-col">
                                     <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Cumarú</h3>
                                     <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        La "Teca Brasileña" es increíblemente densa con clasificación de fuego Clase A, tan resistente a llamas y rotura como el concreto.
+                                        "Teca Brasileña" increíblemente densa con clasificación de fuego Clase A, resistente como el concreto.
                                     </p>
                                     <div class="mt-auto space-y-0.5">
                                         <div class="spec-row"><span class="text-mobi-3">Dureza</span><span>3,540 lbf</span></div>
                                         <div class="spec-row"><span class="text-mobi-3">Vida Útil</span><span>50+ Años</span></div>
                                         <div class="spec-row"><span class="text-mobi-3">Color</span><span>Dorado/Rojo</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Fuego</span><span>Clase A</span></div>
+                                        <div class="spec-row"><span class="text-mobi-3">Clasif. Fuego</span><span>Clase A</span></div>
                                         <div class="spec-row"><span class="text-mobi-3">Mejor Uso</span><span>Lujo</span></div>
                                     </div>
                                 </div>
@@ -509,10 +517,10 @@
                             <span class="text-4xl font-black text-mobi-4/30 italic block mb-2">02</span>
                             <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-4">Estime costos y estructure sus pagos</h3>
                             <p class="text-mobi-1/70 leading-relaxed mb-4">
-                                Esquema transparente: Anticipo del 60% a la firma, 20% de progreso y 20% de saldo final un día antes de la instalación.
+                                Esquema transparente: Anticipo del 60%, 20% de progreso y 20% de saldo un día antes de la instalación.
                             </p>
                             <p class="text-mobi-1/70 leading-relaxed mb-6">
-                                Nuestra siguiente visita es para entregarte un contrato claro y detallado que estipula las fechas de entrega, responsabilidades y alcances del proyecto, garantizando seguridad total en tu inversión.
+                                Entregamos contrato claro que estipula fechas, responsabilidades y alcances, garantizando seguridad total en tu inversión.
                             </p>
                             <button onclick="toggleOptimizer()" type="button" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-4 text-mobi-4 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-4 hover:text-white transition-all duration-300">
                                 Estime el costo
@@ -612,7 +620,7 @@
                                     </button>
                                     <div id="payment-info-container" class="hidden mt-4 p-5 bg-white/10 rounded-2xl border border-white/20 text-center transition-all duration-300">
                                         <p class="text-[12px] font-bold tracking-wide leading-relaxed text-white">
-                                            Puede pagar con tarjeta de crédito hasta 6 MSI, o por transferencia. Para garantizar la seguridad de su proyecto, los datos bancarios le serán proporcionados tras la autorización de la propuesta y la firma del contrato.
+                                            Puede pagar con tarjeta de crédito hasta 6 MSI, o por transferencia. Para garantizar su seguridad, los datos bancarios le serán proporcionados tras la autorización de la propuesta y firma del contrato.
                                         </p>
                                     </div>
                                 </div>
@@ -637,10 +645,10 @@
                             <span class="text-4xl font-black text-mobi-2/30 italic block mb-2">03</span>
                             <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-4">Construcción y Garantía</h3>
                             <p class="text-mobi-1/70 leading-relaxed mb-4">
-                                Nuestra tercera visita es para la instalación maestra con garantía estructural de 5 años y 1 año en mano de obra. El mantenimiento preventivo anual debe ser por Mobi Deck.
+                                Instalación maestra con garantía estructural de 5 años y 1 año en mano de obra. Mantenimiento preventivo anual obligatorio por Mobi Deck.
                             </p>
                             <p class="text-mobi-1/70 leading-relaxed mb-6">
-                                Ejecutamos la obra usando fijaciones ocultas y tornillería de acero inoxidable, asegurando que tu deck cumpla con los estándares más estrictos y resista la intemperie.
+                                Ejecutamos usando fijaciones ocultas y tornillería de acero inoxidable, asegurando que tu deck resista la intemperie bajo estándares estrictos.
                             </p>
                             <div class="flex items-center justify-start w-full text-mobi-5 font-bold text-[12px] md:text-[13px] uppercase tracking-tighter">
                                 <span>5 Años Estructural &nbsp;&bull;&nbsp; 1 Año Mano de Obra</span>
@@ -648,7 +656,7 @@
                         </div>
                         <div class="w-full md:w-1/2 flex items-center justify-center md:justify-end mt-6 md:mt-0">
                             <div class="flex flex-col items-center">
-                                <img src="https://mobi.help/5yrwarranty.png" alt="Garantía de 5 años" class="w-64 md:w-80 max-h-40 md:max-h-48 object-contain object-center transform scale-125 md:scale-[1.35] origin-center mb-6 md:mb-10">
+                                <img src="https://mobi.help/5yrwarranty.png" alt="5 Años de Garantía" class="w-64 md:w-80 max-h-40 md:max-h-48 object-contain object-center transform scale-125 md:scale-[1.35] origin-center mb-6 md:mb-10">
                                 <a href="https://customer.mobi.help" target="_blank" class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-blue-600 text-white font-bold text-[10px] uppercase tracking-widest hover:bg-blue-700 transition-all duration-300 shadow-lg relative z-10">
                                     Soporte a Clientes
                                 </a>
@@ -749,7 +757,6 @@
             
             if (container.classList.contains('hidden')) {
                 container.classList.remove('hidden');
-                void container.offsetHeight; 
                 section.classList.add('section-expanded');
                 setTimeout(() => {
                     container.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -767,7 +774,6 @@
             
             if (container.classList.contains('hidden')) {
                 container.classList.remove('hidden');
-                void container.offsetHeight; 
                 section.classList.add('section-expanded');
                 setTimeout(() => {
                     container.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -781,11 +787,7 @@
 
         function togglePaymentInfo() {
             const container = document.getElementById('payment-info-container');
-            if (container.classList.contains('hidden')) {
-                container.classList.remove('hidden');
-            } else {
-                container.classList.add('hidden');
-            }
+            container.classList.toggle('hidden');
         }
 
         function forceVideoPlay() {
@@ -813,7 +815,7 @@
             }
         });
 
-        // LÓGICA DE LA CALCULADORA
+        // CALCULATOR LOGIC
         let currentWoodName = "Cedro";
         let currentWoodPrice = 1560; 
         const wasteFactor = 1.10; 
@@ -884,7 +886,7 @@
        target="_blank" 
        rel="noopener noreferrer" 
        class="fixed bottom-8 right-8 z-[150] flex items-center justify-center w-16 h-16 bg-mobi-5 text-white rounded-full shadow-2xl hover:scale-110 transition-transform duration-300"
-       aria-label="Chatear por WhatsApp">
+       aria-label="Chat on WhatsApp">
         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
