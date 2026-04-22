@@ -703,7 +703,7 @@
                 <h3 class="text-4xl font-extrabold text-mobi-1 mb-4">Inicia tu Proyecto</h3>
                 <p class="text-mobi-1/60 font-medium">Envía tu solicitud para comenzar con el Paso 1.</p>
             </div>
-            <form action="https://formspree.io/f/mreykjlr" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12 rounded-[2rem] border border-stone-200 bg-stone-50/50">
+            <form id="contact-form" action="https://formspree.io/f/mreykjlr" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12 rounded-[2rem] border border-stone-200 bg-stone-50/50">
                 <input type="hidden" name="_next" value="https://mobi.help/gracias.html">
                 <div class="space-y-2">
                     <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Nombre Completo</label>
@@ -728,7 +728,7 @@
                     <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Mensaje</label>
                     <textarea name="message" rows="4" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition" placeholder="Cuéntanos sobre tu espacio..."></textarea>
                 </div>
-                <button type="submit" class="md:col-span-2 py-5 bg-mobi-1 text-white rounded-full font-extrabold text-lg hover:bg-mobi-5 transition-all shadow-xl">
+                <button type="submit" id="submit-btn" class="md:col-span-2 py-5 bg-mobi-1 text-white rounded-full font-extrabold text-lg hover:bg-mobi-5 transition-all shadow-xl">
                     Enviar Solicitud
                 </button>
             </form>
@@ -744,6 +744,22 @@
     </footer>
 
     <script>
+        // FORM SUBMISSION BACKUP REDIRECT
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', async function(event) {
+            // Deshabilitar botón para evitar múltiples envíos
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Enviando...';
+
+            // El formulario se enviará normalmente a Formspree. 
+            // Agregamos un fallback por si Formspree tarda demasiado en responder.
+            setTimeout(() => {
+                window.location.href = "https://mobi.help/gracias.html";
+            }, 3000); 
+        });
+
         function expandirIdentidad() {
             const sec = document.getElementById('identidad');
             sec.classList.remove('section-retracted');
