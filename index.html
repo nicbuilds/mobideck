@@ -13,6 +13,8 @@
       gtag('config', 'AW-18107517709');
     </script>
 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <meta property="og:title" content="Mobi Deck | Whale Made Decks">
     <meta property="og:description" content="Premium decks en días, no semanas. Construcción y mantenimiento de decks con calidad premium y sello mexicano.">
     <meta property="og:image" content="https://mobi.help/logo_cropped_F.png">
@@ -727,6 +729,11 @@
                     <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Mensaje</label>
                     <textarea name="message" rows="4" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition" placeholder="Cuéntanos sobre tu espacio..."></textarea>
                 </div>
+                
+                <div class="md:col-span-2 flex justify-center">
+                    <div class="g-recaptcha" data-sitekey="6LckdKQsAAAAACsATxnKS-8OIruXY0Y7bvytpWez"></div>
+                </div>
+
                 <button type="submit" id="submit-btn" class="md:col-span-2 py-5 bg-mobi-1 text-white rounded-full font-extrabold text-lg hover:bg-mobi-5 transition-all shadow-xl">
                     Enviar Solicitud
                 </button>
@@ -743,13 +750,20 @@
     </footer>
 
     <script>
-        // SOLUCIÓN DEFINITIVA DE REDIRECCIÓN A GRACIAS.HTML
+        // SOLUCIÓN DEFINITIVA DE REDIRECCIÓN A GRACIAS.HTML CON RECAPTCHA
         const form = document.getElementById('contact-form');
         const submitBtn = document.getElementById('submit-btn');
 
         form.addEventListener('submit', async function(event) {
-            event.preventDefault(); // Detiene el envío normal para procesarlo con AJAX
+            event.preventDefault(); 
             
+            // Verificación de reCAPTCHA
+            const captchaResponse = grecaptcha.getResponse();
+            if (!captchaResponse) {
+                alert("Por favor, completa el reCAPTCHA para continuar.");
+                return;
+            }
+
             submitBtn.disabled = true;
             submitBtn.innerText = 'Enviando...';
 
@@ -765,16 +779,14 @@
                 });
 
                 if (response.ok) {
-                    // Si el envío es exitoso, redirigimos manualmente
                     window.location.href = "https://mobi.help/gracias.html";
                 } else {
-                    // Si hay error, permitimos intentar de nuevo
                     alert("Hubo un problema al enviar tu solicitud. Por favor intenta de nuevo.");
                     submitBtn.disabled = false;
                     submitBtn.innerText = 'Enviar Solicitud';
+                    grecaptcha.reset(); // Resetear captcha si hay error
                 }
             } catch (error) {
-                // Fallback por si falla el fetch
                 window.location.href = "https://mobi.help/gracias.html";
             }
         });
