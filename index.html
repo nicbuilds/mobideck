@@ -703,8 +703,7 @@
                 <h3 class="text-4xl font-extrabold text-mobi-1 mb-4">Inicia tu Proyecto</h3>
                 <p class="text-mobi-1/60 font-medium">Envía tu solicitud para comenzar con el Paso 1.</p>
             </div>
-            <form id="contact-form" action="https://formspree.io/f/mreykjlr" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12 rounded-[2rem] border border-stone-200 bg-stone-50/50">
-                <input type="hidden" name="_next" value="https://mobi.help/gracias.html">
+            <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12 rounded-[2rem] border border-stone-200 bg-stone-50/50">
                 <div class="space-y-2">
                     <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Nombre Completo</label>
                     <input type="text" name="name" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
@@ -744,20 +743,40 @@
     </footer>
 
     <script>
-        // FORM SUBMISSION BACKUP REDIRECT
+        // SOLUCIÓN DEFINITIVA DE REDIRECCIÓN A GRACIAS.HTML
         const form = document.getElementById('contact-form');
         const submitBtn = document.getElementById('submit-btn');
 
         form.addEventListener('submit', async function(event) {
-            // Deshabilitar botón para evitar múltiples envíos
+            event.preventDefault(); // Detiene el envío normal para procesarlo con AJAX
+            
             submitBtn.disabled = true;
             submitBtn.innerText = 'Enviando...';
 
-            // El formulario se enviará normalmente a Formspree. 
-            // Agregamos un fallback por si Formspree tarda demasiado en responder.
-            setTimeout(() => {
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch("https://formspree.io/f/mreykjlr", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Si el envío es exitoso, redirigimos manualmente
+                    window.location.href = "https://mobi.help/gracias.html";
+                } else {
+                    // Si hay error, permitimos intentar de nuevo
+                    alert("Hubo un problema al enviar tu solicitud. Por favor intenta de nuevo.");
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'Enviar Solicitud';
+                }
+            } catch (error) {
+                // Fallback por si falla el fetch
                 window.location.href = "https://mobi.help/gracias.html";
-            }, 3000); 
+            }
         });
 
         function expandirIdentidad() {
