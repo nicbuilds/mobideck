@@ -13,17 +13,19 @@
       gtag('config', 'AW-18107517709');
     </script>
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <meta name="description" content="Decks de teca, cumarú y WPC en Mérida. Calcula tu proyecto y conoce nuestra experiencia y garantía.">
+    <link rel="canonical" href="https://mobi.help/">
+    <meta name="theme-color" content="#636396">
 
     <meta property="og:title" content="Mobi Deck | Whale Made Decks">
-    <meta property="og:description" content="Premium decks en días, no semanas. Construcción y mantenimiento de decks con calidad premium y sello mexicano.">
+    <meta property="og:description" content="Decks de teca, cumarú y WPC. Cotiza tu espacio y conoce nuestra experiencia y garantía.">
     <meta property="og:image" content="https://mobi.help/logo_cropped_F.png">
     <meta property="og:url" content="https://mobi.help">
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mobi Deck | Whale Made Decks">
-    <meta name="twitter:description" content="Premium decks en días, no semanas. Construcción y mantenimiento de decks con calidad premium y sello mexicano.">
+    <meta name="twitter:description" content="Decks de teca, cumarú y WPC. Cotiza tu espacio y conoce nuestra experiencia y garantía.">
     <meta name="twitter:image" content="https://mobi.help/logo_cropped_F.png">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -43,924 +45,160 @@
     }
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                mobi: {
-                  1: '#565F80',
-                  2: '#636396',
-                  3: '#9B679C',
-                  4: '#CC7696',
-                  5: '#EB7F8F',
-                }
-              },
-              fontFamily: {
-                sans: ['Plus Jakarta Sans', 'sans-serif'],
-              }
-            }
-          }
-        }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { scroll-behavior: smooth; margin: 0; }
-        .hero-gradient { background: linear-gradient(135deg, #565F80 0%, #636396 50%, #9B679C 100%); }
-        .glass-nav { background: rgba(86, 95, 128, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-        
-        .parallax-container {
-            position: relative;
-            min-height: 90vh; 
-            min-height: 90dvh;
-            height: auto;
-            overflow: hidden;
-            clip-path: inset(0 0 0 0);
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .section-retracted {
-            height: 0 !important;
-            min-height: 0 !important;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .section-expanded {
-            height: auto !important;
-            min-height: 90vh !important;
-            min-height: 90dvh !important;
-            opacity: 1 !important;
-            pointer-events: auto !important;
-        }
-
-        .fixed-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            height: 100dvh;
-            object-fit: cover;
-            z-index: -1;
-            transform: translateZ(0);
-            pointer-events: none;
-        }
-
-        .content-overlay {
-            position: relative;
-            min-height: 100%;
-            width: 100%;
-            display: flex;
-            flex-direction: column; 
-            z-index: 10;
-        }
-
-        .step-card {
-            background: rgba(255, 255, 255, 0.98);
-            border-left: 6px solid #EB7F8F;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            height: auto;
-            min-height: min-content;
-        }
-
-        .hero-logo-bg {
-            position: absolute;
-            right: -5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 60%;
-            opacity: 0.1;
-            z-index: 1;
-            pointer-events: none;
-            filter: brightness(0) invert(1);
-        }
-
-        .wood-card {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
-            transform-origin: center;
-            z-index: 1;
-            height: auto; 
-            min-height: 100%; 
-            display: flex;
-            flex-direction: column;
-            backface-visibility: hidden;
-        }
-
-        .wood-card:hover {
-            transform: scale(1.05);
-            z-index: 50;
-            box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.3);
-        }
-
-        .wood-img {
-            transition: transform 1.2s ease;
-        }
-        .wood-card:hover .wood-img {
-            transform: scale(1.1);
-        }
-
-        .spec-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.35rem 0; 
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            font-size: 0.65rem; 
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-        }
-
-        .optimizer-card {
-            background: white;
-            border-radius: 2.5rem;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(0,0,0,0.05);
-            height: auto;
-            min-height: min-content;
-        }
-
-        .wood-btn.active {
-            border-color: #CC7696;
-            background-color: #fdf2f7;
-            color: #9B679C;
-            box-shadow: 0 10px 15px -3px rgba(204, 118, 150, 0.05);
-        }
-
-        input:disabled { opacity: 0.5; cursor: not-allowed; }
-
-        #mobile-menu { display: none; opacity: 0; transition: all 0.3s ease; }
-        #mobile-menu.active { display: flex; opacity: 1; }
-
-        .carousel-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            gap: 1.5rem;
-            padding: 1rem 0;
-        }
-        .carousel-container::-webkit-scrollbar { display: none; }
-        .carousel-item {
-            flex: 0 0 85%;
-            scroll-snap-align: center;
-        }
-        @media (min-width: 768px) {
-            .carousel-item { flex: 0 0 45%; }
-        }
-        
-        .lang-btn {
-            transition: all 0.3s ease;
-            filter: grayscale(0.2);
-        }
-        .lang-btn:hover {
-            filter: grayscale(0);
-            transform: scale(1.1);
-        }
+      :root{--ink:#565F80;--indigo:#636396;--orchid:#9B679C;--rose:#CC7696;--coral:#EB7F8F;--paper:#f5f4fa;--line:rgba(99,99,150,.18);--clay:9px 12px 28px rgba(86,95,128,.12),-6px -6px 20px #fff,inset 1px 1px 2px #fff}
+      *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:115px}body{margin:0;color:var(--ink);background:var(--paper);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}button,input,select{font:inherit}button,a,input,select{-webkit-tap-highlight-color:transparent}button,a{touch-action:manipulation}button{cursor:pointer}img{max-width:100%;display:block}h1,h2,h3,p{margin:0}h1,h2,h3{line-height:1.12;letter-spacing:-.045em}h1{font-size:clamp(2.4rem,5.3vw,4.8rem);font-weight:800}h2{font-size:clamp(1.9rem,3.3vw,2.9rem)}h3{font-size:1.65rem}p{max-width:60ch}:focus-visible{outline:3px solid var(--orchid);outline-offset:5px}[hidden]{display:none!important}.wrap{width:min(1120px,calc(100% - 48px));margin-inline:auto}.skip{position:fixed;left:20px;top:-80px;padding:12px;background:#fff;z-index:100}.skip:focus{top:12px}
+      .ambient{position:absolute;inset:0 0 auto;height:960px;z-index:-1;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 88% 25%,#eb7f8f26,transparent 55%),radial-gradient(ellipse at 5% 0%,#63639625,transparent 60%)}.bubble{position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid #fff9;box-shadow:inset 12px 15px 30px #fff9,inset -15px -18px 35px #9b679c15,0 16px 35px #6363960d;background:linear-gradient(145deg,#fff5,#cc769610)}.bubble.one{right:-90px;top:100px}.bubble.two{left:-100px;top:540px;width:220px;height:220px}
+      .site-header{position:sticky;top:12px;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 20px;margin-top:12px;border:1px solid #fff;border-radius:26px;background:rgba(250,249,253,.91);backdrop-filter:blur(18px);box-shadow:0 8px 26px #565f8012}.brand img{width:66px;height:66px;object-fit:contain}.nav{display:flex;gap:25px;align-items:center;font-size:.82rem;font-weight:700}.nav a:hover{color:var(--orchid)}.nav .nav-cta{padding:11px 19px;border-radius:16px;background:linear-gradient(135deg,#fff,#e8e6f1);box-shadow:4px 5px 10px #63639620,inset 1px 1px 0 #fff}.menu-toggle{display:none;border:0;background:#eeecf5;color:var(--ink);padding:12px;border-radius:12px;font-weight:700}
+      section{padding-block:58px}.eyebrow{font-size:.69rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:17px}.eyebrow:before{content:'';height:8px;width:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 5px #eb7f8f15}.section-top{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:27px}.section-top>p{font-size:.92rem;max-width:32ch}.intro{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px;margin-bottom:38px}.intro p{margin-top:20px;max-width:39ch}.accent{color:var(--orchid)}.intro-art{position:relative;padding:12px;border-radius:36px;background:linear-gradient(145deg,#fff9,#e8e5f5);box-shadow:var(--clay);transform:rotate(2deg)}.intro-art img{width:100%;height:270px;object-fit:cover;border-radius:25px}.photo-tag{position:absolute;bottom:25px;left:25px;background:#faf9f0ee;backdrop-filter:blur(10px);padding:7px 13px;border:1px solid #fff;border-radius:12px;font-size:.7rem;font-weight:700}
+      .materials{display:grid;grid-template-columns:repeat(3,1fr);gap:23px}.material{padding:12px;border-radius:28px;background:linear-gradient(145deg,#fff,#eeedf5);box-shadow:var(--clay);border:1px solid #fff}.material img{width:100%;height:154px;object-fit:cover;border-radius:19px}.material-body{padding:19px 10px 12px}.material h3{display:flex;justify-content:space-between;align-items:center}.material h3 span{font-size:.65rem;letter-spacing:0;font-weight:600;padding:6px 10px;background:#6363960c;border-radius:10px}.material p{font-size:.87rem;margin:12px 0 19px}.material a{display:inline-flex;align-items:center;justify-content:space-between;width:100%;font-size:.78rem;font-weight:800;padding-top:13px;border-top:1px solid var(--line)}.material a span{font-size:1.3rem;color:var(--orchid)}
+      .quote-shell{display:grid;grid-template-columns:1.12fr 1fr;padding:10px;gap:10px;border-radius:34px;background:linear-gradient(140deg,#fff9,#e9e7f2);border:1px solid #fff;box-shadow:var(--clay)}.quote-form{padding:27px}fieldset{margin:0 0 24px;padding:0;border:0;min-width:0}legend,.field-label{display:block;font-size:.8rem;font-weight:800;margin-bottom:11px}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.choices label{position:relative}.choices input{position:absolute;opacity:0;width:1px;height:1px}.choices span{display:block;text-align:center;padding:13px 4px;border-radius:15px;background:#f3f2f8;border:1px solid var(--line);font-size:.82rem;font-weight:700;transition:box-shadow .2s,background .2s}.choices input:checked+span{background:var(--indigo);color:#fff;box-shadow:inset 0 2px 3px #ffffff42,0 5px 12px #63639635}.choices input:focus-visible+span{outline:3px solid var(--orchid);outline-offset:4px}.mode{display:flex;flex-wrap:wrap;gap:16px;font-size:.8rem;margin-bottom:18px}.mode label{display:flex;align-items:center;gap:6px}.mode input{accent-color:var(--indigo);width:17px;height:17px}.dimensions{display:grid;grid-template-columns:1fr 1fr;gap:16px}.measure label{display:block;font-size:.76rem;font-weight:700;margin-bottom:7px}.measure input{width:100%;min-width:0;border:1px solid #fff;border-radius:15px;padding:13px 15px;background:#ebeaf3;color:var(--ink);box-shadow:inset 3px 3px 7px #6363961c,inset -3px -3px 7px #fff;font-size:1.2rem;font-weight:700}.hint{font-size:.75rem;margin-top:17px}.error{font-size:.8rem;color:#8b284b;margin-top:12px;min-height:1.3em}.quote-result{border-radius:26px;padding:32px;color:#fff;background:radial-gradient(ellipse at 100% 0%,#9b679c88,transparent 65%),linear-gradient(140deg,var(--indigo),var(--ink));box-shadow:inset 1px 1px 2px #ffffff70,inset -4px -4px 14px #363e5826;display:flex;flex-direction:column;justify-content:center}.result-heading{display:flex;justify-content:space-between;gap:12px;font-size:.8rem}.quote-result h3{font-size:.73rem;letter-spacing:.11em;text-transform:uppercase;margin-top:27px}.total{font-size:clamp(2rem,3.5vw,3rem);font-weight:800;letter-spacing:-.05em;line-height:1.3;overflow-wrap:anywhere}.currency{font-size:.7rem;opacity:.85}.breakdown{margin:23px 0;display:grid;gap:9px;font-size:.76rem}.breakdown div{display:flex;justify-content:space-between;gap:15px}.breakdown dt,.breakdown dd{margin:0}.breakdown dd{font-weight:700;white-space:nowrap}.cta{display:flex;justify-content:center;align-items:center;gap:15px;padding:16px 20px;border-radius:18px;font-size:.9rem;font-weight:800;color:#353d58;background:linear-gradient(135deg,#f5b3b6,var(--coral));box-shadow:inset 2px 2px 2px #ffffff75,inset -2px -3px 5px #9b679c25,0 8px 15px #292d4726}.cta:hover{filter:brightness(1.06)}.cta[aria-disabled=true]{opacity:.6;cursor:not-allowed}.result-note{font-size:.7rem;margin-top:14px;opacity:.9;line-height:1.6}
+      .warranty{display:grid;grid-template-columns:240px 1fr;gap:45px;align-items:center;background:linear-gradient(130deg,#fff9,#e9e8f3);padding:35px 45px;border:1px solid #fff;border-radius:34px;box-shadow:var(--clay)}.seal{width:230px;height:220px;object-fit:contain;filter:drop-shadow(0 12px 10px #565f8015)}.warranty h2{font-size:clamp(1.8rem,3vw,2.6rem)}.warranty p{font-size:.85rem;margin-top:16px}.warranty a{display:inline-block;margin-top:16px;font-size:.8rem;font-weight:800;text-decoration:underline;text-underline-offset:4px}.terms{font-size:.75rem!important}.gallery-controls{display:flex;gap:9px}.gallery-controls button{width:45px;height:45px;border:1px solid #fff;border-radius:15px;background:#eeedf5;color:var(--ink);box-shadow:var(--clay);font-size:1.3rem}.gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;padding:8px 4px 20px;scrollbar-color:var(--rose) #e9e7f1;scrollbar-width:thin}.gallery figure{flex:0 0 44%;margin:0;padding:10px;border:1px solid #fff;border-radius:25px;background:#fff8;scroll-snap-align:start}.gallery a{display:block;border-radius:17px;overflow:hidden}.gallery img{width:100%;height:265px;object-fit:cover;transition:transform .35s}.gallery a:hover img{transform:scale(1.03)}.gallery figcaption{font-size:.72rem;font-weight:700;padding:12px 6px 3px;display:flex;justify-content:space-between}.gallery figure:last-child img{object-position:center}.footer{border-top:1px solid var(--line);padding-block:25px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:15px;font-size:.75rem}.footer div{display:flex;gap:20px}.footer a{text-decoration:underline;text-underline-offset:4px}
+      .reveal{transition:opacity .65s ease,transform .65s cubic-bezier(.2,.65,.3,1)}.reveal.is-pending{opacity:0;transform:translateY(24px)}
+      @media(min-width:800px){.material:nth-child(2){transition-delay:.08s}.material:nth-child(3){transition-delay:.16s}}
+      @media(max-width:800px){html{scroll-padding-top:105px}.wrap{width:calc(100% - 32px)}section{padding-block:35px}.site-header{padding:8px 14px;border-radius:21px}.brand img{width:54px;height:54px}.nav{gap:14px;font-size:.73rem}.intro{gap:25px}.intro-art img{height:220px}.materials{gap:12px}.material img{height:130px}.material-body{padding:15px 5px 8px}.material h3{display:block;font-size:1.4rem}.material h3 span{display:table;margin-top:9px}.quote-form{padding:20px}.quote-result{padding:25px}.warranty{padding:25px;gap:25px;grid-template-columns:180px 1fr}.seal{width:180px}.gallery figure{flex-basis:60%}}
+      @media(max-width:600px){.menu-toggle{display:block}.nav{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;flex-direction:column;align-items:stretch;padding:16px;border:1px solid #fff;border-radius:22px;background:#f7f6fc;box-shadow:var(--clay)}.nav.is-open{display:flex}.nav a{padding:9px 12px}.intro{grid-template-columns:1fr;gap:24px;margin-bottom:25px}.intro h1{max-width:12ch}.intro-art{transform:none;border-radius:26px}.intro-art img{height:195px;border-radius:18px}.intro p{margin-top:15px;font-size:.91rem}.materials{grid-template-columns:1fr;gap:17px}.material{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:13px;padding:12px;border-radius:23px}.material img{height:164px;border-radius:15px}.material-body{padding:6px 2px}.material h3{display:flex;font-size:1.45rem}.material h3 span{display:inline-block;margin:0;font-size:.57rem;padding:5px 7px}.material p{font-size:.79rem;margin:10px 0}.material a{padding-top:7px}.section-top{display:block;margin-bottom:22px}.section-top>p{margin-top:12px}.quote-shell{grid-template-columns:1fr;border-radius:27px}.quote-form{padding:18px 13px 2px}.quote-result{padding:25px;border-radius:21px}.total{font-size:2.7rem}.warranty{grid-template-columns:1fr;gap:12px;padding:27px}.seal{width:175px;height:150px;margin-inline:auto}.warranty .eyebrow{margin-top:10px}.gallery-controls{margin-top:17px}.gallery figure{flex-basis:88%}.gallery img{height:225px}.footer{font-size:.7rem}.footer div{gap:13px}.bubble.one{width:200px;height:200px;right:-100px}.eyebrow{font-size:.62rem}}
+      @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal.is-pending{opacity:1;transform:none}}
     </style>
+<noscript><style>.menu-toggle{display:none}.nav{display:flex;position:static;flex-wrap:wrap;flex-direction:row;box-shadow:none;background:transparent;padding:0;font-size:.7rem}.site-header{position:relative;flex-wrap:wrap}</style></noscript>
 </head>
-<body class="bg-stone-50 text-mobi-1">
-
-    <header class="fixed w-full z-[100] glass-nav">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-white">
-            <a href="index.html" class="flex items-center gap-4">
-                <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck Logo" class="h-12 w-auto">
-                <h1 class="text-xl font-extrabold tracking-tighter uppercase">Mobi Deck</h1>
-            </a>
-
-            <div class="hidden md:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-[0.2em]">
-                <a href="#step1" class="hover:text-mobi-5 transition">01. Cotización</a>
-                <a href="#step2" class="hover:text-mobi-5 transition">02. Pago</a>
-                <a href="#step3" class="hover:text-mobi-5 transition">03. Instalación</a>
-                <a href="https://customer.mobi.help" target="_blank" class="hover:text-mobi-5 transition">Soporte a Clientes</a>
-                <a href="#contact" class="px-6 py-2.5 rounded-full bg-mobi-5 text-white hover:bg-white hover:text-mobi-1 transition duration-300">Contáctanos</a>
-                
-                <a href="index-en.html" class="lang-btn flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 transition" title="English">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" class="w-6 h-4 object-cover rounded-sm shadow-sm">
-                    <span class="text-[9px]">EN</span>
-                </a>
-            </div>
-
-            <div class="flex items-center gap-4 md:hidden">
-                <a href="index-en.html" class="lang-btn flex items-center p-1">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" class="w-8 h-5 object-cover rounded-sm shadow-md">
-                </a>
-                <button id="menu-toggle" class="text-white focus:outline-none">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </nav>
-        <div id="mobile-menu" class="fixed inset-x-0 top-[72px] bg-mobi-1 text-white p-8 flex flex-col space-y-6 text-center font-bold uppercase tracking-widest shadow-2xl z-[90]">
-            <a href="#step1" class="mobile-link">01. Cotización</a>
-            <a href="#step2" class="mobile-link">02. Pago</a>
-            <a href="#step3" class="mobile-link">03. Instalación</a>
-            <a href="https://customer.mobi.help" target="_blank" class="mobile-link">Soporte a Clientes</a>
-            <a href="#contact" class="mobile-link text-mobi-5">Contáctanos</a>
-        </div>
-    </header>
-
-    <section class="relative min-h-[80vh] min-h-[80dvh] flex flex-col justify-center hero-gradient text-white overflow-hidden">
-        <img src="https://mobi.help/logo_cropped_F.png" alt="" class="hero-logo-bg">
-        <div class="max-w-7xl mx-auto px-6 relative z-10 py-32 w-full my-auto flex-shrink-0">
-            <div class="max-w-3xl text-left">
-                <span class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest mb-6 text-mobi-5">Guía de Servicio</span>
-                <h2 class="text-5xl md:text-8xl font-extrabold mb-8 leading-[1.1]">
-                   Construcción de Decks Premium en Mérida <br><span class="text-mobi-5 uppercase text-3xl md:text-5xl block mt-4">En días, no semanas</span>
-                </h2>
-                <p class="text-lg md:text-xl opacity-80 mb-10 max-w-xl font-medium">
-                    Diseñamos e instalamos decks de madera para jardines, terrazas y albercas en Mérida, Yucatán.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <button onclick="expandirIdentidad()" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-white text-mobi-1 font-bold hover:shadow-2xl transition transform hover:-translate-y-1">
-                        Conoce nuestra esencia
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="identidad" class="parallax-container section-retracted relative overflow-hidden">
-        <video 
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            webkit-playsinline 
-            class="fixed-bg z-[-1]"
-            style="background-color: #000;">
-            <source src="https://mobi.help/xanax_A_cinematic_slow-motion_underwater_video_deep_in_the_da_80a1563d-fc4d-4508-8ec2-f182ce2efe99_0.mp4" type="video/mp4">
-        </video>
-
-        <div class="absolute inset-0 bg-mobi-1/60 backdrop-blur-[2px] z-[1]"></div>
-        
-        <div class="content-overlay relative z-10 py-12">
-            <div class="max-w-7xl mx-auto px-6 w-full text-white my-auto flex-shrink-0">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-6">
-                        <span class="text-mobi-5 font-bold uppercase tracking-[0.3em] text-[10px]">Nuestra Identidad</span>
-                        <h2 class="text-4xl md:text-6xl font-extrabold leading-tight">
-                            Somos una empresa mexicana dedicada a la construcción y mantenimiento de decks.
-                        </h2>
-                        <div class="h-1 w-20 bg-mobi-5"></div>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-[3rem] border border-white/20">
-                        <p class="text-2xl md:text-3xl font-bold mb-6 italic leading-snug">
-                            "Construimos decks que reflejan la fuerza del mar, su resistencia y que capturan su belleza."
-                        </p>
-                        <p class="text-lg opacity-90 leading-relaxed mb-8">
-                            Nos distinguimos por nuestra calidad premium y servicio profesional.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="mt-12 md:mt-16 flex justify-center md:justify-start pb-4">
-                    <a href="#step1" class="group flex items-center gap-4 bg-mobi-5 hover:bg-white text-white hover:text-mobi-1 px-8 py-4 rounded-full font-bold uppercase text-xs tracking-[0.2em] transition-all duration-300 shadow-xl">
-                        Comienza tu proyecto
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="step1" class="parallax-container">
-        <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="fixed-bg" style="background-color: #565F80;">
-            <source src="https://mobi.help/xanax_Prompt_A_split_screen_on_the_left_a_clean_3D_wireframe__b497e901-8703-4a3d-9100-9091766fafe3_1.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-mobi-1/40"></div>
-        <div class="content-overlay">
-            <div class="max-w-7xl mx-auto px-6 w-full my-auto py-12 flex-shrink-0">
-                <div class="step-card max-w-4xl p-6 md:p-8 rounded-tr-[4rem] rounded-bl-[4rem]">
-                    <div class="flex flex-col md:flex-row gap-8 items-center">
-                        <div class="w-full md:w-1/2">
-                            <span class="text-4xl font-black text-mobi-5/30 italic block mb-2">01</span>
-                            <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-4">Diseño y materiales</h3>
-                            <p class="text-mobi-1/70 leading-relaxed mb-4">
-                                Proporciona tus planos arquitectónicos o solicita un diseño desde cero y elije una madera.
-                            </p>
-                            <p class="text-mobi-1/70 leading-relaxed mb-6">
-                               En nuestra primera visita, tomaremos medidas y evaluaremos las condiciones del terreno para trazar la estrategia ideal, asegurando que tu deck luzca espectacular y perdure con el tiempo.
-                            </p>
-                            <button onclick="toggleMaterials()" type="button" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-5 text-mobi-5 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-5 hover:text-white transition-all duration-300">
-                                Ver Materiales
-                            </button>
-                        </div>
-                        <div class="w-full md:w-1/2">
-                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800" alt="Diseño de Arquitectura" class="w-full h-40 md:h-48 object-cover rounded-xl shadow-md">
-                        </div>
-                    </div>
-
-                    <div id="materials-container" class="hidden w-full mt-12 pt-10 border-t border-stone-200">
-                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            
-                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
-                                <div class="h-40 overflow-hidden relative">
-                                    <img src="https://mobi.help/1cedar.png" alt="Madera de Cedro" class="wood-img w-full h-full object-cover">
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Cedro (Cedar)</h3>
-                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        Famoso por su aroma, contiene tujaplicinas naturales que lo hacen resistente a hongos e insectos de forma natural.
-                                    </p>
-                                    <div class="mt-auto space-y-0.5">
-                                        <div class="spec-row"><span class="text-mobi-3">Dureza</span><span>900 lbf</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Estabilidad</span><span>Alta</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Rosa a Café</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Durabilidad</span><span>Excelente</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Mejor Uso</span><span>Pérgolas</span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
-                                <div class="h-40 overflow-hidden relative">
-                                    <img src="https://mobi.help/1maculi.png" alt="Madera de Maculís" class="wood-img w-full h-full object-cover">
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Maculís</h3>
-                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        Madera dura de alto rendimiento con perfil visual impresionante. Valorada por su grano irregular y alto brillo.
-                                    </p>
-                                    <div class="mt-auto space-y-0.5">
-                                        <div class="spec-row"><span class="text-mobi-3">Dureza</span><span>1,100 lbf</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Textura</span><span>Fina-Med</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Dorado Pálido</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Resiliencia</span><span>Alta</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Origen</span><span>Tropical</span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
-                                <div class="h-40 overflow-hidden relative">
-                                    <img src="https://mobi.help/1tzalam.png" alt="Madera de Tzalam" class="wood-img w-full h-full object-cover">
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Tzalam</h3>
-                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        El estándar de oro para decks exteriores. Conocido como "Nogal Maya", destaca por su tono chocolate profundo y brillo natural.
-                                    </p>
-                                    <div class="mt-auto space-y-0.5">
-                                        <div class="spec-row"><span class="text-mobi-3">Dureza</span><span>1,400 lbf</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Densidad</span><span>Muy Alta</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Choco/Ciruela</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Mantenimiento</span><span>Bajo</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Mejor Uso</span><span>Decking</span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
-                                <div class="h-40 overflow-hidden relative">
-                                    <img src="https://mobi.help/1teca.png" alt="Madera de Teca" class="wood-img w-full h-full object-cover">
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Teca (Teak)</h3>
-                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        El rey de la madera marítima. Produce una resina aceitosa natural que actúa como impermeabilizante permanente.
-                                    </p>
-                                    <div class="mt-auto space-y-0.5">
-                                        <div class="spec-row"><span class="text-mobi-3">Dureza</span><span>1,070 lbf</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Sílice</span><span>Alto</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Miel Dorado</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Grado</span><span>Marítimo</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Clima</span><span>Excelente</span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
-                                <div class="h-40 overflow-hidden relative">
-                                    <img src="https://mobi.help/1parota.png" alt="Madera de Parota" class="wood-img w-full h-full object-cover">
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Parota</h3>
-                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        Favorita por su escala y sostenibilidad. Ofrece una relación peso-fuerza única con grano entrelazado.
-                                    </p>
-                                    <div class="mt-auto space-y-0.5">
-                                        <div class="spec-row"><span class="text-mobi-3">Grano</span><span>Entrelazado</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Peso</span><span>Ligero</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Estética</span><span>Live Edge</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Eco</span><span>Crecimiento Rápido</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Fuerza</span><span>Relación Alta</span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
-                                <div class="h-40 overflow-hidden relative">
-                                    <img src="https://mobi.help/01teakwpc.jpg" alt="Teak WPC" class="wood-img w-full h-full object-cover">
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Teak WPC</h3>
-                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        Estética de Teca con polímero aeroespacial. Cero aceite, antideslizante y libre de astillas.
-                                    </p>
-                                    <div class="mt-auto space-y-0.5">
-                                        <div class="spec-row"><span class="text-mobi-3">Material</span><span>Compuesto</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Mantenimiento</span><span>Ultra-Bajo</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Resistencia UV</span><span>Alta</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Superficie</span><span>Anti-Slip</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Uso</span><span>Área de Alberca</span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
-                                <div class="h-40 overflow-hidden relative">
-                                    <img src="https://mobi.help/01walnutwpc.jpg" alt="Walnut WPC" class="wood-img w-full h-full object-cover">
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Walnut WPC</h3>
-                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        Tonos oscuros de Nogal de lujo diseñados para estabilidad absoluta sin deformaciones.
-                                    </p>
-                                    <div class="mt-auto space-y-0.5">
-                                        <div class="spec-row"><span class="text-mobi-3">Dureza</span><span>Resist. Impacto</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Estabilidad</span><span>Máxima</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Espresso</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Eco</span><span>Reciclado</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Acabado</span><span>Mate</span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wood-card bg-white rounded-[1.5rem] overflow-hidden shadow-sm">
-                                <div class="h-40 overflow-hidden relative">
-                                    <img src="https://mobi.help/01cumaru.jpg" alt="Madera Cumarú" class="wood-img w-full h-full object-cover">
-                                </div>
-                                <div class="p-5 flex-grow flex flex-col">
-                                    <h3 class="text-xl font-extrabold text-mobi-2 mb-2">Cumarú</h3>
-                                    <p class="text-mobi-1/70 mb-4 text-[11px] leading-relaxed flex-grow">
-                                        "Teca Brasileña" increíblemente densa con clasificación de fuego Clase A, resistente como el concreto.
-                                    </p>
-                                    <div class="mt-auto space-y-0.5">
-                                        <div class="spec-row"><span class="text-mobi-3">Dureza</span><span>3,540 lbf</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Vida Útil</span><span>50+ Años</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Color</span><span>Dorado/Rojo</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Clasif. Fuego</span><span>Clase A</span></div>
-                                        <div class="spec-row"><span class="text-mobi-3">Mejor Uso</span><span>Lujo</span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="step2" class="parallax-container">
-        <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="fixed-bg" style="background-color: #000;">
-            <source src="https://mobi.help/xanax_Prompt_Extreme_close-up_of_premium_Cumar_hardwood_decki_7bf156da-67e3-4255-aa44-ec2a37cf9273_0.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-black/50"></div>
-        <div class="content-overlay items-end">
-            <div class="max-w-7xl mx-auto px-6 w-full flex justify-end my-auto py-12 flex-shrink-0">
-                <div class="step-card max-w-4xl p-6 md:p-8 rounded-tl-[4rem] rounded-br-[4rem] border-l-0 border-r-4 border-mobi-4">
-                    <div class="flex flex-col md:flex-row-reverse gap-8 items-center text-right">
-                        <div class="w-full md:w-1/2">
-                            <span class="text-4xl font-black text-mobi-4/30 italic block mb-2">02</span>
-                            <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-4">Estime costos y estructure sus pagos</h3>
-                            <p class="text-mobi-1/70 leading-relaxed mb-4">
-                                Esquema transparente: Anticipo del 60%, 20% de progreso y 20% de saldo un día antes de la instalación.
-                            </p>
-                            <p class="text-mobi-1/70 leading-relaxed mb-6">
-                                Entregamos contrato claro que estipula fechas, responsabilidades y alcances, garantizando seguridad total en tu inversión.
-                            </p>
-                            <button onclick="toggleOptimizer()" type="button" class="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-mobi-4 text-mobi-4 font-bold text-[10px] uppercase tracking-widest hover:bg-mobi-4 hover:text-white transition-all duration-300">
-                                Estime el costo
-                            </button>
-                        </div>
-                        <div class="w-full md:w-1/2">
-                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800" alt="Esquema Financiero" class="w-full h-40 md:h-48 object-cover rounded-xl shadow-md">
-                        </div>
-                    </div>
-
-                    <div id="optimizer-container" class="hidden w-full mt-12 pt-10 border-t border-stone-200 text-left">
-                        <div class="optimizer-card overflow-hidden flex flex-col lg:flex-row shadow-2xl">
-                            <div class="p-8 lg:p-12 lg:w-3/5 bg-white">
-                                <div class="flex items-center gap-4 mb-8">
-                                    <div class="w-10 h-1 bg-gradient-to-r from-mobi-3 to-mobi-5"></div>
-                                    <h3 class="text-[10px] font-black text-mobi-2 uppercase tracking-[0.3em]">Configuración Técnica</h3>
-                                </div>
-
-                                <div class="space-y-8">
-                                    <div>
-                                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">1. Selecciona Material (m²)</label>
-                                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="wood-catalog">
-                                            <button onclick="updateWood('Maculis', 1000)" id="btn-Maculis" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Maculís<br><span class="font-normal opacity-60 text-[9px]">$1,000</span></button>
-                                            <button onclick="updateWood('Parota', 1100)" id="btn-Parota" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Parota<br><span class="font-normal opacity-60 text-[9px]">$1,100</span></button>
-                                            <button onclick="updateWood('Cedro', 1560)" id="btn-Cedro" class="wood-btn p-3 border-2 border-mobi-4 bg-white text-mobi-3 rounded-2xl text-center font-bold transition-all shadow-sm text-xs leading-tight active">Cedro<br><span class="font-normal opacity-60 text-[9px]">$1,560</span></button>
-                                            <button onclick="updateWood('Tzalam', 1500)" id="btn-Tzalam" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Tzalam<br><span class="font-normal opacity-60 text-[9px]">$1,500</span></button>
-                                            <button onclick="updateWood('Teka', 1500)" id="btn-Teka" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Teka<br><span class="font-normal opacity-60 text-[9px]">$1,500</span></button>
-                                            <button onclick="updateWood('Cumaru', 1700)" id="btn-Cumaru" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">Cumarú<br><span class="font-normal opacity-60 text-[9px]">$1,700</span></button>
-                                            <button onclick="updateWood('WPC', 2000)" id="btn-WPC" class="wood-btn p-3 border-2 border-stone-100 bg-stone-50 rounded-2xl text-center font-bold text-slate-400 hover:border-mobi-4 transition-all text-xs leading-tight">WPC<br><span class="font-normal opacity-60 text-[9px]">$2,000</span></button>
-                                        </div>
-                                    </div>
-
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                        <div>
-                                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">2. Largo (m)</label>
-                                            <input type="number" id="largo" value="1" min="0" step="0.1" oninput="calculate('dims')" 
-                                                class="w-full p-4 bg-stone-50 border-b-4 border-stone-200 rounded-xl focus:border-mobi-5 outline-none font-800 text-mobi-1 text-2xl transition-all">
-                                        </div>
-                                        <div>
-                                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">3. Ancho (m)</label>
-                                            <input type="number" id="ancho" value="1" min="0" step="0.1" oninput="calculate('dims')" 
-                                                class="w-full p-4 bg-stone-50 border-b-4 border-stone-200 rounded-xl focus:border-mobi-5 outline-none font-800 text-mobi-1 text-2xl transition-all">
-                                        </div>
-                                        <div>
-                                            <label class="block text-[10px] font-black text-mobi-3 uppercase tracking-widest mb-2">O Área Total (m²)</label>
-                                            <input type="number" id="area_total" placeholder="Ej: 20" min="0" step="0.1" oninput="calculate('area')" 
-                                                class="w-full p-4 bg-mobi-5/5 border-b-4 border-mobi-5/20 rounded-xl focus:border-mobi-5 outline-none font-800 text-mobi-3 text-2xl transition-all">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="p-8 lg:p-12 lg:w-2/5 bg-mobi-1 text-white flex flex-col justify-between relative">
-                                <div class="relative z-10">
-                                    <h3 class="text-mobi-5 font-black uppercase tracking-[0.3em] text-[9px] mb-8">Resumen de Inversión</h3>
-                                    
-                                    <div class="space-y-5">
-                                        <div class="flex justify-between items-center pb-4 border-b border-white/10">
-                                            <span class="text-white/50 text-[10px] font-bold uppercase tracking-widest">Material:</span>
-                                            <span id="label-madera" class="text-lg font-800 text-mobi-5">Cedro</span>
-                                        </div>
-
-                                        <div class="flex justify-between items-center pb-4 border-b border-white/10">
-                                            <span class="text-white/50 text-[10px] font-bold uppercase tracking-widest">Superficie:</span>
-                                            <span class="text-lg font-800"><span id="res-area-display">1.00</span> m²</span>
-                                        </div>
-                                        
-                                        <div class="space-y-3 pt-2">
-                                            <div class="flex justify-between text-xs">
-                                                <span class="text-white/40 font-medium italic">Madera (+10% Desp.):</span>
-                                                <span id="res-madera" class="font-bold"></span>
-                                            </div>
-                                            <div class="flex justify-between text-xs">
-                                                <span class="text-white/40 font-medium">Estructura (1/3 de $1,745):</span>
-                                                <span id="res-estructura" class="font-bold"></span>
-                                            </div>
-                                            <div class="flex justify-between text-xs">
-                                                <span class="text-white/40 font-medium">Instalación (1/5 de $1,745):</span>
-                                                <span id="res-instalacion" class="font-bold"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="mt-10 pt-8 border-t-2 border-mobi-2">
-                                            <p class="text-mobi-5 text-[9px] uppercase font-black tracking-widest mb-2">Inversión Total del Proyecto</p>
-                                            <p id="res-total" class="text-4xl md:text-5xl font-900 text-white leading-tight tracking-tighter"></p>
-                                            <p class="text-[9px] text-white/30 mt-6 leading-relaxed font-bold uppercase tracking-widest italic">
-                                                Incluye herrajes premium y sellado estructural.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-10 w-full">
-                                    <button onclick="togglePaymentInfo()" type="button" class="w-full bg-gradient-to-r from-mobi-3 via-mobi-4 to-mobi-5 text-white font-black py-5 rounded-2xl transition-all shadow-xl hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 text-[11px] tracking-widest uppercase group">
-                                        <span>Ver Opciones de Pago</span>
-                                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                                    </button>
-                                    <div id="payment-info-container" class="hidden mt-4 p-5 bg-white/10 rounded-2xl border border-white/20 text-center transition-all duration-300">
-                                        <p class="text-[12px] font-bold tracking-wide leading-relaxed text-white">
-                                            Puede pagar con tarjeta de crédito hasta 6 MSI, o por transferencia. Para garantizar su seguridad, los datos bancarios le serán proporcionados tras la autorización de la propuesta y firma del contrato.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="step3" class="parallax-container">
-        <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="fixed-bg" style="background-color: #565F80;">
-            <source src="https://mobi.help/social_xanax_A_slow_cinematic_low-angle_tracking_shot_along_a_massiv_e352d8f0-aefb-44fd-a4f4-d4445fc9d322_2.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-mobi-1/50"></div>
-        <div class="content-overlay">
-            <div class="max-w-7xl mx-auto px-6 w-full my-auto py-12 flex-shrink-0">
-                <div class="step-card max-w-4xl p-6 md:p-8 rounded-tr-[4rem] rounded-bl-[4rem] border-mobi-2">
-                    <div class="flex flex-col md:flex-row gap-8 items-center">
-                        <div class="w-full md:w-1/2 flex flex-col items-start">
-                            <span class="text-4xl font-black text-mobi-2/30 italic block mb-2">03</span>
-                            <h3 class="text-3xl font-extrabold text-mobi-1 tracking-tight mb-4">Construcción y Garantía</h3>
-                            <p class="text-mobi-1/70 leading-relaxed mb-4">
-                                Instalación maestra con garantía estructural de 5 años y 1 año en mano de obra. Mantenimiento preventivo anual obligatorio por Mobi Deck.
-                            </p>
-                            <p class="text-mobi-1/70 leading-relaxed mb-6">
-                                Ejecutamos usando fijaciones ocultas y tornillería de acero inoxidable, asegurando que tu deck resista la intemperie bajo estándares estrictos.
-                            </p>
-                            <div class="flex items-center justify-start w-full text-mobi-5 font-bold text-[12px] md:text-[13px] uppercase tracking-tighter">
-                                <span>5 Años Estructural &nbsp;&bull;&nbsp; 1 Año Mano de Obra</span>
-                            </div>
-                        </div>
-                        <div class="w-full md:w-1/2 flex items-center justify-center md:justify-end mt-6 md:mt-0">
-                            <div class="flex flex-col items-center">
-                                <img src="https://mobi.help/5yrwarranty.png" alt="5 Años de Garantía" class="w-64 md:w-80 max-h-40 md:max-h-48 object-contain object-center transform scale-125 md:scale-[1.35] origin-center mb-6 md:mb-10">
-                                <a href="https://customer.mobi.help" target="_blank" class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-blue-600 text-white font-bold text-[10px] uppercase tracking-widest hover:bg-blue-700 transition-all duration-300 shadow-lg relative z-10">
-                                    Soporte a Clientes
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-12 bg-stone-50 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-6 text-center md:text-left">
-                <span class="text-mobi-5 font-black uppercase tracking-[0.3em] text-[10px]">Aprendimos y perfeccionamos en Canadá lo que hoy construimos para ti</span>
-                <h3 class="text-3xl md:text-4xl font-extrabold text-mobi-1 mt-1 tracking-tight">Nuestra Experiencia</h3>
-            </div>
-            
-            <div class="carousel-container">
-                <div class="carousel-item">
-                     <img src="https://mobi.help/DB-DESIGN.png" alt="Proyecto Mobi Deck 1" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
-                </div>
-                <div class="carousel-item">
-                     <img src="https://mobi.help/FHD0037.JPG" alt="Proyecto Mobi Deck 1" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
-                </div>
-                   <div class="carousel-item">
-                     <img src="https://mobi.help/FHD0041.JPG" alt="Proyecto Mobi Deck 1" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
-                </div>
-                   <div class="carousel-item">
-                     <img src="https://mobi.help/FHD0042.JPG" alt="Proyecto Mobi Deck 1" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
-                </div>
-                   <div class="carousel-item">
-                     <img src="https://mobi.help/FHD0044.JPG" alt="Proyecto Mobi Deck 1" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://mobi.help/deck1.jpeg" alt="Proyecto Mobi Deck 1" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://mobi.help/deck2.jpeg" alt="Proyecto Mobi Deck 2" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://mobi.help/deck3.jpeg" alt="Proyecto Mobi Deck 3" class="w-full h-[150px] md:h-[180px] object-cover rounded-[1.5rem] shadow-lg">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 px-6 bg-white relative z-20">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl font-extrabold text-mobi-1 mb-4">Inicia tu Proyecto</h3>
-                <p class="text-mobi-1/60 font-medium">Envía tu solicitud para comenzar con el Paso 1.</p>
-            </div>
-            <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-12 rounded-[2rem] border border-stone-200 bg-stone-50/50">
-                <div class="space-y-2">
-                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Nombre Completo</label>
-                    <input type="text" name="name" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
-                </div>
-                <div class="space-y-2">
-                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Email</label>
-                    <input type="email" name="email" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
-                </div>
-                <div class="space-y-2">
-                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Teléfono</label>
-                    <input type="tel" name="Tel" required class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
-                </div>
-                <div class="md:col-span-2 space-y-2">
-                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Estado de Planos</label>
-                    <select name="blueprints" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition">
-                        <option value="ready">Tengo planos listos</option>
-                        <option value="none">Necesito diseño/planos</option>
-                    </select>
-                </div>
-                <div class="md:col-span-2 space-y-2">
-                    <label class="text-[10px] font-bold uppercase tracking-widest text-mobi-1/60">Mensaje</label>
-                    <textarea name="message" rows="4" class="w-full bg-white border border-stone-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-mobi-5 outline-none transition" placeholder="Cuéntanos sobre tu espacio..."></textarea>
-                </div>
-                
-                <div class="md:col-span-2 flex justify-center">
-                    <div class="g-recaptcha" data-sitekey="6LckdKQsAAAAACsATxnKS-8OIruXY0Y7bvytpWez"></div>
-                </div>
-
-                <button type="submit" id="submit-btn" class="md:col-span-2 py-5 bg-mobi-1 text-white rounded-full font-extrabold text-lg hover:bg-mobi-5 transition-all shadow-xl">
-                    Enviar Solicitud
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <footer class="py-12 bg-stone-50 text-center border-t border-stone-200 relative z-20">
-        <img src="https://mobi.help/logo_cropped_F.png" alt="Mobi Deck" class="h-10 mx-auto grayscale opacity-50 mb-4">
-        <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-mobi-1/60 mb-2">
-            Nicolás Andrés Medina Razo • RFC: MERN9312202B1
-        </div>
-        <p class="text-[9px] font-bold uppercase tracking-[0.3em] text-mobi-1/40">Calle 66 #561 Centro, Mérida, Yuc. • © 2026 Mobi Deck</p>
-    </footer>
-
-    <script>
-        // SOLUCIÓN DEFINITIVA DE REDIRECCIÓN A GRACIAS.HTML CON RECAPTCHA
-        const form = document.getElementById('contact-form');
-        const submitBtn = document.getElementById('submit-btn');
-
-        form.addEventListener('submit', async function(event) {
-            event.preventDefault(); 
-            
-            // Verificación de reCAPTCHA
-            const captchaResponse = grecaptcha.getResponse();
-            if (!captchaResponse) {
-                alert("Por favor, completa el reCAPTCHA para continuar.");
-                return;
-            }
-
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'Enviando...';
-
-            const formData = new FormData(form);
-
-            try {
-                const response = await fetch("https://formspree.io/f/mreykjlr", {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    window.location.href = "https://mobi.help/gracias.html";
-                } else {
-                    alert("Hubo un problema al enviar tu solicitud. Por favor intenta de nuevo.");
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = 'Enviar Solicitud';
-                    grecaptcha.reset(); // Resetear captcha si hay error
-                }
-            } catch (error) {
-                window.location.href = "https://mobi.help/gracias.html";
-            }
-        });
-
-        function expandirIdentidad() {
-            const sec = document.getElementById('identidad');
-            sec.classList.remove('section-retracted');
-            sec.classList.add('section-expanded'); 
-            
-            const vids = sec.querySelectorAll('video');
-            vids.forEach(v => {
-                v.muted = true;
-                v.play().catch(()=>{});
-            });
-            
-            setTimeout(() => {
-                sec.scrollIntoView({ behavior: 'smooth' });
-            }, 150);
-        }
-
-        function toggleMaterials() {
-            const container = document.getElementById('materials-container');
-            const section = document.getElementById('step1');
-            
-            if (container.classList.contains('hidden')) {
-                container.classList.remove('hidden');
-                section.classList.add('section-expanded');
-                setTimeout(() => {
-                    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-            } else {
-                container.classList.add('hidden');
-                section.classList.remove('section-expanded');
-                section.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        function toggleOptimizer() {
-            const container = document.getElementById('optimizer-container');
-            const section = document.getElementById('step2');
-            
-            if (container.classList.contains('hidden')) {
-                container.classList.remove('hidden');
-                section.classList.add('section-expanded');
-                setTimeout(() => {
-                    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-            } else {
-                container.classList.add('hidden');
-                section.classList.remove('section-expanded');
-                section.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        function togglePaymentInfo() {
-            const container = document.getElementById('payment-info-container');
-            container.classList.toggle('hidden');
-        }
-
-        function forceVideoPlay() {
-            const videos = document.querySelectorAll('video');
-            videos.forEach(video => {
-                video.muted = true;
-                video.play().catch(() => {});
-            });
-        }
-        window.addEventListener('load', forceVideoPlay);
-        window.addEventListener('touchstart', forceVideoPlay, {once: true});
-
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mobileMenu.classList.toggle('active');
-        });
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
-        });
-        document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-                mobileMenu.classList.remove('active');
-            }
-        });
-
-        // CALCULATOR LOGIC
-        let currentWoodName = "Cedro";
-        let currentWoodPrice = 1560; 
-        const wasteFactor = 1.10; 
-        const profitMargin = 1.35; 
-        const fixedOperationalBase = 1745; 
-
-        function updateWood(name, price) {
-            currentWoodName = name;
-            currentWoodPrice = price;
-            document.getElementById('label-madera').innerText = name;
-            
-            document.querySelectorAll('.wood-btn').forEach(btn => {
-                btn.classList.remove('border-mobi-4', 'bg-white', 'text-mobi-3', 'shadow-sm', 'active');
-                btn.classList.add('border-stone-100', 'bg-stone-50', 'text-slate-400');
-            });
-            
-            const activeId = `btn-${name.replace(/\s+/g, '-')}`;
-            const activeBtn = document.getElementById(activeId);
-            if(activeBtn) {
-                activeBtn.classList.add('border-mobi-4', 'bg-white', 'text-mobi-3', 'shadow-sm', 'active');
-                activeBtn.classList.remove('border-stone-100', 'bg-stone-50', 'text-slate-400');
-            }
-            calculate();
-        }
-
-        function calculate(source) {
-            const largoInput = document.getElementById('largo');
-            const anchoInput = document.getElementById('ancho');
-            const areaInput = document.getElementById('area_total');
-            
-            let finalArea = 0;
-
-            if (source === 'area' && areaInput.value > 0) {
-                largoInput.disabled = true;
-                anchoInput.disabled = true;
-                finalArea = parseFloat(areaInput.value);
-            } else if (source === 'dims' || !areaInput.value) {
-                largoInput.disabled = false;
-                anchoInput.disabled = false;
-                areaInput.value = ""; 
-                const l = parseFloat(largoInput.value) || 0;
-                const a = parseFloat(anchoInput.value) || 0;
-                finalArea = l * a;
-            } else {
-                finalArea = parseFloat(largoInput.value) * parseFloat(anchoInput.value);
-            }
-            
-            const costWood = (finalArea * wasteFactor) * currentWoodPrice;
-            const costStructure = ((fixedOperationalBase / 3) * finalArea) * profitMargin;
-            const costInstallation = ((fixedOperationalBase / 5) * finalArea) * profitMargin;
-            const total = costStructure + costInstallation + costWood;
-
-            const fmt = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
-            
-            document.getElementById('res-area-display').innerText = finalArea.toFixed(2);
-            document.getElementById('res-madera').innerText = fmt.format(costWood);
-            document.getElementById('res-estructura').innerText = fmt.format(costStructure);
-            document.getElementById('res-instalacion').innerText = fmt.format(costInstallation);
-            document.getElementById('res-total').innerText = fmt.format(total);
-        }
-
-        window.addEventListener('load', () => {
-             updateWood('Cedro', 1560);
-             calculate();
-        });
-    </script>
-    <a href="http://wa.me/529997394656" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       class="fixed bottom-8 right-8 z-[150] flex items-center justify-center w-16 h-16 bg-mobi-5 text-white rounded-full shadow-2xl hover:scale-110 transition-transform duration-300"
-       aria-label="Chat on WhatsApp">
-        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
-    </a>
+<body>
+<a class="skip" href="#materiales">Ir al contenido</a>
+<div class="ambient" aria-hidden="true"><div class="bubble one"></div><div class="bubble two"></div></div>
+<header class="site-header wrap">
+  <a class="brand" href="#materiales" aria-label="Mobi Deck, inicio"><img src="logo_cropped_F.png" alt="Mobi Deck" width="66" height="66"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menú</button>
+  <nav class="nav" id="navigation" aria-label="Navegación principal"><a href="#materiales">Materiales</a><a href="#experiencia">Experiencia</a><a href="#garantia">Garantía</a><a class="nav-cta" href="#cotizador">Cotiza tu deck ↗</a></nav>
+</header>
+<main class="wrap">
+  <section id="materiales" aria-labelledby="materials-title">
+    <div class="intro">
+      <div><div class="eyebrow">Mobi Deck · Mérida, Yucatán</div><h1 id="materials-title">Tu espacio.<br><span class="accent">Al natural.</span></h1><p>Diseño e instalación de decks.<br>Tres materiales para darle vida a tu exterior.</p></div>
+      <a href="#experiencia" class="intro-art" aria-label="Ver nuestra experiencia"><img src="FHD0044.JPG" alt="Instalación de deck de madera alrededor de una piscina" width="4000" height="3000" fetchpriority="high"><span class="photo-tag">Espacios que se disfrutan ↗</span></a>
+    </div>
+    <div class="materials">
+      <article class="material reveal"><img src="1teca.png" alt="Textura de madera de teca" width="320" height="154" loading="lazy"><div class="material-body"><h3>Teca <span>Madera natural</span></h3><p>Tonos cálidos y una veta que hace único cada espacio.</p><a href="#cotizador" data-material="teca">Cotizar teca <span aria-hidden="true">↗</span></a></div></article>
+      <article class="material reveal"><img src="01cumaru.jpg" alt="Textura de madera de cumarú" width="320" height="154" loading="lazy"><div class="material-body"><h3>Cumarú <span>Madera natural</span></h3><p>Madera densa, con carácter y tonos profundos.</p><a href="#cotizador" data-material="cumaru">Cotizar cumarú <span aria-hidden="true">↗</span></a></div></article>
+      <article class="material reveal"><img src="01teakwpc.jpg" alt="Tablas de WPC con acabado tipo madera" width="320" height="154" loading="lazy"><div class="material-body"><h3>WPC <span>Compuesto</span></h3><p>La apariencia de la madera en un material compuesto.</p><a href="#cotizador" data-material="wpc">Cotizar WPC <span aria-hidden="true">↗</span></a></div></article>
+    </div>
+  </section>
+  <section id="cotizador" aria-labelledby="quote-title" class="reveal">
+    <div class="section-top"><div><div class="eyebrow">De la idea a tu deck</div><h2 id="quote-title">Ponle medida a tu proyecto.</h2></div><p>Elige tu material y calcula un estimado en pesos mexicanos.</p></div>
+    <div class="quote-shell">
+      <form class="quote-form" id="quote-form">
+        <fieldset><legend>01 · Elige tu material</legend><div class="choices"><label><input type="radio" name="material" value="teca" checked><span>Teca</span></label><label><input type="radio" name="material" value="cumaru"><span>Cumarú</span></label><label><input type="radio" name="material" value="wpc"><span>WPC</span></label></div></fieldset>
+        <fieldset><legend>02 · Indica el tamaño</legend><div class="mode"><label><input type="radio" name="mode" value="dimensions" checked>Largo × ancho</label><label><input type="radio" name="mode" value="area">Ya tengo el área</label></div>
+          <div id="dimensions-fields" class="dimensions"><div class="measure"><label for="largo">Largo (m)</label><input id="largo" type="number" min="0.1" step="any" value="1" inputmode="decimal" required></div><div class="measure"><label for="ancho">Ancho (m)</label><input id="ancho" type="number" min="0.1" step="any" value="1" inputmode="decimal" required></div></div>
+          <div id="area-fields" class="measure" hidden><label for="area_total">Área total (m²)</label><input id="area_total" type="number" min="0.1" step="any" placeholder="Ej. 20" inputmode="decimal" required disabled></div>
+          <p class="error" id="quote-error" role="status"></p>
+        </fieldset>
+        <p class="hint">Incluye material con 10% de desperdicio, estructura e instalación.</p>
+        <noscript><p class="hint">Activa JavaScript para calcular o <a href="https://wa.me/529997394656">solicita tu cotización por WhatsApp</a>.</p></noscript>
+      </form>
+      <div class="quote-result"><div aria-live="polite" aria-atomic="true"><div class="result-heading"><strong id="label-madera">Teca</strong><span><span id="res-area-display">1.00</span> m²</span></div><h3>Estimado de tu proyecto</h3><p class="total" id="res-total">$2,906.40</p><span class="currency">MXN</span><dl class="breakdown"><div><dt>Material + 10% desperdicio</dt><dd id="res-madera">$1,650.00</dd></div><div><dt>Estructura</dt><dd id="res-estructura">$785.25</dd></div><div><dt>Instalación</dt><dd id="res-instalacion">$471.15</dd></div></dl></div><a class="cta" id="quote-whatsapp" href="https://wa.me/529997394656" target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp <span aria-hidden="true">↗</span></a><p class="result-note">Incluye herrajes premium y sellado estructural. Estimado orientativo; confirmamos el precio al revisar tu proyecto.</p></div>
+    </div>
+  </section>
+  <section id="garantia" aria-labelledby="warranty-title" class="reveal"><div class="warranty"><img class="seal" src="5yrwarranty.png" alt="Sello de garantía estructural de 5 años" width="230" height="220" loading="lazy"><div><div class="eyebrow">Construimos con respaldo</div><h2 id="warranty-title">Tu deck, bien respaldado.</h2><p><strong>5 años de garantía estructural</strong><br>y <strong>1 año en mano de obra.</strong></p><p class="terms">Requiere mantenimiento preventivo anual obligatorio por Mobi Deck.</p><a href="https://customer.mobi.help" target="_blank" rel="noopener noreferrer">Acceder a soporte y garantía ↗</a></div></div></section>
+  <section id="experiencia" aria-labelledby="experience-title" class="reveal"><div class="section-top"><div><div class="eyebrow">Nuestra experiencia</div><h2 id="experience-title">Del plano a la vida real.</h2><p style="margin-top:12px;font-size:.88rem">Experiencia en Canadá que hoy llevamos a tu espacio.</p></div><div class="gallery-controls"><button type="button" data-direction="-1" aria-label="Fotos anteriores" aria-controls="gallery">←</button><button type="button" data-direction="1" aria-label="Fotos siguientes" aria-controls="gallery">→</button></div></div><div class="gallery" id="gallery" tabindex="0" role="region" aria-label="Galería de experiencia. Desliza o usa las flechas para ver las ocho imágenes.">
+<figure><a href="FHD0037.JPG" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagen 1: Trabajo en obra (abre otra pestaña)"><img src="FHD0037.JPG" alt="Trabajo en obra — experiencia Mobi Deck, imagen 1" loading="lazy" width="480" height="265"></a><figcaption>Trabajo en obra<span>01 / 08 ↗</span></figcaption></figure>
+<figure><a href="FHD0041.JPG" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagen 2: Proceso de construcción (abre otra pestaña)"><img src="FHD0041.JPG" alt="Proceso de construcción — experiencia Mobi Deck, imagen 2" loading="lazy" width="480" height="265"></a><figcaption>Proceso de construcción<span>02 / 08 ↗</span></figcaption></figure>
+<figure><a href="FHD0042.JPG" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagen 3: Detalle del proyecto (abre otra pestaña)"><img src="FHD0042.JPG" alt="Detalle del proyecto — experiencia Mobi Deck, imagen 3" loading="lazy" width="480" height="265"></a><figcaption>Detalle del proyecto<span>03 / 08 ↗</span></figcaption></figure>
+<figure><a href="FHD0044.JPG" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagen 4: Instalación en obra (abre otra pestaña)"><img src="FHD0044.JPG" alt="Instalación en obra — experiencia Mobi Deck, imagen 4" loading="lazy" width="480" height="265"></a><figcaption>Instalación en obra<span>04 / 08 ↗</span></figcaption></figure>
+<figure><a href="deck1.jpeg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagen 5: Estructura en construcción (abre otra pestaña)"><img src="deck1.jpeg" alt="Estructura en construcción — experiencia Mobi Deck, imagen 5" loading="lazy" width="480" height="265"></a><figcaption>Estructura en construcción<span>05 / 08 ↗</span></figcaption></figure>
+<figure><a href="deck2.jpeg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagen 6: Trabajo estructural (abre otra pestaña)"><img src="deck2.jpeg" alt="Trabajo estructural — experiencia Mobi Deck, imagen 6" loading="lazy" width="480" height="265"></a><figcaption>Trabajo estructural<span>06 / 08 ↗</span></figcaption></figure>
+<figure><a href="deck3.jpeg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagen 7: Planeación del proyecto (abre otra pestaña)"><img src="deck3.jpeg" alt="Planeación del proyecto — experiencia Mobi Deck, imagen 7" loading="lazy" width="480" height="265"></a><figcaption>Planeación del proyecto<span>07 / 08 ↗</span></figcaption></figure>
+<figure><a href="DB-DESIGN.png" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagen 8: Diseño y planeación (abre otra pestaña)"><img src="DB-DESIGN.png" alt="Diseño y planeación — experiencia Mobi Deck, imagen 8" loading="lazy" width="480" height="265"></a><figcaption>Diseño y planeación<span>08 / 08 ↗</span></figcaption></figure>
+    </div></section>
+</main>
+<footer class="footer wrap"><span>Mobi Deck · Mérida, Yucatán</span><div><a href="tel:+529997394656">999 739 4656</a><a href="https://wa.me/529997394656" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></div></footer>
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const form = $('quote-form');
+  // Preserve the original calculator's material rates and cost formula.
+  const materials = {teca:{name:'Teca',price:1500},cumaru:{name:'Cumarú',price:1700},wpc:{name:'WPC',price:2000}};
+  const wasteFactor = 1.10, profitMargin = 1.35, fixedOperationalBase = 1745;
+  const money = new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN'});
+  const number = new Intl.NumberFormat('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2});
+  function calculate() {
+    const direct = form.elements.mode.value === 'area';
+    $('dimensions-fields').hidden = direct;
+    $('area-fields').hidden = !direct;
+    $('largo').disabled = $('ancho').disabled = direct;
+    $('area_total').disabled = !direct;
+    const fields = direct ? [$('area_total')] : [$('largo'),$('ancho')];
+    const validInputs = fields.every(input => Number.isFinite(input.valueAsNumber) && input.valueAsNumber >= 0.1);
+    const area = direct ? $('area_total').valueAsNumber : $('largo').valueAsNumber * $('ancho').valueAsNumber;
+    const material = materials[form.elements.material.value];
+    const wood = area * wasteFactor * material.price;
+    const structure = fixedOperationalBase / 3 * area * profitMargin;
+    const installation = fixedOperationalBase / 5 * area * profitMargin;
+    const total = wood + structure + installation;
+    const valid = validInputs && Number.isFinite(total) && area > 0;
+    fields.forEach(input => input.setAttribute('aria-invalid', String(!Number.isFinite(input.valueAsNumber) || input.valueAsNumber < 0.1)));
+    $('label-madera').textContent = material.name;
+    $('res-area-display').textContent = valid ? number.format(area) : '—';
+    $('res-madera').textContent = valid ? money.format(wood) : '—';
+    $('res-estructura').textContent = valid ? money.format(structure) : '—';
+    $('res-instalacion').textContent = valid ? money.format(installation) : '—';
+    $('res-total').textContent = valid ? money.format(total) : '—';
+    $('quote-error').textContent = valid ? '' : 'Ingresa medidas válidas de al menos 0.1.';
+    const link = $('quote-whatsapp');
+    link.setAttribute('aria-disabled', String(!valid));
+    if (valid) {
+      const message = `Hola, Mobi Deck. Me interesa un deck de ${material.name} de ${number.format(area)} m². El estimado de la página es ${money.format(total)} MXN. Quisiera cotizar mi proyecto.`;
+      link.href = 'https://wa.me/529997394656?text=' + encodeURIComponent(message);
+    } else {
+      link.removeAttribute('href');
+    }
+  }
+  form.addEventListener('input',calculate);
+  form.addEventListener('change',calculate);
+  form.addEventListener('submit',event => event.preventDefault());
+  $('quote-whatsapp').addEventListener('click',event => {
+    if (event.currentTarget.getAttribute('aria-disabled') === 'true') event.preventDefault();
+  });
+  document.querySelectorAll('[data-material]').forEach(link => link.addEventListener('click',() => {
+    form.querySelector(`input[name="material"][value="${link.dataset.material}"]`).checked = true;
+    calculate();
+  }));
+  calculate();
+  const menu = document.querySelector('.menu-toggle');
+  function closeMenu() { menu.setAttribute('aria-expanded','false'); $('navigation').classList.remove('is-open'); }
+  menu.addEventListener('click',() => {
+    const open = menu.getAttribute('aria-expanded') !== 'true';
+    menu.setAttribute('aria-expanded',String(open));
+    $('navigation').classList.toggle('is-open',open);
+  });
+  $('navigation').querySelectorAll('a').forEach(link => link.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',event => { if(event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') {closeMenu();menu.focus();} });
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const gallery = $('gallery');
+  function slide(direction) {
+    const card = gallery.querySelector('figure');
+    gallery.scrollBy({left: direction * (card.getBoundingClientRect().width + 20),behavior:reducedMotion.matches ? 'instant' : 'smooth'});
+  }
+  document.querySelectorAll('[data-direction]').forEach(button => button.addEventListener('click',() => slide(Number(button.dataset.direction))));
+  gallery.addEventListener('keydown',event => {
+    if(event.target === gallery && ['ArrowLeft','ArrowRight'].includes(event.key)) {event.preventDefault();slide(event.key === 'ArrowRight' ? 1 : -1);}
+  });
+  // Progressive enhancement: visible without JavaScript and with reduced motion.
+  if ('IntersectionObserver' in window && !reducedMotion.matches) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting) {entry.target.classList.remove('is-pending');observer.unobserve(entry.target);} });
+    },{threshold:0,rootMargin:'0px 0px -25px 0px'});
+    document.querySelectorAll('.reveal').forEach(element => {
+      if(element.getBoundingClientRect().top > innerHeight) {element.classList.add('is-pending');observer.observe(element);}
+    });
+    const showAll = () => {if(reducedMotion.matches){document.querySelectorAll('.is-pending').forEach(el => el.classList.remove('is-pending'));observer.disconnect();}};
+    reducedMotion.addEventListener('change',showAll);
+    window.addEventListener('beforeprint',() => {document.querySelectorAll('.is-pending').forEach(el => el.classList.remove('is-pending'));});
+  }
+})();
+</script>
 </body>
 </html>
